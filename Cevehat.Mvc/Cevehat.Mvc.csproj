@@ -116,6 +116,9 @@
     <Compile Include="Models\InterviewQustion.cs" />
     <Compile Include="Models\Skills.cs" />
     <Compile Include="Models\SoftSkills.cs" />
+    <Compile Include="Models\careerObjective.cs" />
+    <Compile Include="Models\education.cs" />
+    <Compile Include="Models\jobTitle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
