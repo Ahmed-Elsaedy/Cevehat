@@ -23,11 +23,33 @@ namespace Cevehat.Web.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
+
+        public virtual DbSet<CareerObjective> CareerObjective { get; set; }
+        public virtual DbSet<Certification> Certification { get; set; }
+        public virtual DbSet<Education> Education { get; set; }
+
+        public virtual DbSet<Experince> Experinces { get; set; }
+        public virtual DbSet<InterviewQustion> InterviewQustion { get; set; }
+        public virtual DbSet<JobTitle> JobTitle { get; set; }
+        public virtual DbSet<JobTitles_Skills> JobTitles_Skills { get; set; }
+        public virtual DbSet<Skill> Skill { get; set; }
+        public virtual DbSet<SoftSkill> Skills { get; set; }
+
+
+
+
+
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+
+
+
+
     }
 }

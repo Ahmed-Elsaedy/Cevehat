@@ -16,7 +16,7 @@ namespace Cevehat.Web.Models
         public string DepartmentName { get; set; }
         public string OrganizationName { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int userId { get; set; }
+        public string userId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
