@@ -7,13 +7,13 @@ namespace Cevehat.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class first : IMigrationMetadata
+    public sealed partial class sec : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(sec));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805271410499_first"; }
+            get { return "201805271502112_sec"; }
         }
         
         string IMigrationMetadata.Source

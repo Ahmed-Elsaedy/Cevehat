@@ -9,12 +9,12 @@ namespace Cevehat.Web.Models
 {
     public class JobTitles_Skills
     {
-        public Skill Skill { get; set; }
-        public JobTitle JobTitle { get; set; }
+        public virtual Skill skill { get; set; }
+        public virtual JobTitle jobTitle { get; set; }
 
-        [ForeignKey("Skill"), Key, Column(Order = 0)]
+        [ForeignKey("skill"), Key, Column(Order = 0)]
         public int Skill_ID { get; set; }
-        [ForeignKey("JobTitle"), Key, Column(Order = 1)]
+        [ForeignKey("jobTitle"), Key, Column(Order = 1)]
         public int JbTitle_ID { get; set; }
         //public int Pers { get; set; }
 

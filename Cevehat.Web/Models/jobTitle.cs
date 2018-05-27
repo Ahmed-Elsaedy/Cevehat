@@ -13,5 +13,7 @@ namespace Cevehat.Web.Models
         public string JobName { get; set; }
         public virtual List<CareerObjective> CareerObjectives { get; set; }
         public virtual List<InterviewQustion> InterviewQustions { get; set; }
+        public virtual Lazy<List<JobTitles_Skills>> JobTitles_Skills { get; set; }
+
     }
 }
