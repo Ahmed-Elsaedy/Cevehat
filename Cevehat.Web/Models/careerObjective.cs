@@ -7,6 +7,7 @@ namespace Cevehat.web.Models
 {
     public class careerObjective
     {
+        // test
         public int careerId { get; set; }
         public string careerText { get; set; }
         
