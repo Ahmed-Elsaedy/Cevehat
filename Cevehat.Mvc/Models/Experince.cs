@@ -7,7 +7,7 @@ namespace Cevehat.Mvc.Models
 {
     public class Experince
     {
-        public int ExpId { get; set; }
+        public int expId { get; set; }
         public string place { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }

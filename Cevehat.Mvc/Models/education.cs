@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Cevehat.Mvc.Models
 {
-    public class education
+    public class Education
     {
         
         public int educationId { get; set; }
