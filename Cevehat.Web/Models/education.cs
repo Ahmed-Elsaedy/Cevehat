@@ -17,7 +17,7 @@ namespace Cevehat.Mvc.Models
         public string DepartmentName { get; set; }
 
         public string OrganizationName { get; set; }
-
+        //foreign key
         public int userId { get; set; }
 
     }
