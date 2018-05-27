@@ -19,6 +19,8 @@ namespace Cevehat.Web.Models
         public virtual List<Experince> Experinces { get; set; }
         public virtual List<Education> Educations { get; set; }
         
+        
+           
     }
 
     public enum MaritalStutes

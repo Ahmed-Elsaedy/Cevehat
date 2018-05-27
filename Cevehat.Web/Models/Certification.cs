@@ -11,12 +11,12 @@ namespace Cevehat.Web.Models
     public class Certification
     {
         [Key]
-        public int id { get; set; }
-        public string place { get; set; }
-        public string name { get; set; }
-        public DateTime year { get; set; }
+        public int Cerid { get; set; }
+        public string CerPlace { get; set; }
+        public string CerName { get; set; }
+        public DateTime CerYear { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int userid { get; set; }
+        public string userid { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }
