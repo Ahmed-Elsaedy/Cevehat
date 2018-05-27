@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Cevehat.Mvc.Models
 {
-    public class careerObjective
+    public class CareerObjective
     {
         public int careerId { get; set; }
         public string careerText { get; set; }

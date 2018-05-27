@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Cevehat.Mvc.Models
 {
-    public class JobTitle
+    public class CV
     {
-        public int jobId { get; set; }
-        public string jobName { get; set; }
-
+        public int UserID { get; set; }
+        public Education education { get; set; }
     }
 }
