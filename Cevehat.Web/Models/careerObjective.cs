@@ -15,5 +15,7 @@ namespace Cevehat.Web.Models
         [ForeignKey("JobTitle")]
         public int JobID { get; set; }
         public JobTitle JobTitle { get; set; }
+
+        // test
     }
 }
