@@ -13,7 +13,7 @@ namespace Cevehat.Web.Models
         public int SoftSkillsID { get; set; }
         public string Name { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int userid { get; set; }
+        public string userid { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Cevehat.Web.Models
         public string Position { get; set; }
         public string Responsbilty { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }
