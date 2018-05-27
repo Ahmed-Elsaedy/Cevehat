@@ -111,6 +111,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account\AppUser.cs" />
     <Compile Include="Models\Certification.cs" />
     <Compile Include="Models\Experince.cs" />
     <Compile Include="Models\InterviewQustion.cs" />

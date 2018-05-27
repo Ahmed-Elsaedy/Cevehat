@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cevehat.Mvc", "Cevehat.Mvc\Cevehat.Mvc.csproj", "{ADA04CDA-2E57-4765-8C2D-2256492AC1B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cevehat.Web", "Cevehat.Web\Cevehat.Web.csproj", "{BA8D7617-02F9-4276-8B7B-10AD661698D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{ADA04CDA-2E57-4765-8C2D-2256492AC1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADA04CDA-2E57-4765-8C2D-2256492AC1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADA04CDA-2E57-4765-8C2D-2256492AC1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8D7617-02F9-4276-8B7B-10AD661698D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8D7617-02F9-4276-8B7B-10AD661698D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8D7617-02F9-4276-8B7B-10AD661698D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8D7617-02F9-4276-8B7B-10AD661698D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
