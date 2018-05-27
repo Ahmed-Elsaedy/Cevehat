@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Cevehat.web.Models
+namespace Cevehat.Web.Models
 {
     public class Experince
     {
+        [Key]
         public int ExpId { get; set; }
-        public string place { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
-        public string position { get; set; }
-        public string responsbilty { get; set; }
-        public int userID { get; set; }
-
+        public string Place { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Position { get; set; }
+        public string Responsbilty { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public int UserID { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

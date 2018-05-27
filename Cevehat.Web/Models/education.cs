@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Cevehat.web.Models
+namespace Cevehat.Web.Models
 {
-    public class education
+    public class Education
     {
-        
-        public int educationId { get; set; }
-
+        [Key]
+        public int EducationId { get; set; }
         public decimal GPA { get; set; }
-
         public DateTime GradYear { get; set; }
-
         public string DepartmentName { get; set; }
-
         public string OrganizationName { get; set; }
-        //foreign key
+        [ForeignKey("ApplicationUser")]
         public int userId { get; set; }
-
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

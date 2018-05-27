@@ -1,4 +1,4 @@
-﻿using Cevehat.web.Models;
+﻿using Cevehat.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,13 +9,12 @@ namespace Cevehat.Web.Models
 {
     public class JobTitles_Skills
     {
-        [Key]
-        public int JobTitles_Skills_ID { get; set; }
         public Skill Skill { get; set; }
         public JobTitle JobTitle { get; set; }
-        [ForeignKey("Skill")]
+
+        [ForeignKey("Skill"), Key, Column(Order = 0)]
         public int Skill_ID { get; set; }
-        [ForeignKey("JobTitle")]
+        [ForeignKey("JobTitle"), Key, Column(Order = 1)]
         public int JbTitle_ID { get; set; }
         //public int Pers { get; set; }
 

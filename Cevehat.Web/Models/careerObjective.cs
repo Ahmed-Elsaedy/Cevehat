@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Cevehat.web.Models
+namespace Cevehat.Web.Models
 {
-    public class careerObjective
+    public class CareerObjective
     {
-        // test
-        public int careerId { get; set; }
-        public string careerText { get; set; }
-        
+        [Key]
+        public int CareerId { get; set; }
+        public string CareerText { get; set; }
+        [ForeignKey("JobTitle")]
+        public int JobID { get; set; }
+        public JobTitle JobTitle { get; set; }
     }
 }
