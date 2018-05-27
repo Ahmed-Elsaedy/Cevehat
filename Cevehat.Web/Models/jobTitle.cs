@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Cevehat.Mvc.Models
+namespace Cevehat.web.Models
 {
-    public class jobTitle
+    public class JobTitle
     {
-        public int jobId { get; set; }
-        public string jobName { get; set; }
+        public int JobId { get; set; }
+        public string JobName { get; set; }
 
     }
 }

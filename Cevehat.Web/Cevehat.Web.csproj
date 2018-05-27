@@ -195,6 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
     <Compile Include="Models\Certification.cs" />
     <Compile Include="Models\education.cs" />
@@ -203,7 +204,8 @@
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\InterviewQustion.cs" />
-    <Compile Include="Models\jobTitle.cs" />
+    <Compile Include="Models\JobTitle.cs" />
+    <Compile Include="Models\JobTitles_Skills.cs" />
     <Compile Include="Models\Skills.cs" />
     <Compile Include="Models\SoftSkills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
