@@ -3,7 +3,7 @@ namespace Cevehat.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class sec : DbMigration
     {
         public override void Up()
         {
@@ -168,13 +168,10 @@ namespace Cevehat.Web.Migrations
                     {
                         Skill_Id = c.Int(nullable: false, identity: true),
                         Skill_name = c.String(),
-                        JobTitle_ID = c.Int(nullable: false),
                         ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Skill_Id)
-                .ForeignKey("dbo.JobTitles", t => t.JobTitle_ID, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.JobTitle_ID)
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
@@ -209,7 +206,6 @@ namespace Cevehat.Web.Migrations
             DropForeignKey("dbo.JobTitles_Skills", "JbTitle_ID", "dbo.JobTitles");
             DropForeignKey("dbo.Certifications", "userid", "dbo.AspNetUsers");
             DropForeignKey("dbo.Skills", "ApplicationUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Skills", "JobTitle_ID", "dbo.JobTitles");
             DropForeignKey("dbo.SoftSkills", "userid", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -222,7 +218,6 @@ namespace Cevehat.Web.Migrations
             DropIndex("dbo.JobTitles_Skills", new[] { "JbTitle_ID" });
             DropIndex("dbo.JobTitles_Skills", new[] { "Skill_ID" });
             DropIndex("dbo.Skills", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Skills", new[] { "JobTitle_ID" });
             DropIndex("dbo.SoftSkills", new[] { "userid" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });

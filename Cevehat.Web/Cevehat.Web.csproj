@@ -192,15 +192,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JopSkillsController.cs" />
+    <Compile Include="Controllers\JobTitlesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805271410499_first.cs" />
-    <Compile Include="Migrations\201805271410499_first.Designer.cs">
-      <DependentUpon>201805271410499_first.cs</DependentUpon>
+    <Compile Include="Migrations\201805271502112_sec.cs" />
+    <Compile Include="Migrations\201805271502112_sec.Designer.cs">
+      <DependentUpon>201805271502112_sec.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -276,7 +279,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\JopSkills\JopSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,8 +298,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805271410499_first.resx">
-      <DependentUpon>201805271410499_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805271502112_sec.resx">
+      <DependentUpon>201805271502112_sec.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,14 +7,12 @@ using System.Web;
 
 namespace Cevehat.Web.Models
 {
-    public class Skill
+    public class Skills
     {
         [Key]
         public int Skill_Id { get; set; }
         public string Skill_name { get; set; }
-        [ForeignKey("JobTitle")]
-        public int JobTitle_ID { get; set; }
-        public JobTitle JobTitle { get; set; }
+        public virtual List<JobTitles_Skills> JobTitles_Skills { get; set; }
         //public List<Study_Links> Study_Links { get; set; }
     }
 
