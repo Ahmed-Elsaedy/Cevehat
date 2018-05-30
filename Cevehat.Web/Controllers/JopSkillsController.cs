@@ -17,10 +17,10 @@ namespace Cevehat.Web.Controllers
         }
         public ActionResult JopSkill(int id)
         {
-            Skill s = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
-            List<JobTitle> JopTitles = db.JobTitle.ToList<JobTitle>();
-            SelectList JpTitle1 = new SelectList(db.JobTitle.ToList<JobTitle>(),"JobId","JobName",s.Skill_Id);
-            ViewBag.Jobtitle_ID=JpTitle1;
+            //Skill s = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+            //List<JobTitle> JopTitles = db.JobTitle.ToList<JobTitle>();
+            //SelectList JpTitle1 = new SelectList(db.JobTitle.ToList<JobTitle>(), "JobId", "JobName", s.Skill_Id);
+            //ViewBag.Jobtitle_ID = JpTitle1;
             return View();
         }
     }
