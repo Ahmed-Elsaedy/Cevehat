@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Owin;
 
 namespace Cevehat.Web.Models
 {
@@ -16,6 +17,11 @@ namespace Cevehat.Web.Models
             // Add custom user claims here
             return userIdentity;
         }
+    }
+    
+    public class ApplicationRole : IdentityRole
+    {
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
