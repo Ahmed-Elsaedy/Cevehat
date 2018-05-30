@@ -3,20 +3,20 @@
     ViewBag.Title = "GetSkillsJobTitle";
 }
 
-<h2>GetSkillsJobTitle</h2>
-
-<form method="post" class="form-horizontal">
-
-   
+<h2>GetSkillsJobTitle</h2>   
     <div class="form-group">
         @Html.LabelFor(a=>a.JobName,new { @class="col-sm-2 label-control"})
     
         <div class="col-sm-6">
             @Html.DropDownListFor(a=>a.JobName,ViewBag.JobID as SelectList,new { @class="form-control"})
-
-
         </div>
-    </div>
 
-    <input type="submit" value="GetSkills" class="btn btn-primary"/>
-    </form>
+        <div>
+            @Ajax.ActionLink("GetSkills","GetSkills","SkillsJobTitle",new { id=Model.JobId},new AjaxOptions() {
+           UpdateTargetId="div1",
+           InsertionMode=InsertionMode.Replace,
+       },new { @class="btn btn-primary"})
+            </div>
+    </div>
+<div id="div1">
+    </div>

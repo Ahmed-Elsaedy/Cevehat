@@ -30,15 +30,28 @@ namespace Cevehat.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult etSkillsJobTitle( Skills sk)
+        public ActionResult GetJobTitlesSkill()
         {
-            List<Skills> skill = db.Skills.ToList<Skills>();
-            db.Skill.Add(sk);
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            List<Skills> skills = db.Skill.ToList<Skills>();
+            SelectList SkillsList = new SelectList(skills, "Skill_Id","Skill_name");
+            ViewBag.SkillId = SkillsList;
+            return View();
         }
 
+        public ActionResult GetSkills(int id)
+        {
+            Skills skill = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+
+            return PartialView(skill.Skill_name);
+           
+        }
+
+
+        public ActionResult GetJobTitles(int id)
+        {
+            JobTitle jbTitle = db.JobTitle.FirstOrDefault(a => a.JobId == id);
+            return PartialView();
+         
+        }
     }
 }
