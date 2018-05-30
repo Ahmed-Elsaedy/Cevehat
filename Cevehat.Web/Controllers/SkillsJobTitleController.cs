@@ -42,7 +42,7 @@ namespace Cevehat.Web.Controllers
         {
             Skills skill = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
 
-            return PartialView(skill);
+            return View(skill);
            
         }
 
@@ -50,7 +50,7 @@ namespace Cevehat.Web.Controllers
         public ActionResult GetJobTitles(int id)
         {
             JobTitle jbTitle = db.JobTitle.FirstOrDefault(a => a.JobId == id);
-            return PartialView(jbTitle);
+            return View(jbTitle);
          
         }
     }

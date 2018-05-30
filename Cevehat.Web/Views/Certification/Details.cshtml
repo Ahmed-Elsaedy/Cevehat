@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
 <h2>Details</h2>
@@ -10,14 +11,7 @@
     <h4>Certification</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Fname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Fname)
-        </dd>
-
+ 
         <dt>
             @Html.DisplayNameFor(model => model.CerPlace)
         </dt>

@@ -15,18 +15,10 @@
         </div>
 
         <div>
-            @Ajax.ActionLink("GetSkills", "GetJobTitles", "SkillsJobTitle", new { id = Model.Skill_Id }, new AjaxOptions()
-       {
-           UpdateTargetId = "div1",
-           InsertionMode = InsertionMode.Replace,
-       },new { @class="btn btn-primary"})
+
+            @Html.ActionLink("GetSkills","GetJobTitles", "SkillsJobTitle",null, new { @class="btn btn-primary"})
+         
         </div>
     </div>
-<div id="div1">
 
-    eman
-</div>
  
-@section scripts{
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    }
