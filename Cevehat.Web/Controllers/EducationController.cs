@@ -39,7 +39,7 @@ namespace Cevehat.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+               
                 db.Education.Add(education);
                 db.SaveChanges();
                 return RedirectToAction("Index");

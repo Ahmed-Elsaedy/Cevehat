@@ -1,13 +1,12 @@
 ﻿@model Cevehat.Web.Models.Education
 
 @{
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Admin.cshtml";
 
-    ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
@@ -70,7 +69,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
