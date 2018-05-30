@@ -1,0 +1,32 @@
+﻿
+@model  Cevehat.Web.Models.Skills
+
+@{
+    ViewBag.Title = "GetJobTitlesSkill";
+}
+
+<h2>GetJobTitlesSkill</h2>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Skill_name, new { @class = "col-sm-2 label-control" })
+
+        <div class="col-sm-6">
+            @Html.DropDownListFor(a => a.Skill_name, ViewBag.SkillId as SelectList, new { @class = "form-control" })
+        </div>
+
+        <div>
+            @Ajax.ActionLink("GetSkills", "GetJobTitles", "SkillsJobTitle", new { id = Model.Skill_Id }, new AjaxOptions()
+       {
+           UpdateTargetId = "div1",
+           InsertionMode = InsertionMode.Replace,
+       },new { @class="btn btn-primary"})
+        </div>
+    </div>
+<div id="div1">
+
+    eman
+</div>
+ 
+@section scripts{
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    }

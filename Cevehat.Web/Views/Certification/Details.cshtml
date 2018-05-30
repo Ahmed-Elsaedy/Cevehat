@@ -1,0 +1,50 @@
+﻿@model Cevehat.Web.Models.Certification
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Certification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CerPlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CerPlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CerYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CerYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cerid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
