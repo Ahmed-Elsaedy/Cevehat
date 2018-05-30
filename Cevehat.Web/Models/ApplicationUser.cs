@@ -9,7 +9,7 @@ namespace Cevehat.Web.Models
     {
         public string Fname { get; set; }
         public string Lname { get; set; }
-        public DateTime BirthDate { get; set; }
+       // public DateTime BirthDate { get; set; }
         public MaritalStutes MaritaSutes { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
         public bool Gender { get; set; }

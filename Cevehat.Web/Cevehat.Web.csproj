@@ -208,6 +208,14 @@
     <Compile Include="Migrations\201805271502112_sec.Designer.cs">
       <DependentUpon>201805271502112_sec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805301350433_roles.cs" />
+    <Compile Include="Migrations\201805301350433_roles.Designer.cs">
+      <DependentUpon>201805301350433_roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805301456285_birthdateError.cs" />
+    <Compile Include="Migrations\201805301456285_birthdateError.Designer.cs">
+      <DependentUpon>201805301456285_birthdateError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -337,6 +345,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805271502112_sec.resx">
       <DependentUpon>201805271502112_sec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805301350433_roles.resx">
+      <DependentUpon>201805301350433_roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805301456285_birthdateError.resx">
+      <DependentUpon>201805301456285_birthdateError.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
