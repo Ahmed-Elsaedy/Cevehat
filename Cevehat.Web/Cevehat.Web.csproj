@@ -192,6 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
@@ -281,9 +282,15 @@
     <Content Include="Views\Skills\Details.cshtml" />
     <Content Include="Views\Skills\Edit.cshtml" />
     <Content Include="Views\Skills\Delete.cshtml" />
+    <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Education\Create.cshtml" />
+    <Content Include="Views\Education\Edit.cshtml" />
+    <Content Include="Views\Education\Delete.cshtml" />
+    <Content Include="Views\Education\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\JobTitleSkills\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

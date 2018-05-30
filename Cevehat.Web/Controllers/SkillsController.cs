@@ -1,9 +1,7 @@
-﻿using Cevehat.Web.Models;
-using System;
-using System.CodeDom.Compiler;
+﻿
+using Cevehat.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
@@ -103,7 +101,7 @@ namespace Cevehat.Web.Controllers
         {
             Skills b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
             if (b == null)
-                return HttpNotFound("BOOk does not exist");
+                return HttpNotFound("Skill does not exist");
         
             return View(b);
         }
@@ -117,7 +115,7 @@ namespace Cevehat.Web.Controllers
                 // TODO: Add delete logic here
                 Skills b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
                 if (b == null)
-                    return HttpNotFound("BOOk does not exist");
+                    return HttpNotFound("Skill does not exist");
                 db.Skill.Remove(b);
                 db.SaveChanges();
                 return RedirectToAction("Index");
