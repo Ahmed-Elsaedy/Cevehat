@@ -194,6 +194,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobTitlesController.cs" />
@@ -227,6 +228,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dashboard.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,6 +290,32 @@
     <Content Include="Views\Skills\Details.cshtml" />
     <Content Include="Views\Skills\Edit.cshtml" />
     <Content Include="Views\Skills\Delete.cshtml" />
+    <Content Include="Views\JobTitles\Create.cshtml" />
+    <Content Include="Views\JobTitles\Delete.cshtml" />
+    <Content Include="Views\JobTitles\Details.cshtml" />
+    <Content Include="Views\JobTitles\Edit.cshtml" />
+    <Content Include="Views\JobTitles\Index.cshtml" />
+    <Content Include="Views\Education\Create.cshtml" />
+    <Content Include="Views\Education\Delete.cshtml" />
+    <Content Include="Views\Education\Details.cshtml" />
+    <Content Include="Views\Education\Edit.cshtml" />
+    <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Certification\Create.cshtml" />
+    <Content Include="Views\Certification\Delete.cshtml" />
+    <Content Include="Views\Certification\Details.cshtml" />
+    <Content Include="Views\Certification\Edit.cshtml" />
+    <Content Include="Views\Certification\Index.cshtml" />
+    <Content Include="Views\CareerObjectives\Create.cshtml" />
+    <Content Include="Views\CareerObjectives\Delete.cshtml" />
+    <Content Include="Views\CareerObjectives\Details.cshtml" />
+    <Content Include="Views\CareerObjectives\Edit.cshtml" />
+    <Content Include="Views\CareerObjectives\Index.cshtml" />
+    <Content Include="Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\SkillsJobTitle\GetJobTitles.cshtml" />
+    <Content Include="Views\SkillsJobTitle\GetJobTitlesSkill.cshtml" />
+    <Content Include="Views\SkillsJobTitle\GetSkills.cshtml" />
+    <Content Include="Views\SkillsJobTitle\GetSkillsJobTitle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
