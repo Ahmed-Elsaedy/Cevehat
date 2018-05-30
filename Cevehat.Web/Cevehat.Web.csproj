@@ -294,8 +294,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Skills\Index.cshtml" />
-    <Content Include="Views\Skills\Create.cshtml" />
     <Content Include="Views\Skills\Details.cshtml" />
     <Content Include="Views\Skills\Edit.cshtml" />
     <Content Include="Views\Skills\Delete.cshtml" />
@@ -325,6 +323,8 @@
     <Content Include="Views\SkillsJobTitle\GetJobTitlesSkill.cshtml" />
     <Content Include="Views\SkillsJobTitle\GetSkills.cshtml" />
     <Content Include="Views\SkillsJobTitle\GetSkillsJobTitle.cshtml" />
+    <Content Include="Views\Skills\Index.cshtml" />
+    <Content Include="Views\Skills\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
