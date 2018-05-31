@@ -198,6 +198,7 @@
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobTitlesController.cs" />
+    <Compile Include="Controllers\JobTitleSkillsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
@@ -325,6 +326,9 @@
     <Content Include="Views\SkillsJobTitle\GetSkillsJobTitle.cshtml" />
     <Content Include="Views\Skills\Index.cshtml" />
     <Content Include="Views\Skills\Create.cshtml" />
+    <Content Include="Views\SkillsJobTitle\Index.cshtml" />
+    <Content Include="Views\JobTitleSkills\Index.cshtml" />
+    <Content Include="Views\JobTitleSkills\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
