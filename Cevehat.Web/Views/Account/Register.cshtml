@@ -30,14 +30,14 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.RoleId, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.RoleId, ViewBag.Roles as SelectList, null, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Role, (IEnumerable<SelectListItem>)ViewBag.Roles, null, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-warning" value="SignUp" />
         </div>
     </div>
 }

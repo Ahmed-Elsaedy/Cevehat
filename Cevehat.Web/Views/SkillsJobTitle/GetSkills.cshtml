@@ -1,3 +1,9 @@
-﻿@model  Cevehat.Web.Models.Skills
+﻿@model  IEnumerable<Cevehat.Web.Models.Skills>
 
-ListOfSkills:@Model.Skill_name
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li> @item.Skill_name </li>
+    }
+</ul>
