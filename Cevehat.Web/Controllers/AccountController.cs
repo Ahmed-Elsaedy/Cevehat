@@ -174,7 +174,7 @@ namespace Cevehat.Web.Controllers
                 if (result.Succeeded)
                 {
                     var currentUser = UserManager.FindByName(user.UserName);
-                    var roleresult = await UserManager.AddToRoleAsync(currentUser.Id, model.RoleId);
+                    var roleresult = await UserManager.AddToRoleAsync(currentUser.Id, model.Role);
                     
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
