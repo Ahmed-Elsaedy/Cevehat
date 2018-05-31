@@ -11,39 +11,40 @@ namespace Cevehat.Web.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: SkillsJobTitle
+
+        [HttpGet]
         public ActionResult Index()
         {
-            
-
-            return View();
-        }
-        [HttpGet]
-        public ActionResult GetSkillsJobTitle()
-        {
             List<JobTitle> JobTitles = db.JobTitle.ToList<JobTitle>();
-            SelectList JobNameList = new SelectList(JobTitles, "JobId","JobName");
-            ViewBag.JobID = JobNameList; 
-            //List<JobTitle> JobTitle = db.JobTitle.ToList<JobTitle>();
-            //SelectList jobtitle = new SelectList(JobTitle, "JbTitle_ID", "JobName");
-            //ViewBag.JbTitle_ID = jobtitle;
-            //return View(JobTitles);
-            return View();
+            return View(JobTitles);
         }
 
-        public ActionResult GetJobTitlesSkill()
-        {
-            List<Skills> skills = db.Skill.ToList<Skills>();
-            SelectList SkillsList = new SelectList(skills, "Skill_Id","Skill_name");
-            ViewBag.SkillId = SkillsList;
-            return View();
-        }
+        //public ActionResult GetSkillsJobTitle()
+        //{
+        //    //List<JobTitle> JobTitle = db.JobTitle.ToList<JobTitle>();
+        //    //SelectList jobtitle = new SelectList(JobTitle, "JbTitle_ID", "JobName");
+        //    //ViewBag.JbTitle_ID = jobtitle;
+        //    //return View(JobTitles);
+        //    return View();
+        //}
 
-        public ActionResult GetSkills(int id)
-        {
-            Skills skill = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+        //[HttpPost]
+        //public ActionResult Index(int Id)
+        //{
+        //    List<JobTitle> JobTitles = db.JobTitle.ToList<JobTitle>();
+        //    return View("GetSkills");
+        //}
 
-            return View(skill);
-           
+        [HttpPost]
+        public ActionResult GetSkills(int Id)
+        {
+
+            db.JobTitles_Skills.Where(x => x.JbTitle_ID == Id);
+
+            List<Skills> skills = (from x in db.JobTitles_Skills
+                                      where x.JbTitle_ID == Id
+                                      select x.skill).ToList();
+            return View(skills);
         }
 
 
@@ -51,7 +52,7 @@ namespace Cevehat.Web.Controllers
         {
             JobTitle jbTitle = db.JobTitle.FirstOrDefault(a => a.JobId == id);
             return View(jbTitle);
-         
+
         }
     }
 }
