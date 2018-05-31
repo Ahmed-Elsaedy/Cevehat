@@ -221,6 +221,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
     <Compile Include="Models\Certification.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Experince.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Models\InterviewQustion.cs" />
     <Compile Include="Models\JobTitle.cs" />
     <Compile Include="Models\JobTitles_Skills.cs" />
+    <Compile Include="Models\JobVacancie.cs" />
     <Compile Include="Models\Skills.cs" />
     <Compile Include="Models\SoftSkills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
