@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cevehat.Web.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,11 @@ namespace Cevehat.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+           string userId =  User.Identity.GetUserId();
+           ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
+
+            return View(newUser);
         }
 
         public ActionResult About()
