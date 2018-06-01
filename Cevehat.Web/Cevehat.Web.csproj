@@ -194,11 +194,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobRequirementsController.cs" />
     <Compile Include="Controllers\JobTitlesController.cs" />
     <Compile Include="Controllers\JobTitleSkillsController.cs" />
+    <Compile Include="Controllers\JobVacanciesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
@@ -216,6 +219,10 @@
     <Compile Include="Migrations\201805301456285_birthdateError.cs" />
     <Compile Include="Migrations\201805301456285_birthdateError.Designer.cs">
       <DependentUpon>201805301456285_birthdateError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011611013_CompanyAndJobVec.cs" />
+    <Compile Include="Migrations\201806011611013_CompanyAndJobVec.Designer.cs">
+      <DependentUpon>201806011611013_CompanyAndJobVec.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -331,6 +338,21 @@
     <Content Include="Views\SkillsJobTitle\Index.cshtml" />
     <Content Include="Views\JobTitleSkills\Index.cshtml" />
     <Content Include="Views\JobTitleSkills\Create.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\JobVacancies\Create.cshtml" />
+    <Content Include="Views\JobVacancies\Delete.cshtml" />
+    <Content Include="Views\JobVacancies\Details.cshtml" />
+    <Content Include="Views\JobVacancies\Edit.cshtml" />
+    <Content Include="Views\JobVacancies\Index.cshtml" />
+    <Content Include="Views\JobRequirements\Create.cshtml" />
+    <Content Include="Views\JobRequirements\Delete.cshtml" />
+    <Content Include="Views\JobRequirements\Details.cshtml" />
+    <Content Include="Views\JobRequirements\Edit.cshtml" />
+    <Content Include="Views\JobRequirements\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -357,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805301456285_birthdateError.resx">
       <DependentUpon>201805301456285_birthdateError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011611013_CompanyAndJobVec.resx">
+      <DependentUpon>201806011611013_CompanyAndJobVec.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

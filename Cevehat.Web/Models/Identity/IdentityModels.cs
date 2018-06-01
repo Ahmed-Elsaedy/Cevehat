@@ -41,7 +41,10 @@ namespace Cevehat.Web.Models
         public virtual DbSet<JobTitle> JobTitle { get; set; }
         public virtual DbSet<JobTitles_Skills> JobTitles_Skills { get; set; }
         public virtual DbSet<Skills> Skill { get; set; }
-        public virtual DbSet<SoftSkill> Skills { get; set; }
+        public virtual DbSet<SoftSkill> SoftSkills { get; set; }
+        public virtual DbSet<JobVacancie> JobVacancie { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<JobRequirements> JobRequirements { get; set; }
 
 
 
