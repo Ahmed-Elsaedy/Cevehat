@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.skill.Skill_name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { Jobid=item.JbTitle_ID , Skillid = item.Skill_ID }) |
+            @Html.ActionLink("Details", "Details", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID })
         </td>
     </tr>
 }

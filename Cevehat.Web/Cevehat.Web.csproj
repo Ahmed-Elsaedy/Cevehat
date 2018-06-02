@@ -198,9 +198,10 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobIndicatorController.cs" />
     <Compile Include="Controllers\JobRequirementsController.cs" />
     <Compile Include="Controllers\JobTitlesController.cs" />
-    <Compile Include="Controllers\JobTitleSkillsController.cs" />
+    <Compile Include="Controllers\JobTitles_SkillsController.cs" />
     <Compile Include="Controllers\JobVacanciesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
@@ -336,8 +337,6 @@
     <Content Include="Views\Skills\Index.cshtml" />
     <Content Include="Views\Skills\Create.cshtml" />
     <Content Include="Views\SkillsJobTitle\Index.cshtml" />
-    <Content Include="Views\JobTitleSkills\Index.cshtml" />
-    <Content Include="Views\JobTitleSkills\Create.cshtml" />
     <Content Include="Views\Companies\Create.cshtml" />
     <Content Include="Views\Companies\Delete.cshtml" />
     <Content Include="Views\Companies\Details.cshtml" />
@@ -353,6 +352,12 @@
     <Content Include="Views\JobRequirements\Details.cshtml" />
     <Content Include="Views\JobRequirements\Edit.cshtml" />
     <Content Include="Views\JobRequirements\Index.cshtml" />
+    <Content Include="Views\JobTitles_Skills\Create.cshtml" />
+    <Content Include="Views\JobTitles_Skills\Delete.cshtml" />
+    <Content Include="Views\JobTitles_Skills\Details.cshtml" />
+    <Content Include="Views\JobTitles_Skills\Edit.cshtml" />
+    <Content Include="Views\JobTitles_Skills\Index.cshtml" />
+    <Content Include="Views\JobIndicator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
