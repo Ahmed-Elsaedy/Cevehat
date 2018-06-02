@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
@@ -12,7 +14,7 @@ namespace Cevehat.Web.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Education
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             List<Education> educations = db.Education.ToList<Education>();
 
