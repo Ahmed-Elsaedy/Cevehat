@@ -1,0 +1,12 @@
+﻿@using Cevehat.Web.Controllers
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    @foreach (res item in ViewBag.qurRes)
+    {
+    <B><li> @item.JobTitle.JobName</li></B>
+    }
+</ul>

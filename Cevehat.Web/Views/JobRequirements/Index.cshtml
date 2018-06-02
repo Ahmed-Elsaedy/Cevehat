@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Cevehat.Web.Models.JobRequirements>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobVacancie.JobVacancieID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReqText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobVacancie.JobVacancieID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReqText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReqID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReqID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReqID })
+        </td>
+    </tr>
+}
+
+</table>

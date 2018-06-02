@@ -167,6 +167,7 @@ namespace Cevehat.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -188,7 +189,8 @@ namespace Cevehat.Web.Controllers
                 }
                 AddErrors(result);
             }
-
+            var roles = RoleManager.Roles.ToList();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name", roles.LastOrDefault());
             // If we got this far, something failed, redisplay form
             return View(model);
         }
