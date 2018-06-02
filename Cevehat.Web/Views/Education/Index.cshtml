@@ -31,29 +31,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.Fname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GPA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GradYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrganizationName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EducationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EducationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EducationId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GPA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EducationId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EducationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EducationId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<a class="nav-link text-center" href="/Certification/Index">
+
+    Next
+    <span data-feather="arrow-right" class="text-center"></span>
+</a>

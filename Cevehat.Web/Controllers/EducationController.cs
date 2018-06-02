@@ -14,7 +14,7 @@ namespace Cevehat.Web.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Education
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
             List<Education> educations = db.Education.ToList<Education>();
 
