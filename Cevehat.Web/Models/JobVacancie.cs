@@ -20,7 +20,7 @@ namespace Cevehat.Web.Models
         public JobType JobType { get; set; }
         public virtual JobTitle JobTitle { get; set; }
         public virtual List<JobRequirements> JobRequirements { get; set; }
-        public virtual List<Skills> Skills { get; set; }
+        public virtual List<Skill> Skills { get; set; }
     }
 
     public class JobRequirements

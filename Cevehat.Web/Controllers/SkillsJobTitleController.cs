@@ -41,7 +41,7 @@ namespace Cevehat.Web.Controllers
 
             db.JobTitles_Skills.Where(x => x.JbTitle_ID == Id);
 
-            List<Skills> skills = (from x in db.JobTitles_Skills
+            List<Skill> skills = (from x in db.JobTitles_Skills
                                       where x.JbTitle_ID == Id
                                       select x.skill).ToList();
             return View(skills);

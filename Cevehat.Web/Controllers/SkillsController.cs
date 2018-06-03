@@ -12,14 +12,14 @@ namespace Cevehat.Web.Controllers
         // GET: Skills
         public ActionResult Index()
         {
-            List<Skills> skills = db.Skill.ToList<Skills>();
+            List<Skill> skills = db.Skill.ToList<Skill>();
             return View(skills);
         }
 
         // GET: Skills/Details/5
         public ActionResult Details(int id)
         {
-            Skills b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+            Skill b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
           
             return View(b);
         }
@@ -35,7 +35,7 @@ namespace Cevehat.Web.Controllers
 
         // POST: Skills/Create
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "Skill_Id")]Skills sk)
+        public ActionResult Create([Bind(Exclude = "Skill_Id")]Skill sk)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Cevehat.Web.Controllers
         // GET: Skills/Edit/5
         public ActionResult Edit(int id)
         {
-            Skills sk = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
+            Skill sk = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
             if(sk==null)
             {
                 return HttpNotFound("this skill Not Fount");
@@ -69,12 +69,12 @@ namespace Cevehat.Web.Controllers
 
         // POST: Skills/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Skills sk)
+        public ActionResult Edit(int id, Skill sk)
         {
             try
             {
                 // TODO: Add update logic here
-                Skills oldskill = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
+                Skill oldskill = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
                 if(oldskill==null)
                 {
                     return HttpNotFound("this skill not fount");
@@ -82,7 +82,7 @@ namespace Cevehat.Web.Controllers
                 }
                 else
                 {
-                    oldskill.Skill_name = sk.Skill_name;
+                    oldskill.Title = sk.Title;
                     db.SaveChanges();
                     return RedirectToAction("Index");
 
@@ -99,7 +99,7 @@ namespace Cevehat.Web.Controllers
         // GET: Skills/Delete/5
         public ActionResult Delete(int id)
         {
-            Skills b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+            Skill b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
             if (b == null)
                 return HttpNotFound("Skill does not exist");
         
@@ -113,7 +113,7 @@ namespace Cevehat.Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Skills b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
+                Skill b = db.Skill.FirstOrDefault(a => a.Skill_Id == id);
                 if (b == null)
                     return HttpNotFound("Skill does not exist");
                 db.Skill.Remove(b);

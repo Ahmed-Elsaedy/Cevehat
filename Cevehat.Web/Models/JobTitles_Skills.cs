@@ -9,7 +9,7 @@ namespace Cevehat.Web.Models
 {
     public class JobTitles_Skills
     {
-        public virtual Skills skill { get; set; }
+        public virtual Skill skill { get; set; }
         public virtual JobTitle jobTitle { get; set; }
 
         [ForeignKey("skill"), Key, Column(Order = 0)]

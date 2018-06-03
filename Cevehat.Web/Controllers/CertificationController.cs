@@ -1,4 +1,5 @@
 ﻿using Cevehat.Web.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,11 @@ namespace Cevehat.Web.Controllers
     public class CertificationController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-      
+
+        public CertificationController()
+        {
+             
+        }
         // GET: Certification
         public ActionResult Index()
         {
@@ -40,7 +45,7 @@ namespace Cevehat.Web.Controllers
         {
             try
             {
-                
+            
                 db.Certification.Add(cert);
                 db.SaveChanges();
 

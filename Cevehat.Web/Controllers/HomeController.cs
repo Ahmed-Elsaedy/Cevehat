@@ -12,11 +12,11 @@ namespace Cevehat.Web.Controllers
     {
         public ActionResult Index()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
+           ApplicationDbContext db = new ApplicationDbContext();
            string userId =  User.Identity.GetUserId();
            ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
 
-            return View(newUser);
+            return PartialView(newUser);
         }
 
         public ActionResult About()
