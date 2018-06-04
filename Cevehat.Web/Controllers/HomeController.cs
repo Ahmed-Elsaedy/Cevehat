@@ -8,14 +8,16 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
            ApplicationDbContext db = new ApplicationDbContext();
            string userId =  User.Identity.GetUserId();
            ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-
+            
             return PartialView(newUser);
         }
 

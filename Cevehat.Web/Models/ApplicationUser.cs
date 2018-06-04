@@ -12,7 +12,7 @@ namespace Cevehat.Web.Models
        // public DateTime BirthDate { get; set; }
         public MaritalStutes MaritaSutes { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
-        public bool Gender { get; set; }
+        public Gender Gender { get; set; }
         public virtual List<Skill> TecSkills { get; set; }
         public virtual List<Certification> Certifications { get; set; }
         public virtual List<Experince> Experinces { get; set; }
@@ -34,5 +34,10 @@ namespace Cevehat.Web.Models
         Exempted,
         Completed,
         Postponed
+    }
+    public enum Gender
+    {
+       Male,
+       Female
     }
 }

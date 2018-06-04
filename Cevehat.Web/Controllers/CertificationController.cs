@@ -20,6 +20,7 @@ namespace Cevehat.Web.Controllers
         // GET: Certification
         public ActionResult Index()
         {
+            
             List<Certification> certifications = db.Certification.ToList<Certification>();
 
             return View(certifications);
