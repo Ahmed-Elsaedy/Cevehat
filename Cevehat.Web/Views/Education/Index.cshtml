@@ -14,7 +14,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Fname)
+            @Html.DisplayName("Full Name") 
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GPA)
@@ -35,7 +35,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplicationUser.Fname)
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Fname) @Html.DisplayFor(modelItem => item.ApplicationUser.Lname)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GPA)

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Cevehat.Web.Controllers
 {
@@ -12,7 +15,8 @@ namespace Cevehat.Web.Controllers
         // GET: Education
         public ActionResult Index()
         {
-            List<Education> educations = db.Education.ToList<Education>();
+            string userId = User.Identity.GetUserId();
+            List<Education> educations = db.Education.Where(a => a.userId == userId).ToList<Education>();
 
             return View(educations);
         }
@@ -28,6 +32,9 @@ namespace Cevehat.Web.Controllers
         // GET: Education/Create
         public ActionResult Create()
         {
+            string userId = User.Identity.GetUserId();
+            List<Education> educations = db.Education.Where(a => a.userId == userId).ToList<Education>();
+            ViewBag.allEducations = educations;
             return View();
         }
 
@@ -37,10 +44,10 @@ namespace Cevehat.Web.Controllers
         {
             try
             {
-               
+                education.userId = User.Identity.GetUserId();
                 db.Education.Add(education);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
@@ -51,12 +58,15 @@ namespace Cevehat.Web.Controllers
         // GET: Education/Edit/5
         public ActionResult Edit(int id)
         {
+            string userId = User.Identity.GetUserId();
+            List<Education> educations = db.Education.Where(a => a.userId == userId).ToList<Education>();
+            ViewBag.allEducations = educations;
             Education ed = db.Education.FirstOrDefault(e => e.EducationId == id);
-            if (ed==null)
+            if (ed == null)
             { return HttpNotFound(); }
             else
-            { 
-            return View(ed);
+            {
+                return View(ed);
             }
         }
 
@@ -82,7 +92,7 @@ namespace Cevehat.Web.Controllers
                     old_ed.OrganizationName = education.OrganizationName;
                     old_ed.DepartmentName = education.DepartmentName;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Create");
                 }
             }
 
@@ -114,7 +124,7 @@ namespace Cevehat.Web.Controllers
                     return HttpNotFound("education  not exist");
                 db.Education.Remove(ed);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {

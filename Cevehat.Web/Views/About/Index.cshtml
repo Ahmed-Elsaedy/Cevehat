@@ -1,0 +1,39 @@
+﻿@model Cevehat.Web.Models.ApplicationUser
+<h1>About User</h1>
+
+@using (Html.BeginForm("SaveAboutUs", "About"))
+{
+<table>
+    <tr>
+        <td>First Name : </td>
+        <td>@Html.TextBoxFor(a => a.Fname)</td>
+    </tr>
+    <tr>
+        <td>Last Name : </td>
+        <td>@Html.TextBoxFor(a => a.Lname)</td>
+    </tr>
+    <tr>
+        <td>Gender : </td>
+        <td>@Html.DropDownListFor(a => a.Gender, ViewBag.GendersList as List<SelectListItem>)</td>
+    </tr>
+    <tr>
+        <td>Military Status : </td>
+        <td>@Html.DropDownListFor(a => a.MilitaryStatus, ViewBag.MilitaryList as List<SelectListItem>)</td>
+    </tr>
+    <tr>
+        <td>Marital Status : </td>
+        <td>@Html.DropDownListFor(a => a.MaritaSutes, ViewBag.MaritalList as List<SelectListItem>)</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Save" /></td>
+    </tr>
+</table>
+
+
+
+
+
+
+}

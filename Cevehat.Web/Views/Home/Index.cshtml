@@ -4,6 +4,11 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+@Model.Email
+<br />
+<a href="@Url.Action("Index","About")">About</a>
+<br />
+<a href="@Url.Action("Create","Education")">Educations</a>
 
 @Ajax.ActionLink("about","about","home",new { id=Model.Id},new AjaxOptions() {
 
