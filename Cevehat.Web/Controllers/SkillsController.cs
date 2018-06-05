@@ -1,5 +1,6 @@
 ﻿
 using Cevehat.Web.Models;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,8 +13,10 @@ namespace Cevehat.Web.Controllers
         // GET: Skills
         public ActionResult Index()
         {
-            List<Skill> skills = db.Skill.ToList<Skill>();
-            return View(skills);
+            string userId = User.Identity.GetUserId();
+            List<Skill> Sk = db.Skill.Where(a => a.UserId == userId).ToList<Skill>();
+            //List<Skill> skills = db.Skill.ToList<Skill>();
+            return View(Sk);
         }
 
         // GET: Skills/Details/5
@@ -27,6 +30,9 @@ namespace Cevehat.Web.Controllers
         // GET: Skills/Create
         public ActionResult Create()
         {
+            string userIDD = User.Identity.GetUserId();
+            List<Skill> SK = db.Skill.Where(a => a.UserId == userIDD).ToList<Skill>();
+            ViewBag.allSkills = SK;
             //List<JobTitles_Skills> JobTitles_Skills = db.JobTitles_Skills.ToList<JobTitles_Skills>();
             //SelectList JobTitlesSkills = new SelectList(JobTitles_Skills, "JbTitle_ID", "JobName");
             //ViewBag.JbTitle_ID = JobTitlesSkills;
@@ -40,10 +46,10 @@ namespace Cevehat.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+                sk.UserId = User.Identity.GetUserId();
                 db.Skill.Add(sk);
                 db.SaveChanges();
-              
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
@@ -54,10 +60,13 @@ namespace Cevehat.Web.Controllers
         // GET: Skills/Edit/5
         public ActionResult Edit(int id)
         {
+            string useridd = User.Identity.GetUserId();
+            List<Skill> SK = db.Skill.Where(a => a.UserId == useridd).ToList<Skill>();
+            ViewBag.allSkills = SK;
             Skill sk = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
             if(sk==null)
             {
-                return HttpNotFound("this skill Not Fount");
+                return HttpNotFound("this skill Not Found");
             }
             else {
                // List<job>
@@ -77,18 +86,18 @@ namespace Cevehat.Web.Controllers
                 Skill oldskill = db.Skill.FirstOrDefault(s => s.Skill_Id == id);
                 if(oldskill==null)
                 {
-                    return HttpNotFound("this skill not fount");
+                    return HttpNotFound("this skill not found");
 
                 }
                 else
                 {
                     oldskill.Title = sk.Title;
+                    oldskill.Description= sk.Description;
+                    oldskill.JobTitles_Skills = sk.JobTitles_Skills;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Create");
 
-                }
-
-                
+                } 
             }
             catch
             {
@@ -118,7 +127,7 @@ namespace Cevehat.Web.Controllers
                     return HttpNotFound("Skill does not exist");
                 db.Skill.Remove(b);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
