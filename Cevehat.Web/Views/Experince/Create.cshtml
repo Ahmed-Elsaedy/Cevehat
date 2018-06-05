@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" ,Type="date"} })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -74,7 +74,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Full Name")
+           @Html.DisplayNameFor(model=>model.ApplicationUser.Fname)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Place)
@@ -93,11 +93,10 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (Cevehat.Web.Models.Experince item in ViewBag.allExperience)
     {
         <tr>
-            <td>
+           <td>
                 @Html.DisplayFor(modelItem => item.ApplicationUser.Fname) @Html.DisplayFor(modelItem => item.ApplicationUser.Lname)
             </td>
             <td>

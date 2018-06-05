@@ -481,6 +481,11 @@
     <Content Include="Views\User_Skills\Details.cshtml" />
     <Content Include="Views\User_Skills\Edit.cshtml" />
     <Content Include="Views\User_Skills\Index.cshtml" />
+    <Content Include="Views\Experince\Create.cshtml" />
+    <Content Include="Views\Experince\Delete.cshtml" />
+    <Content Include="Views\Experince\Details.cshtml" />
+    <Content Include="Views\Experince\Edit.cshtml" />
+    <Content Include="Views\Experince\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
