@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Cevehat.Web.Models.Experince>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Responsbilty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Responsbilty)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExpId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExpId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExpId })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<a class="nav-link text-center" href="/Certification/Index">
+
+    Next
+    <span data-feather="arrow-right" class="text-center"></span>
+</a>

@@ -21,15 +21,10 @@ namespace Cevehat.Web.Controllers
         public ActionResult Index()
         {
 
-            ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
-            ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
+            List<Certification> certification= db.Certification.Where(a => a.userid == userId).ToList<Certification>();
 
-            return PartialView(newUser);
-
-            //List<Certification> certifications = db.Certification.ToList<Certification>();
-
-            //return View(certifications);
+            return View(certification);
         }
 
         // GET: Certification/Details/5
@@ -43,20 +38,22 @@ namespace Cevehat.Web.Controllers
         // GET: Certification/Create
         public ActionResult Create()
         {
+            string userId = User.Identity.GetUserId();
+            List<Certification> certification = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            ViewBag.allCertification = certification;
             return View();
         }
 
         // POST: Certification/Create
         [HttpPost]
-        public ActionResult Create(Certification cert)
+        public ActionResult Create([Bind(Exclude = "Cerid")]Certification cert)
         {
             try
             {
-            
+                cert.userid = User.Identity.GetUserId();
                 db.Certification.Add(cert);
                 db.SaveChanges();
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
@@ -67,13 +64,21 @@ namespace Cevehat.Web.Controllers
         // GET: Certification/Edit/5
         public ActionResult Edit(int id)
         {
-            Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
-            return View(cert);
+            string userId = User.Identity.GetUserId();
+            List<Certification> certification = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            ViewBag.allCertification = certification;
+            Certification cert= db.Certification.FirstOrDefault(e => e.Cerid == id);
+            if (cert== null)
+            { return HttpNotFound(); }
+            else
+            {
+                return View(cert);
+            }
         }
 
         // POST: Certification/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, [Bind(Exclude = "userid,Cerid")]Certification cert)
+        public ActionResult Edit(int id,Certification cert)
         {
             try
             {
@@ -86,9 +91,7 @@ namespace Cevehat.Web.Controllers
                     oldcert.CerPlace = cert.CerPlace;
                     oldcert.CerYear = cert.CerYear;
                     db.SaveChanges();
-
-
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Create");
                 }
             }
             catch
@@ -102,7 +105,7 @@ namespace Cevehat.Web.Controllers
         {
             Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
             if (cert == null)
-                return HttpNotFound();
+                return HttpNotFound("Certification Not Exist");
 
             return View(cert);
         }
@@ -114,16 +117,18 @@ namespace Cevehat.Web.Controllers
             try
             {
                 Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
+                if (cert == null)
+                    return HttpNotFound("Certification Not Exist");
                 db.Certification.Remove(cert);
                 db.SaveChanges();
                 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
                 return View();
             }
-        }
+      }
     }
 }

@@ -17,7 +17,6 @@ namespace Cevehat.Web.Models
         [ForeignKey("User")]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
-
         public virtual List<JobTitles_Skills> JobTitles_Skills { get; set; }
     }
 }

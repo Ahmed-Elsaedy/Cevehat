@@ -204,6 +204,7 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\ExperinceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobIndicatorController.cs" />
     <Compile Include="Controllers\JobRequirementsController.cs" />
@@ -385,6 +386,11 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\EditAboutPartial.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Experince\Create.cshtml" />
+    <Content Include="Views\Experince\Delete.cshtml" />
+    <Content Include="Views\Experince\Details.cshtml" />
+    <Content Include="Views\Experince\Edit.cshtml" />
+    <Content Include="Views\Experince\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
