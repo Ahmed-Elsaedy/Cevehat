@@ -198,7 +198,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
@@ -210,7 +209,6 @@
     <Compile Include="Controllers\JobTitlesController.cs" />
     <Compile Include="Controllers\JobTitles_SkillsController.cs" />
     <Compile Include="Controllers\JobVacanciesController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
@@ -343,24 +341,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Skills\Details.cshtml" />
@@ -416,8 +396,6 @@
     <Content Include="Views\JobTitles_Skills\Edit.cshtml" />
     <Content Include="Views\JobTitles_Skills\Index.cshtml" />
     <Content Include="Views\JobIndicator\Index.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Profile\EditAboutPartial.cshtml" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -469,6 +447,7 @@
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
     <Content Include="Template\vendor\simple-line-icons\less\simple-line-icons.less" />
     <Content Include="Template\vendor\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

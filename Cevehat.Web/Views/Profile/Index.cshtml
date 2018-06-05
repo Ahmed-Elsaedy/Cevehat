@@ -1,19 +1,102 @@
-﻿
+﻿@model ProfileIndexViewModel
+@using Cevehat.Web.Models
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Template/_Layout.cshtml";
+    Page.Image = "~/Template/img/profile.jpg";
+    Page.Title = "Profile";
 }
 
+@section Styles{
+    <link rel="stylesheet" href="~/Template/css/sb-admin.css" />
+}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-        @Html.ActionLink("Edit", "EditAboutPartial")
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="login">
+    <div class="my-auto">
+        <div class="card card-login mx-auto mt-5" style="min-width: 40rem;">
+            <div class="card-header">Login</div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Profile", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                {
+                    if (Model.ValidationForLogin)
+                    {@Html.ValidationSummary(true, "", new { @class = "text-danger" })}
+                    <div class="form-group">
+                        <label>Email address</label>
+                        @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                        @if (Model.ValidationForLogin)
+                        {@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "float: right;" })}
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        @Html.Password("Password", Model.Password, new { @class = "form-control" })
+                        @if (Model.ValidationForLogin)
+                        {@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", style = "float: right;" })}
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                }
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</section>
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="register">
+    <div class="my-auto">
+        <div class="card card-register mx-auto mt-5" style="min-width: 40rem;">
+            <div class="card-header">Register an Account</div>
+            <div class="card-body">
+                @using (Html.BeginForm("Register", "Profile", FormMethod.Post, new { role = "form" }))
+                {
+                    if (!Model.ValidationForLogin)
+                    {@Html.ValidationSummary(true, "", new { @class = "text-danger" })}
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="exampleInputName">First name</label>
+                                @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                                @if (!Model.ValidationForLogin)
+                                { Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "float: right;" }); }
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputLastName">Last name</label>
+                                @Html.TextBox("Email", Model.Email, new { @class = "form-control" })
+                                @if (!Model.ValidationForLogin)
+                                { Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "float: right;" }); }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleConfirmPassword">Confirm password</label>
+                                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary btn-block" href="login.html">Register</a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Navigation{
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#about">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#register">Register</a>
+    </li>
+}
+
