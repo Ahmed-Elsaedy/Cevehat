@@ -291,6 +291,7 @@
     <Content Include="Template\css\resume.css" />
     <Content Include="Template\css\resume.min.css" />
     <Content Include="Template\css\sb-admin.css" />
+    <Content Include="Template\img\logo.PNG" />
     <Content Include="Template\img\profile.jpg" />
     <Content Include="Template\index.html" />
     <Content Include="Template\js\resume.js" />
