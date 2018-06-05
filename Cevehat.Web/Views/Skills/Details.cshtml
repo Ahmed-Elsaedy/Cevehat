@@ -1,4 +1,4 @@
-﻿@model Cevehat.Web.Models.Skills
+﻿@model Cevehat.Web.Models.Skill
 
 @{
     ViewBag.Title = "Details";
@@ -13,16 +13,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Skill_name)
+            @Html.DisplayNameFor(model => model.User.Fname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Skill_name)
+            @Html.DisplayFor(model => model.User.Fname)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Skill_Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Create")
 </p>

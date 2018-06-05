@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Cevehat.Web.Models.Skills>
+﻿@model IEnumerable<Cevehat.Web.Models.Skill>
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +14,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Skill_name)
+          @*@  @Html.DisplayNameFor(model=>model.User.Fname)*@
+            @Html.DisplayName("Full Name")
+         
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
     </tr>
@@ -22,7 +30,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Skill_name)
+            @Html.DisplayFor(modelItem => item.User.Fname) @Html.DisplayFor(modelItem => item.User.Lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Skill_Id }) |
