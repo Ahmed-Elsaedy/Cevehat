@@ -21,9 +21,9 @@ namespace Cevehat.Web.Controllers
         public ActionResult Index()
         {
             
+            ApplicationDbContext db = new ApplicationDbContext();
             List<Certification> certifications = db.Certification.ToList<Certification>();
 
-            ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
 

@@ -77,7 +77,7 @@ namespace Cevehat.Web.Controllers
             if (!ModelState.IsValidField("Email") || !ModelState.IsValidField("Password"))
                 return View("Index", model);
 
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, false, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -106,13 +106,13 @@ namespace Cevehat.Web.Controllers
                     //var roleresult = await UserManager.AddToRoleAsync(currentUser.Id, model.Role);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index#register", "Home");
                 }
                 foreach (var error in result.Errors)
                     ModelState.AddModelError("", error);
             }
             var roles = RoleManager.Roles.ToList();
-            return View(model);
+            return View("Index", model);
         }
 
         [HttpPost]
