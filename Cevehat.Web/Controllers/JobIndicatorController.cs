@@ -14,21 +14,12 @@ namespace Cevehat.Web.Controllers
         // GET: JobIndicator
         public ActionResult Index()
         {
-            List<JobVacancie> jobVacancies = db.JobVacancie.ToList<JobVacancie>();
-
-            //var qurRes =  (from vac in jobVacancies
-            //group vac by vac.JobTitleID into g
-            //select g).ToList<JobVacancie>().OrderBy(x=> x.JobTitleID)  ;
-
-            List<res> qurRes = jobVacancies.GroupBy(x => x.JobTitle).OrderByDescending(z => z.Count()).Select(y => new res() { JobTitle = y.Key, count = y.Count() }).Take(2).ToList<res>();
+            List<TopJobTitles> qurRes = db.JobVacancie.ToList<JobVacancie>().GroupBy(x => x.JobTitle).OrderByDescending(z => z.Count()).Select(y => new TopJobTitles() { JobTitle = y.Key, count = y.Count() }).Take(3).ToList<TopJobTitles>();
             ViewBag.qurRes = qurRes;
-            //qurRes[0].jobtitle.JobName
             return View();
         }
-
-
     }
-    public class res
+    public class TopJobTitles
     {
         public int count { get; set; }
         public JobTitle JobTitle { get; set; }
