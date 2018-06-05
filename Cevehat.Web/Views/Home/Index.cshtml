@@ -9,3 +9,26 @@
 <a href="@Url.Action("Index","About")">About</a>
 <br />
 <a href="@Url.Action("Create","Education")">Educations</a>
+<br />
+<a href="@Url.Action("Create","Experince")">Experiences</a>
+<br />
+<a href="@Url.Action("Create","Certification")">Certifications</a>
+<br />
+<a href="@Url.Action("Create","Skills")">Skills</a>
+
+@*@
+@Ajax.ActionLink("about","about","home",new { id=Model.Id},new AjaxOptions() {
+
+    UpdateTargetId="div1",
+    InsertionMode=InsertionMode.Replace,
+   
+})
+
+<div id="div1">eman</div>
+
+@section scripts
+{
+    
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    
+    }*@

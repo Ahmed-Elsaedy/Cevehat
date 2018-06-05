@@ -48,7 +48,53 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Full Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CerPlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CerYear)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Cevehat.Web.Models.Certification item in ViewBag.allCertification)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Fname) @Html.DisplayFor(modelItem => item.ApplicationUser.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CerPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CerYear)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.userid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.userid}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.userid })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<a class="nav-link text-center" href="/Education/Index">
+
+    Next
+    <span data-feather="arrow-right" class="text-center"></span>
+</a>
 

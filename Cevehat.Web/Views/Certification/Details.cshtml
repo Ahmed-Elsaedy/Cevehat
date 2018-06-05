@@ -13,6 +13,13 @@
     <dl class="dl-horizontal">
  
         <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Fname)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.CerPlace)
         </dt>
 
@@ -40,5 +47,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Cerid }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Create")
 </p>
