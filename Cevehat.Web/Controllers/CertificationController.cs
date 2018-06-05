@@ -11,8 +11,8 @@ namespace Cevehat.Web.Controllers
 
     public class CertificationController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
 
+       public ApplicationDbContext db = new ApplicationDbContext();
         public CertificationController()
         {
              
@@ -23,7 +23,7 @@ namespace Cevehat.Web.Controllers
             
             List<Certification> certifications = db.Certification.ToList<Certification>();
 
-            ApplicationDbContext db = new ApplicationDbContext();
+            //ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
 
