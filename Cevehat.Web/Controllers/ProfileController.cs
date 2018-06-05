@@ -106,7 +106,7 @@ namespace Cevehat.Web.Controllers
                     //var roleresult = await UserManager.AddToRoleAsync(currentUser.Id, model.Role);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index#register", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                     ModelState.AddModelError("", error);
