@@ -1,0 +1,34 @@
+﻿@model Cevehat.Web.Models.User_Skills
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User_Skills</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.User_Skills_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -7,110 +7,122 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cevehat.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Cevehat.Web.Controllers
 {
-    public class SkillsController : Controller
+    public class User_SkillsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Skills
+        // GET: User_Skills
         public ActionResult Index()
         {
-            return View(db.Skill.ToList());
+            var user_Skills = db.User_Skills.Include(u => u.Skill).Include(u => u.User);
+            return View(user_Skills.ToList());
         }
 
-        // GET: Skills/Details/5
+        // GET: User_Skills/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skill.Find(id);
-            if (skill == null)
+            User_Skills user_Skills = db.User_Skills.Find(id);
+            if (user_Skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            return View(user_Skills);
         }
 
-        // GET: Skills/Create
+        // GET: User_Skills/Create
         public ActionResult Create()
         {
+            ViewBag.SkillID = new SelectList(db.Skill, "Skill_Id", "Title");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Fname");
             return View();
         }
 
-        // POST: Skills/Create
+        // POST: User_Skills/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Skill_Id,Title,Description")] Skill skill)
+        public ActionResult Create([Bind(Include = "User_Skills_ID,UserId,SkillID")] User_Skills user_Skills)
         {
+            user_Skills.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                db.Skill.Add(skill);
+                db.User_Skills.Add(user_Skills);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(skill);
+            ViewBag.SkillID = new SelectList(db.Skill, "Skill_Id", "Title", user_Skills.SkillID);
+            
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Fname", user_Skills.UserId);
+            return View(user_Skills);
         }
 
-        // GET: Skills/Edit/5
+        // GET: User_Skills/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skill.Find(id);
-            if (skill == null)
+            User_Skills user_Skills = db.User_Skills.Find(id);
+            if (user_Skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            ViewBag.SkillID = new SelectList(db.Skill, "Skill_Id", "Title", user_Skills.SkillID);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Fname", user_Skills.UserId);
+            return View(user_Skills);
         }
 
-        // POST: Skills/Edit/5
+        // POST: User_Skills/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Skill_Id,Title,Description")] Skill skill)
+        public ActionResult Edit([Bind(Include = "User_Skills_ID,UserId,SkillID")] User_Skills user_Skills)
         {
+            user_Skills.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                db.Entry(skill).State = EntityState.Modified;
+                db.Entry(user_Skills).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(skill);
+            ViewBag.SkillID = new SelectList(db.Skill, "Skill_Id", "Title", user_Skills.SkillID);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Fname", user_Skills.UserId);
+            return View(user_Skills);
         }
 
-        // GET: Skills/Delete/5
+        // GET: User_Skills/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skill.Find(id);
-            if (skill == null)
+            User_Skills user_Skills = db.User_Skills.Find(id);
+            if (user_Skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            return View(user_Skills);
         }
 
-        // POST: Skills/Delete/5
+        // POST: User_Skills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Skill skill = db.Skill.Find(id);
-            db.Skill.Remove(skill);
+            User_Skills user_Skills = db.User_Skills.Find(id);
+            db.User_Skills.Remove(user_Skills);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

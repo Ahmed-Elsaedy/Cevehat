@@ -17,9 +17,8 @@ namespace Cevehat.Web.Models
         public virtual List<Certification> Certifications { get; set; }
         public virtual List<Experince> Experinces { get; set; }
         public virtual List<Education> Educations { get; set; }
+        public virtual List<User_Skills> User_TecSkills { get; set; }
         
-        
-           
     }
 
     public enum MaritalStutes

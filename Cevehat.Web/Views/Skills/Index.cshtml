@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Admin.cshtml";
-
 }
 
 <h2>Index</h2>
@@ -13,11 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-          @*@  @Html.DisplayNameFor(model=>model.User.Fname)*@
-            @Html.DisplayName("Full Name")
-         
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -29,10 +22,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Fname) @Html.DisplayFor(modelItem => item.User.Lname)
-        </td>
-        <td>
+        <td>        
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
@@ -47,13 +37,3 @@
 }
 
 </table>
-<div>
-    <a class="nav-link d-inline-block " href="/Certificatin/Index">
-        <span data-feather="arrow-left"></span>
-        prev
-    </a>
-    <a class="nav-link d-inline-block " href="/CareerObjectives/Index">
-        Next
-        <span data-feather="arrow-right"></span>
-    </a>
-</div>

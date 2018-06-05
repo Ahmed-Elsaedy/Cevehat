@@ -35,7 +35,6 @@ namespace Cevehat.Web.Models
         public virtual DbSet<CareerObjective> CareerObjective { get; set; }
         public virtual DbSet<Certification> Certification { get; set; }
         public virtual DbSet<Education> Education { get; set; }
-
         public virtual DbSet<Experince> Experinces { get; set; }
         public virtual DbSet<InterviewQustion> InterviewQustion { get; set; }
         public virtual DbSet<JobTitle> JobTitle { get; set; }
@@ -44,12 +43,8 @@ namespace Cevehat.Web.Models
         public virtual DbSet<JobVacancie> JobVacancie { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<JobRequirements> JobRequirements { get; set; }
-
-
-
-
-
-
+        public virtual DbSet<User_Skills> User_Skills { get; set; }
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
