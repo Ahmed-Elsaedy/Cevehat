@@ -13,52 +13,40 @@ namespace Cevehat.Web.Controllers
     {
 
        public ApplicationDbContext db = new ApplicationDbContext();
-        public CertificationController()
-        {
-             
-        }
+       
         // GET: Certification
         public ActionResult Index()
         {
-            
-            List<Certification> certifications = db.Certification.ToList<Certification>();
-
-            //ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
-            ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-
-            return PartialView(newUser);
-
-            //List<Certification> certifications = db.Certification.ToList<Certification>();
-
-            //return View(certifications);
+            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            return View(cert);
         }
 
         // GET: Certification/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            Certification cert = db.Certification.FirstOrDefault(a=>a.Cerid==id);
-
+            Certification cert = db.Certification.FirstOrDefault(a => a.Cerid == id);
             return View(cert);
         }
 
         // GET: Certification/Create
         public ActionResult Create()
         {
+            string userId = User.Identity.GetUserId();
+            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            ViewBag.allCertification = cert;
             return View();
         }
-
         // POST: Certification/Create
         [HttpPost]
-        public ActionResult Create(Certification cert)
+        public ActionResult Create([Bind(Exclude = "Cerid")] Certification cert)
         {
             try
             {
-            
+                cert.userid = User.Identity.GetUserId();
                 db.Certification.Add(cert);
                 db.SaveChanges();
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
@@ -69,8 +57,19 @@ namespace Cevehat.Web.Controllers
         // GET: Certification/Edit/5
         public ActionResult Edit(int id)
         {
-            Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
-            return View(cert);
+            string userId = User.Identity.GetUserId();
+            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            ViewBag.allCertification = cert;
+            Certification certt = db.Certification.FirstOrDefault(a => a.Cerid == id);
+            if (certt == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(certt);
+            }
+
         }
 
         // POST: Certification/Edit/5
@@ -90,7 +89,7 @@ namespace Cevehat.Web.Controllers
                     db.SaveChanges();
 
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Create");
                 }
             }
             catch
@@ -104,7 +103,7 @@ namespace Cevehat.Web.Controllers
         {
             Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
             if (cert == null)
-                return HttpNotFound();
+                return HttpNotFound("Certifications Not Exists");
 
             return View(cert);
         }
@@ -112,15 +111,15 @@ namespace Cevehat.Web.Controllers
         // POST: Certification/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
-        {
+        { 
             try
             {
                 Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
+                if (cert == null)
+                    return HttpNotFound("Certifications Not Exists");
                 db.Certification.Remove(cert);
                 db.SaveChanges();
-                
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {

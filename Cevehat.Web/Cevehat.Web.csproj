@@ -470,6 +470,11 @@
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
     <Content Include="Template\vendor\simple-line-icons\less\simple-line-icons.less" />
     <Content Include="Template\vendor\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="Views\Experince\Create.cshtml" />
+    <Content Include="Views\Experince\Delete.cshtml" />
+    <Content Include="Views\Experince\Details.cshtml" />
+    <Content Include="Views\Experince\Edit.cshtml" />
+    <Content Include="Views\Experince\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
