@@ -1,140 +1,43 @@
-﻿using Cevehat.Web.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
-
-        public ApplicationRoleManager RoleManager
+        public ActionResult Static()
         {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
-            }
-        }
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            return View();
         }
 
-        public ProfileController()
+        public ActionResult EditAbout()
         {
-
-        }
-        public ProfileController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
-             ApplicationRoleManager roleManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-            _roleManager = roleManager;
+            return View();
         }
 
-        public ActionResult Index(string returnUrl)
+        public ActionResult EditEducation()
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View(new ProfileIndexViewModel());
+            return View();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Login(ProfileIndexViewModel model, string returnUrl)
+        public ActionResult EditCertification()
         {
-            model.ValidationForLogin = true;
-            if (!ModelState.IsValidField("Email") || !ModelState.IsValidField("Password"))
-                return View("Index", model);
-
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    ModelState.AddModelError("", "Your account is locked out");
-                    return View("Index", model);
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View("Index", model);
-            }
+            return View();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Register(ProfileIndexViewModel model)
+        public ActionResult EditExperience()
         {
-            model.ValidationForLogin = false;
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    //var currentUser = UserManager.FindByName(user.UserName);
-                    //var roleresult = await UserManager.AddToRoleAsync(currentUser.Id, model.Role);
-
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                    ModelState.AddModelError("", error);
-            }
-            var roles = RoleManager.Roles.ToList();
-            return View("Index", model);
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult LogOff()
+        public ActionResult EditSkill()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
-        }
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
+            return View();
         }
     }
 }

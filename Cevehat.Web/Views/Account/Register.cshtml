@@ -1,7 +1,7 @@
 ﻿@model Cevehat.Web.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Template/_Layout.cshtml";
+    Layout = "~/Template/_LoginRegisterLayout.cshtml";
 }
 
 @section Styles{
@@ -64,9 +64,9 @@
 
 @section Navigation{
     <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#about">Home</a>
+        <a class="nav-link js-scroll-trigger" href="/Home/Index">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#login">Login</a>
+        <a class="nav-link js-scroll-trigger" href="/Account/Login">Login</a>
     </li>
 }

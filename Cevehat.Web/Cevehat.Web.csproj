@@ -212,6 +212,7 @@
     <Compile Include="Controllers\JobTitles_SkillsController.cs" />
     <Compile Include="Controllers\JobVacanciesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
     <Compile Include="Controllers\User_SkillsController.cs" />
@@ -296,7 +297,8 @@
     <Content Include="Template\index.html" />
     <Content Include="Template\js\resume.js" />
     <Content Include="Template\js\resume.min.js" />
-    <None Include="Template\_Layout.cshtml" />
+    <Content Include="Template\_ProfileLayout.cshtml" />
+    <None Include="Template\_LoginRegisterLayout.cshtml" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -485,6 +487,12 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Profile\Static.cshtml" />
+    <Content Include="Views\Profile\EditAbout.cshtml" />
+    <Content Include="Views\Profile\EditEducation.cshtml" />
+    <Content Include="Views\Profile\EditCertification.cshtml" />
+    <Content Include="Views\Profile\EditExperience.cshtml" />
+    <Content Include="Views\Profile\EditSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
