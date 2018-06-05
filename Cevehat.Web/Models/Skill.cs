@@ -13,10 +13,8 @@ namespace Cevehat.Web.Models
         public int Skill_Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
         public virtual List<JobTitles_Skills> JobTitles_Skills { get; set; }
+        public virtual List<User_Skills> Users { get; set; }
+
     }
 }

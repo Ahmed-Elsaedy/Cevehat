@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Cevehat.Web.Models.User_Skills>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Fname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Fname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.User_Skills_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.User_Skills_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.User_Skills_ID })
+        </td>
+    </tr>
+}
+
+</table>

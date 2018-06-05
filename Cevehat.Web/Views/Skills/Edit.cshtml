@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Admin.cshtml";
-
 }
 
 <h2>Edit</h2>
@@ -13,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Skills</h4>
+        <h4>Skill</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Skill_Id)
@@ -26,7 +24,6 @@
             </div>
         </div>
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,7 +31,6 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -44,47 +40,6 @@
     </div>
 }
 
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Full Name")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (Cevehat.Web.Models.Skill item in ViewBag.allSkills)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Fname) @Html.DisplayFor(modelItem => item.User.Lname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Skill_Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Skill_Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Skill_Id})
-            </td>
-        </tr>
-    }
-
-</table>
-
-
-<a class="nav-link text-center" href="/Certification/Index">
-
-    Next
-    <span data-feather="arrow-right" class="text-center"></span>
-</a>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
