@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201806060856166_AppUserModifications.Designer.cs">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806061129156_s.cs" />
+    <Compile Include="Migrations\201806061129156_s.Designer.cs">
+      <DependentUpon>201806061129156_s.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -538,6 +542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806060856166_AppUserModifications.resx">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061129156_s.resx">
+      <DependentUpon>201806061129156_s.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
