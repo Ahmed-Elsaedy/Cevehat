@@ -1,16 +1,17 @@
 ﻿@model Cevehat.Web.Models.Certification
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Admin.cshtml";
+    ViewBag.Title = "CreateCertification";
+    Layout = "~/Template/_ProfileLayout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>CreateCertification</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(a => a.userId)
+    @Html.HiddenFor(a => a.userid)
+
     <div class="form-horizontal">
         <h4>Certification</h4>
         <hr />
@@ -22,6 +23,7 @@
                 @Html.ValidationMessageFor(model => model.CerPlace, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.CerName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -33,10 +35,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CerYear, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CerYear, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                @Html.EditorFor(model => model.CerYear, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CerYear, "", new { @class = "text-danger" })
             </div>
         </div>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -44,51 +48,7 @@
         </div>
     </div>
 }
-<table class="table">
 
-    <tr>
-        <th>
-            @Html.DisplayName("Full Name")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CerPlace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CerYear)
-        </th>
-    </tr>
-
-    @foreach (Cevehat.Web.Models.Certification item in ViewBag.allCertification)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicationUser.Fname) @Html.DisplayFor(modelItem => item.ApplicationUser.Lname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CerPlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CerYear)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Cerid }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Cerid }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Cerid })
-            </td>
-        </tr>
-    }
-</table>
-
-<a class="nav-link text-center" href="/Education/Index">
-
-    Next
-    <span data-feather="arrow-right" class="text-center"></span>
-</a>
-
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
