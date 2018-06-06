@@ -59,9 +59,36 @@
                                             @Html.TextBoxFor(m => m.Lname, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(m => m.Lname, "", new { @class = "text-danger", style = "float: right;" })
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Address</label>
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger", style = "float: right;" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Summary</label>
+                                            @Html.TextBoxFor(m => m.Summary, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Summary, "", new { @class = "text-danger", style = "float: right;" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Facebook Account</label>
+                                            @Html.TextBoxFor(m => m.FacebookUrl, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.FacebookUrl, "", new { @class = "text-danger", style = "float: right;" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Twitter Account</label>
+                                            @Html.TextBoxFor(m => m.TwitterUrl, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.TwitterUrl, "", new { @class = "text-danger", style = "float: right;" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Linkedin Account</label>
+                                            @Html.TextBoxFor(m => m.LinkinUrl, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.LinkinUrl, "", new { @class = "text-danger", style = "float: right;" })
+                                        </div>
+
                                         <div class="col-md-6">
                                             <label for="exampleInputName">Gender</label>
-                                            @Html.DropDownListFor(a => a.Gender, ViewBag.GendersList as List<SelectListItem>,new { @class = "form-control" })
+                                            @Html.DropDownListFor(a => a.Gender, ViewBag.GendersList as List<SelectListItem>, new { @class = "form-control" })
                                         </div>
                                         <div class="col-md-6">
                                             <label for="exampleInputName">Military Status</label>
