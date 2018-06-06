@@ -40,7 +40,7 @@ namespace Cevehat.Web.Controllers
         public ActionResult Create()
         {
             ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName");
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Skill_name");
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title");
             return View();
         }
 
@@ -54,12 +54,14 @@ namespace Cevehat.Web.Controllers
             if (ModelState.IsValid)
             {
                 db.JobTitles_Skills.Add(jobTitles_Skills);
+                JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
+                jobTitle.Skill_Count++;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName", jobTitles_Skills.JbTitle_ID);
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Skill_name", jobTitles_Skills.Skill_ID);
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title", jobTitles_Skills.Skill_ID);
             return View(jobTitles_Skills);
         }
 
@@ -76,7 +78,7 @@ namespace Cevehat.Web.Controllers
                 return HttpNotFound();
             }
             ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName", jobTitles_Skills.JbTitle_ID);
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Skill_name", jobTitles_Skills.Skill_ID);
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title", jobTitles_Skills.Skill_ID);
             return View(jobTitles_Skills);
         }
 
@@ -94,18 +96,18 @@ namespace Cevehat.Web.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName", jobTitles_Skills.JbTitle_ID);
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Skill_name", jobTitles_Skills.Skill_ID);
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title", jobTitles_Skills.Skill_ID);
             return View(jobTitles_Skills);
         }
 
         // GET: JobTitles_Skills/Delete/5
-        public ActionResult Delete(int? Jobid, int? Skillidid)
+        public ActionResult Delete(int? Jobid, int? Skillid)
         {
-            if (Jobid == null || Skillidid == null)
+            if (Jobid == null || Skillid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobTitles_Skills jobTitles_Skills = db.JobTitles_Skills.Where(js => js.JbTitle_ID == Jobid && js.Skill_ID == Skillidid).FirstOrDefault();
+            JobTitles_Skills jobTitles_Skills = db.JobTitles_Skills.Where(js => js.JbTitle_ID == Jobid && js.Skill_ID == Skillid).FirstOrDefault();
             if (jobTitles_Skills == null)
             {
                 return HttpNotFound();
@@ -116,10 +118,20 @@ namespace Cevehat.Web.Controllers
         // POST: JobTitles_Skills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? Jobid, int? Skillid)
         {
-            JobTitles_Skills jobTitles_Skills = db.JobTitles_Skills.Find(id);
+            if (Jobid == null || Skillid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            JobTitles_Skills jobTitles_Skills = db.JobTitles_Skills.Where(x => x.JbTitle_ID == Jobid && x.Skill_ID == Skillid).FirstOrDefault();
+            if (jobTitles_Skills == null)
+            {
+                return HttpNotFound();
+            }
             db.JobTitles_Skills.Remove(jobTitles_Skills);
+            JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
+            jobTitle.Skill_Count--;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
