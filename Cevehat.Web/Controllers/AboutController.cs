@@ -14,6 +14,8 @@ namespace Cevehat.Web.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            
+
             //create object of db context
             ApplicationDbContext db = new ApplicationDbContext();
 
