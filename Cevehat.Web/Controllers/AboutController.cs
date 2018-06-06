@@ -11,6 +11,7 @@ namespace Cevehat.Web.Controllers
     public class AboutController : Controller
     {
         // GET: About
+        [Authorize]
         public ActionResult Index()
         {
             //create object of db context

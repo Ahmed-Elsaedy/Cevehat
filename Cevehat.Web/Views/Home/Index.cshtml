@@ -1,12 +1,13 @@
 ﻿@model Cevehat.Web.Models.ApplicationUser
 @{
     ViewBag.Title = "Profil Page";
+    Layout = "~/Template/_ProfileLayout.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
 @Model.Email
 <br />
-<a href="@Url.Action("Index","About")">About</a>
+@*<a href="@Url.Action("Index","About")">About</a>*@
 <br />
 <a href="@Url.Action("Create","Education")">Educations</a>
 <br />
