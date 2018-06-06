@@ -1,9 +1,9 @@
-﻿@model  IEnumerable<Cevehat.Web.Models.Skills>
+﻿@model  List<Cevehat.Web.Models.Skill>
 
 
 <ul>
     @foreach (var item in Model)
     {
-        <li> @item.Skill_name </li>
+        <li> @item.Title</li>
     }
 </ul>

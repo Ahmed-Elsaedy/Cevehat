@@ -1,0 +1,14 @@
+﻿@using Cevehat.Web.Controllers;
+@model List<ChSkills>
+
+@{
+    ViewBag.Title = "SearchBySkills";
+}
+
+<h2>SearchBySkills</h2>
+
+@foreach (ChSkills skill in Model)
+{
+    @skill.skill.Title
+    @Html.CheckBox(skill.skill.Title,skill.ischeckd,new { @class = "form-control" });
+}
