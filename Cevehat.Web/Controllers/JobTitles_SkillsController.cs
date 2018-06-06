@@ -55,7 +55,7 @@ namespace Cevehat.Web.Controllers
             {
                 db.JobTitles_Skills.Add(jobTitles_Skills);
                 JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
-                jobTitle.Skill_Count++;
+                jobTitle.SkillCount++;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -131,7 +131,7 @@ namespace Cevehat.Web.Controllers
             }
             db.JobTitles_Skills.Remove(jobTitles_Skills);
             JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
-            jobTitle.Skill_Count--;
+            jobTitle.SkillCount--;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

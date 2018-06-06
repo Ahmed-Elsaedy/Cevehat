@@ -10,5 +10,5 @@
 @foreach (ChSkills skill in Model)
 {
     @skill.skill.Title
-    @Html.CheckBox(skill.skill.Title,skill.ischeckd,new { @class = "form-control" });
+    <input type="checkbox" id="@skill.skill.Skill_Id" name="SelectedSport" value="@skill.skill.Skill_Id" checked=@skill.ischeckd />
 }
