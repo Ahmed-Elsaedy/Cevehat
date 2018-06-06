@@ -35,11 +35,11 @@ namespace Cevehat.Web.Controllers
             foreach (var item in _allGenders)
             {
                 bool _IsSelected = false;
-                if(_currentUser.Gender.ToString()==item.ToString())
+                if (_currentUser.Gender.ToString() == item.ToString())
                 {
                     _IsSelected = true;
                 }
-                _genderList.Add(new SelectListItem() { Text = item, Value = item, Selected=_IsSelected });
+                _genderList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
             }
             //iteration list of Marital status
             foreach (var item in _allMaritalStatus)
@@ -80,6 +80,10 @@ namespace Cevehat.Web.Controllers
             _currentUser.Gender = model.Gender;
             _currentUser.MilitaryStatus = model.MilitaryStatus;
             _currentUser.MaritaSutes = model.MaritaSutes;
+            _currentUser.Address = model.Address;
+            _currentUser.Summary = model.Summary;
+            _currentUser.FacebookUrl = model.FacebookUrl;
+            _currentUser.LinkinUrl = model.LinkinUrl;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
