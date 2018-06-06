@@ -9,7 +9,15 @@ namespace Cevehat.Web.Models
     {
         public string Fname { get; set; }
         public string Lname { get; set; }
-       // public DateTime BirthDate { get; set; }
+
+        public string Address { get; set; }
+        public string Summary { get; set; }
+
+        public string FacebookUrl { get; set; }
+        public string TwitterUrl { get; set; }
+        public string LinkinUrl { get; set; }
+
+        // public DateTime BirthDate { get; set; }
         public MaritalStutes MaritaSutes { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
         public Gender Gender { get; set; }
@@ -18,7 +26,6 @@ namespace Cevehat.Web.Models
         public virtual List<Experince> Experinces { get; set; }
         public virtual List<Education> Educations { get; set; }
         public virtual List<User_Skills> User_TecSkills { get; set; }
-        
     }
 
     public enum MaritalStutes

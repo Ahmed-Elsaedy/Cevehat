@@ -14,6 +14,6 @@ namespace Cevehat.Web.Models
         public virtual List<CareerObjective> CareerObjectives { get; set; }
         public virtual List<InterviewQustion> InterviewQustions { get; set; }
         public virtual List<JobTitles_Skills> JobTitles_Skills { get; set; }
-
+        public decimal Skill_Count { get; set; }
     }
 }
