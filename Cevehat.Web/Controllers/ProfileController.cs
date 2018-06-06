@@ -22,6 +22,7 @@ namespace Cevehat.Web.Controllers
 
         public ActionResult EditEducation()
         {
+            
             return View();
         }
 
