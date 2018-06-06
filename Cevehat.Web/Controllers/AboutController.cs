@@ -13,6 +13,8 @@ namespace Cevehat.Web.Controllers
         // GET: About
         public ActionResult Index()
         {
+            
+
             //create object of db context
             ApplicationDbContext db = new ApplicationDbContext();
 
