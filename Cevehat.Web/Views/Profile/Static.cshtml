@@ -1,4 +1,5 @@
-﻿@model Cevehat.Web.Models.ApplicationUser
+﻿@using Cevehat.Web.Models
+@model ApplicationUser
 @{
     ViewBag.Title = "Static";
     Layout = "~/Template/_ProfileLayout.cshtml";
@@ -11,36 +12,45 @@
             <span class="text-primary">@(Model.Lname ?? "[LName]")</span>
         </h1>
         <div class="subheading mb-5">
-            [Address] · @(Model.PhoneNumber ?? "[Phone]" ) ·
+            @(Model.Address ?? "[Address]") · @(Model.PhoneNumber ?? "[Phone]" ) ·
             <a href="mailto:@Model.Email">@Model.Email</a>
         </div>
         <p class="mb-5">@(Model.Summary ?? "[Summary]" )</p>
 
         <ul class="list-inline list-social-icons mb-0">
-            <li class="list-inline-item">
-                <a href="@Model.FacebookUrl">
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="@Model.TwitterUrl">
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="@Model.LinkinUrl">
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-            </li>
+            @if (!string.IsNullOrEmpty(Model.FacebookUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.FacebookUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+            @if (!string.IsNullOrEmpty(Model.TwitterUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.TwitterUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+            @if (!string.IsNullOrEmpty(Model.LinkinUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.LinkinUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
         </ul>
     </div>
 </section>
@@ -48,27 +58,23 @@
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
     <div class="my-auto">
         <h2 class="mb-5">Education</h2>
+        @foreach (var edu in Model.Educations)
+        {
         <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
-                <h3 class="mb-0">University of Colorado Boulder</h3>
-                <div class="subheading mb-3">Bachelor of Science</div>
-                <div>Computer Science - Web Development Track</div>
-                <p>GPA: 3.23</p>
+                <h3 class="mb-0">@edu.OrganizationName</h3>
+                <div class="subheading mb-3">@edu.DegreeTitle</div>
+                <div>@edu.DepartmentName</div>
+                <p>GPA: @edu.GPA</p>
             </div>
-            <div class="resume-date text-md-right">
-                <span class="text-primary">August 2006 - May 2010</span>
-            </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-                <h3 class="mb-0">James Buchanan High School</h3>
-                <div class="subheading mb-3">Technology Magnet Program</div>
-                <p>GPA: 3.56</p>
-            </div>
-            <div class="resume-date text-md-right">
-                <span class="text-primary">August 2002 - May 2006</span>
+            <div class="resume-date text-md-right  ">
+                <span class="text-primary">@edu.GradYear.ToString("MMM yyyy") - @edu.StartYear.ToString("MMM yyyy")</span>
+                <br />
+                @Html.ActionLink("Edit", "Edit", "Education", new { id = edu.EducationId }, new { @class = "btn btn-sm btn-warning" })
+                @Html.ActionLink("Delete", "Delete", "Education", new { id = edu.EducationId }, new { @class = "btn btn-sm btn-danger" })
             </div>
         </div>
+        }
     </div>
 </section>
 
