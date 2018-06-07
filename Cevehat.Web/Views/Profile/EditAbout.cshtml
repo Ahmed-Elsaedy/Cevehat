@@ -1,83 +1,66 @@
-﻿@model Cevehat.Web.Models.ApplicationUser
-@{
-    ViewBag.Title = "EditAbout";
-    Layout = "~/Template/_ProfileLayout.cshtml";
-}
+﻿@model Cevehat.Web.Controllers.AboutViewModel
 
-<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-    <div class="my-auto">
-        <div class="my-auto">
-            <div class="card card-register mx-auto mt-5" style="min-width: 40rem;">
-                <div class="card-header">Personal Information</div>
-                <div class="card-body">
-                    @using (Html.BeginForm("EditAbout2", "Profile"))
-                    {
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@Model.Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <label for="exampleInputName">First name</label>
-                                    @Html.TextBoxFor(m => m.Fname, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Fname, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Last name</label>
-                                    @Html.TextBoxFor(m => m.Lname, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Lname, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
 
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Address</label>
-                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Summary</label>
-                                    @Html.TextBoxFor(m => m.Summary, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Summary, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Facebook Account</label>
-                                    @Html.TextBoxFor(m => m.FacebookUrl, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.FacebookUrl, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Twitter Account</label>
-                                    @Html.TextBoxFor(m => m.TwitterUrl, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.TwitterUrl, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputLastName">Linkedin Account</label>
-                                    @Html.TextBoxFor(m => m.LinkinUrl, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.LinkinUrl, "", new { @class = "text-danger", style = "float: right;" })
-                                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
 
-                                <div class="col-md-6">
-                                    <label for="exampleInputName">Gender</label>
-                                    @Html.DropDownListFor(a => a.Gender, ViewBag.GendersList as List<SelectListItem>, new { @class = "form-control" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputName">Military Status</label>
-                                    @Html.DropDownListFor(a => a.MilitaryStatus, ViewBag.MilitaryList as List<SelectListItem>, new { @class = "form-control" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="exampleInputName">Gender</label>
-                                    @Html.DropDownListFor(a => a.MaritaSutes, ViewBag.MaritalList as List<SelectListItem>, new { @class = "form-control" })
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
 
-                        <input type="submit" value="Save" class="btn btn-primary btn-block" />
-                    }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TwitterUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LinkedUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LinkedUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-
+}
