@@ -96,17 +96,25 @@ namespace Cevehat.Web.Controllers
             return RedirectToAction("EditAbout");
         }
 
+
+        [HttpGet]
+        public ActionResult Ajax()
+        {
+            return Content("Hi from AJAX");
+        }
+
+
         [HttpGet]
         public ActionResult EditEducation()
         {
             
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
         public ActionResult EditEducation(ApplicationUser model)
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult EditCertification()

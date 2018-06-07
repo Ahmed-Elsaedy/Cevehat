@@ -501,6 +501,11 @@
     <Content Include="Views\Profile\EditCertification.cshtml" />
     <Content Include="Views\Profile\EditExperience.cshtml" />
     <Content Include="Views\Profile\EditSkill.cshtml" />
+    <Content Include="Views\Profile\StaticAbout.cshtml" />
+    <Content Include="Views\Profile\StaticEducation.cshtml" />
+    <Content Include="Views\Profile\StaticExperience.cshtml" />
+    <Content Include="Views\Profile\StaticAwards.cshtml" />
+    <Content Include="Views\Profile\StaticSkills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
