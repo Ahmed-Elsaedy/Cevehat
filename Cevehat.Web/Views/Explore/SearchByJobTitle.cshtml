@@ -1,0 +1,21 @@
+﻿@model  IEnumerable<Cevehat.Web.Models.JobTitle>
+@{
+    ViewBag.Title = "SearchByJobTitle";
+}
+
+<h2>GetSkillsJobTitle</h2>
+<form action="/SkillsJobTitle/GetSkills" method="post">
+    <div class="form-group">
+        @Html.Label("title", new { @class = "col-sm-2 label-control" })
+
+        <div class="col-sm-6">
+            @Html.DropDownList("Id", new SelectList(Model, "JobId", "JobName"), new { @class = "form-control" })
+        </div>
+        <div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="find" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</form>
+<div id="div1"></div>
