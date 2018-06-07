@@ -9,101 +9,69 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    public class AboutViewModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Gender Gender { get; set; }
+        public MilitaryStatus MilitaryStatus { get; set; }
+        public MaritalStutes MaritaSutes { get; set; }
+        public string Address { get; set; }
+        public string Summary { get; set; }
+        public string FacebookUrl { get; set; }
+        public string TwitterUrl { get; set; }
+        public string LinkedUrl { get; set; }
+    }
 
     [Authorize]
     public class ProfileController : Controller
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
-
         public ActionResult Static()
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             return View(user);
         }
 
-        [HttpGet]//Get Action to view data to user
+        [HttpGet]
         public ActionResult EditAbout()
         {
-            //create object of db context
-            ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            //Get user by ID and user attached to this ID "Global"
-            string userId = User.Identity.GetUserId();
-            ApplicationUser _currentUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-
-            //Get list of all required and send it with a "ViewBag" 
-            List<string> _allGenders = Enum.GetNames(typeof(Gender)).ToList();
-            List<string> _allMilitaryStatus = Enum.GetNames(typeof(MilitaryStatus)).ToList();
-            List<string> _allMaritalStatus = Enum.GetNames(typeof(MaritalStutes)).ToList();
-
-            //drop down list take a thing of type "SelectListItem"
-            List<SelectListItem> _genderList = new List<SelectListItem>();
-            List<SelectListItem> _MilitarList = new List<SelectListItem>();
-            List<SelectListItem> _MaritalList = new List<SelectListItem>();
-
-            //iteration list of genders
-            foreach (var item in _allGenders)
+            AboutViewModel viewModel = new AboutViewModel()
             {
-                bool _IsSelected = false;
-                if (_currentUser.Gender.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _genderList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //iteration list of Marital status
-            foreach (var item in _allMaritalStatus)
-            {
-                bool _IsSelected = false;
-                if (_currentUser.MaritaSutes.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _MaritalList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //iteration list of Military status
-            foreach (var item in _allMilitaryStatus)
-            {
-                bool _IsSelected = false;
-                if (_currentUser.MilitaryStatus.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _MilitarList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //return all viewbags with all lists => Gender / military Status / Marital Status
-            ViewBag.MilitaryList = _MilitarList;
-
-            ViewBag.MaritalList = _MaritalList;
-
-            ViewBag.GendersList = _genderList;
-            return View(_currentUser);
+                FirstName = user.Fname,
+                LastName = user.Lname,
+                Address = user.Address,
+                FacebookUrl = user.FacebookUrl,
+                Gender = user.Gender,
+                LinkedUrl = user.LinkinUrl,
+                MilitaryStatus = user.MilitaryStatus,
+                Summary = user.Summary,
+                TwitterUrl = user.TwitterUrl
+            };
+            return PartialView(viewModel);
         }
 
-
-        public ActionResult EditAbout2(ApplicationUser model)
+        [HttpPost]
+        public ActionResult EditAbout(AboutViewModel model)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             ApplicationUser _currentUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-            _currentUser.Fname = model.Fname;
-            _currentUser.Lname = model.Lname;
+
+            _currentUser.Fname = model.FirstName;
+            _currentUser.Lname = model.LastName;
             _currentUser.Gender = model.Gender;
             _currentUser.MilitaryStatus = model.MilitaryStatus;
             _currentUser.MaritaSutes = model.MaritaSutes;
             _currentUser.Address = model.Address;
             _currentUser.Summary = model.Summary;
             _currentUser.FacebookUrl = model.FacebookUrl;
-            _currentUser.LinkinUrl = model.LinkinUrl;
+            _currentUser.LinkinUrl = model.LinkedUrl;
+            _currentUser.TwitterUrl = model.TwitterUrl;
+
             db.SaveChanges();
-            return RedirectToAction("EditAbout");
-        }
-
-
-        [HttpGet]
-        public ActionResult Ajax()
-        {
-            return Content("Hi from AJAX");
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
 
@@ -123,16 +91,16 @@ namespace Cevehat.Web.Controllers
         public ActionResult Certification()
         {
             string userId = User.Identity.GetUserId();
-            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            return View(cert);
+            //List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            return View();
         }
         // GET: Certification/Create
         [HttpGet]
         public ActionResult CreateCertification()
         {
             string userId = User.Identity.GetUserId();
-            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            ViewBag.allCertification = cert;
+            //List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            //ViewBag.allCertification = cert;
             return View();
         }
         // POST: Certification/Create
@@ -142,8 +110,8 @@ namespace Cevehat.Web.Controllers
             try
             {
                 cert.userid= User.Identity.GetUserId();
-                db.Certification.Add(cert);
-                db.SaveChanges();
+                //db.Certification.Add(cert);
+                //db.SaveChanges();
                 return RedirectToAction("Certification");
             }
             catch
