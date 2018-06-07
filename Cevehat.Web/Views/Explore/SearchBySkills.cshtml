@@ -1,9 +1,10 @@
 ﻿@using Cevehat.Web.Controllers;
 @model List<TitlePer>
-
-@foreach (TitlePer Title in Model)
-{
-<B> @Title.JobTitle.JobName :</B>@Title.per
-    <Br />
-}
-
+<Ul>
+    @foreach (TitlePer Title in Model)
+    {
+        <li>
+            <B> @Title.JobTitle.JobName :</B>@Title.per %
+        </li>
+        }
+</Ul>

@@ -48,24 +48,31 @@ namespace Cevehat.Web.Controllers
         //}
 
         [HttpGet]
-        public ActionResult SearchBySkills(List<Skill> CheckedSkills)
+        public ActionResult SearchBySkills()
         {
             ApplicationUser existsuser = db.Users.Find(User.Identity.GetUserId());
             List<TitlePer> AllTitlesToFit = new List<TitlePer>();
-            List<Skill> userskills = existsuser.TecSkills;
-            List<JobTitle> jobtitles = (from titles in db.JobTitle
-                                        where titles.JobTitles_Skills.Count > 0
-                                        select titles).ToList();
+            List<Skill> usertecskills = existsuser.TecSkills;
+            //List<Skill> userskills = from skills in db.Skill
+            //                         where usertecskills.Contains()
+
+            List < JobTitle > jobtitles = (from titles in db.JobTitle
+                                           where titles.SkillCount > 0
+                                           select titles).ToList();
             //, (from titleskill in db.JobTitles_Skills
             //   where userskills.Contains(titleskill.skill)
             //   select titleskill).Count() / titles.JobTitles_Skills.Count
             foreach (JobTitle Title in jobtitles)
             {
-                int titleCount = (from titleskill in db.JobTitles_Skills
-                                where userskills.Contains(titleskill.skill)
-                                select titleskill).Count();
+                //var count = db.JobTitles_Skills.Where(x => usertecskills.Any(y => y.Skill_Id == x.Skill_ID)).Count();
 
-                decimal Pers = titleCount/Title.SkillCount ;
+                var list = usertecskills.Select(x => x.Skill_Id).ToList();
+                var titleCount = (from titleskill in Title.JobTitles_Skills
+                                where list.Contains(titleskill.skill.Skill_Id)
+                                select titleskill.Skill_ID).ToList().Count();
+
+
+                decimal Pers = (titleCount / Title.SkillCount )*100;
                 AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per= Pers });
             }
 
