@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.jobTitle.JobName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.skill.Skill_name)
+            @Html.DisplayNameFor(model => model.skill.Title)
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.jobTitle.JobName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.skill.Skill_name)
+            @Html.DisplayFor(modelItem => item.skill.Title)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { Jobid=item.JbTitle_ID , Skillid = item.Skill_ID }) |

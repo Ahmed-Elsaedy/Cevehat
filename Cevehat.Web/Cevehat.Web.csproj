@@ -205,6 +205,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
+    <Compile Include="Controllers\ExploreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobIndicatorController.cs" />
     <Compile Include="Controllers\JobRequirementsController.cs" />
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\201806051059418_AddSkilluser.Designer.cs">
       <DependentUpon>201806051059418_AddSkilluser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806052259080_add_Skill_Count_dicimal.cs" />
+    <Compile Include="Migrations\201806052259080_add_Skill_Count_dicimal.Designer.cs">
+      <DependentUpon>201806052259080_add_Skill_Count_dicimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201806060856166_AppUserModifications.cs" />
     <Compile Include="Migrations\201806060856166_AppUserModifications.Designer.cs">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
@@ -254,6 +259,10 @@
     <Compile Include="Migrations\201806061129156_s.cs" />
     <Compile Include="Migrations\201806061129156_s.Designer.cs">
       <DependentUpon>201806061129156_s.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061444132_6-6-2018-4.40.cs" />
+    <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
+      <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -501,6 +510,15 @@
     <Content Include="Views\Profile\EditCertification.cshtml" />
     <Content Include="Views\Profile\EditExperience.cshtml" />
     <Content Include="Views\Profile\EditSkill.cshtml" />
+    <Content Include="Views\Explore\SearchByJobTitle.cshtml" />
+    <Content Include="Views\Explore\SearchBySkills.cshtml" />
+    <Content Include="Views\Profile\Certification.cshtml" />
+    <Content Include="Views\Profile\CreateCertification.cshtml" />
+    <Content Include="Views\Profile\StaticAbout.cshtml" />
+    <Content Include="Views\Profile\StaticEducation.cshtml" />
+    <Content Include="Views\Profile\StaticExperience.cshtml" />
+    <Content Include="Views\Profile\StaticAwards.cshtml" />
+    <Content Include="Views\Profile\StaticSkills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -540,11 +558,17 @@
     <EmbeddedResource Include="Migrations\201806051059418_AddSkilluser.resx">
       <DependentUpon>201806051059418_AddSkilluser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806052259080_add_Skill_Count_dicimal.resx">
+      <DependentUpon>201806052259080_add_Skill_Count_dicimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806060856166_AppUserModifications.resx">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061129156_s.resx">
       <DependentUpon>201806061129156_s.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
+      <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

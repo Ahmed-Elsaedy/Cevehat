@@ -56,19 +56,7 @@ namespace Cevehat.Web.Controllers
         }
 
         // GET: Education/Edit/5
-        public ActionResult Edit(int id)
-        {
-            string userId = User.Identity.GetUserId();
-            List<Education> educations = db.Education.Where(a => a.userId == userId).ToList<Education>();
-            ViewBag.allEducations = educations;
-            Education ed = db.Education.FirstOrDefault(e => e.EducationId == id);
-            if (ed == null)
-            { return HttpNotFound(); }
-            else
-            {
-                return View(ed);
-            }
-        }
+      
 
         // POST: Education/Edit/5
         [HttpPost]

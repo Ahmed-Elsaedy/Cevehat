@@ -43,7 +43,7 @@
                     <a class="nav-link js-scroll-trigger" href="">Experience</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">Certification</a>
+                    <a class="nav-link js-scroll-trigger" href="/Profile/Certification">Certification</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="">Skills</a>
@@ -55,6 +55,27 @@
     <div class="container-fluid p-0">
         @RenderBody()
     </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="templateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="my-auto">
+                    <div class="card card-register mx-auto mt-5" style="min-width: 40rem;">
+                        <div class="card-header">Personal Information</div>
+                        <div class="card-body">
+                            <div id="modalBody">
+
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
     <!-- Bootstrap core JavaScript -->
     <script src="~/Template/vendor/jquery/jquery.min.js"></script>
     <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -62,6 +83,7 @@
     <script src="~/Template/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="~/Template/js/resume.min.js"></script>
+
     @RenderSection("Scripts", false)
 </body>
 </html>
