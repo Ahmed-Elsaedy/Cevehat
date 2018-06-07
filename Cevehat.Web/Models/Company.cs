@@ -10,6 +10,7 @@ namespace Cevehat.Web.Models
         public int CompanyID { get; set; }
         public string CompanyName { get; set; }
         public string CompanyWebSite { get; set; }
-        
+        public virtual List<JobVacancie> JobVacancies { get; set; }
+
     }
 }

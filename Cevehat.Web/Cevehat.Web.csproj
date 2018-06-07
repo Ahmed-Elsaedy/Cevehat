@@ -511,9 +511,9 @@
     <Content Include="Views\Profile\EditExperience.cshtml" />
     <Content Include="Views\Profile\EditSkill.cshtml" />
     <Content Include="Views\Explore\SearchByJobTitle.cshtml" />
-    <Content Include="Views\Explore\SearchBySkills.cshtml" />
     <Content Include="Views\Profile\Certification.cshtml" />
     <Content Include="Views\Profile\CreateCertification.cshtml" />
+    <Content Include="Views\Explore\SearchBySkills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
