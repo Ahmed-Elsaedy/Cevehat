@@ -19,7 +19,7 @@
                     <p>@exp.Responsbilty</p>
                 </div>
                 <div class="resume-date text-md-right">
-                    <span class="text-primary"> @(exp.IsPresent ? "Present" : exp.EndDate.ToString("MMM yyyy")) - @exp.StartDate.ToString("MMM yyyy")</span>
+                    <span class="text-primary"> @(false ? "Present" : exp.EndDate.ToString("MMM yyyy")) - @exp.StartDate.ToString("MMM yyyy")</span>
 
                     <div class="mt-3">
                         @Ajax.ActionLink("Edit", "EditExperience", "Profile", new { experienceId = exp.ExpId},

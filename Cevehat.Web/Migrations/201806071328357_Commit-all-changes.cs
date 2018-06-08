@@ -21,8 +21,9 @@ namespace Cevehat.Web.Migrations
                 .ForeignKey("dbo.Skills", t => t.Skill_Skill_Id, cascadeDelete: true)
                 .Index(t => t.JobVacancie_JobVacancieID)
                 .Index(t => t.Skill_Skill_Id);
-            
-            DropColumn("dbo.Skills", "JobVacancie_JobVacancieID");
+
+            AddColumn("dbo.Experinces", "IsPresent", c => c.Boolean(nullable: false));
+
         }
         
         public override void Down()
