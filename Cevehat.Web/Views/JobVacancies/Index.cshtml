@@ -23,6 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.JobType)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
         <th></th>
     </tr>
 
@@ -41,9 +47,15 @@
             @Html.DisplayFor(modelItem => item.JobType)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.JobVacancieID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.JobVacancieID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.JobVacancieID })
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.JobVacancieID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.JobVacancieID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.JobVacancieID })
         </td>
     </tr>
 }

@@ -47,6 +47,7 @@ namespace Cevehat.Web.Controllers
         //    return View(AllSkills);
         //}
 
+        // GET: Explore/SearchBySkills
         [HttpGet]
         public ActionResult SearchBySkills()
         {
@@ -56,9 +57,9 @@ namespace Cevehat.Web.Controllers
             //List<Skill> userskills = from skills in db.Skill
             //                         where usertecskills.Contains()
 
-            List < JobTitle > jobtitles = (from titles in db.JobTitle
-                                           where titles.SkillCount > 0
-                                           select titles).ToList();
+            List<JobTitle> jobtitles = (from titles in db.JobTitle
+                                        where titles.SkillCount > 0
+                                        select titles).ToList();
             //, (from titleskill in db.JobTitles_Skills
             //   where userskills.Contains(titleskill.skill)
             //   select titleskill).Count() / titles.JobTitles_Skills.Count
@@ -68,18 +69,29 @@ namespace Cevehat.Web.Controllers
 
                 var list = usertecskills.Select(x => x.Skill_Id).ToList();
                 var titleCount = (from titleskill in Title.JobTitles_Skills
-                                where list.Contains(titleskill.skill.Skill_Id)
-                                select titleskill.Skill_ID).ToList().Count();
+                                  where list.Contains(titleskill.skill.Skill_Id)
+                                  select titleskill.Skill_ID).ToList().Count();
 
 
-                decimal Pers = (titleCount / Title.SkillCount )*100;
-                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per= Pers });
+                decimal Pers = (titleCount / Title.SkillCount) * 100;
+                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Pers });
             }
 
             return View(AllTitlesToFit);
         }
-    }
 
+        public ActionResult SearchAllBySkills()
+        {
+
+            return View();
+        }
+
+        public ActionResult SearchAllByJobTitle()
+        {
+
+            return View();
+        }
+    }
     public class TitlePer
     {
         public JobTitle JobTitle { get; set; }

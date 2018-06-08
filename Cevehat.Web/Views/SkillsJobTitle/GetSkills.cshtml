@@ -1,9 +1,30 @@
 ﻿@model  List<Cevehat.Web.Models.Skill>
 
-
+<h1>Requored Skills For This JobTitle</h1>
 <ul>
     @foreach (var item in Model)
     {
-        <li> @item.Title</li>
+        <li> <h3>@item.Title</h3> </li>
     }
 </ul>
+<hr />
+<h1>Job Vacancies For this Job Title</h1>
+@foreach (Cevehat.Web.Models.JobVacancie Vacancie in ViewBag.JobVacancies)
+{
+    @*<div class="card">
+        <div class="card-header"><h4>@Vacancie.Company.CompanyName</h4> </div>
+        <div class="card-body"></div>
+        <div class="card-footer">@Vacancie.State</div>
+    </div>*@
+
+    <div class="card" style="width: 18rem;">
+        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+        <div class="card-body">
+            <h5 class="card-title">@Vacancie.Company.CompanyName</h5>
+            <p class="card-text">@Vacancie.ExpYears | @Vacancie.JobType | @Vacancie.Date.Day/@Vacancie.Date.Month/@Vacancie.Date.Year</p>
+            <p>@Vacancie.State</p>
+      @*      <a href="#" class="btn btn-primary">Go somewhere</a>*@
+        </div>
+    </div>
+    <hr />
+}
