@@ -55,7 +55,11 @@ namespace Cevehat.Web.Controllers
             user_Skills.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                ApplicationUser theUser = db.Users.Find(User.Identity.GetUserId());
+                user_Skills.Skill = db.Skill.Find(user_Skills.SkillID);
+                theUser.TecSkills.Add(user_Skills.Skill);
                 db.User_Skills.Add(user_Skills);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -122,6 +126,8 @@ namespace Cevehat.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User_Skills user_Skills = db.User_Skills.Find(id);
+            ApplicationUser theUser = db.Users.Find(User.Identity.GetUserId());
+            theUser.TecSkills.Remove(user_Skills.Skill);
             db.User_Skills.Remove(user_Skills);
             db.SaveChanges();
             return RedirectToAction("Index");

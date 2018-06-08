@@ -264,9 +264,9 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806081151063_expeienceIsPresent.cs" />
-    <Compile Include="Migrations\201806081151063_expeienceIsPresent.Designer.cs">
-      <DependentUpon>201806081151063_expeienceIsPresent.cs</DependentUpon>
+    <Compile Include="Migrations\201806071328357_Commit-all-changes.cs" />
+    <Compile Include="Migrations\201806071328357_Commit-all-changes.Designer.cs">
+      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -516,6 +516,8 @@
     <Content Include="Views\Profile\EditSkill.cshtml" />
     <Content Include="Views\Explore\SearchByJobTitle.cshtml" />
     <Content Include="Views\Explore\SearchBySkills.cshtml" />
+    <Content Include="Views\Profile\Certification.cshtml" />
+    <Content Include="Views\Profile\CreateCertification.cshtml" />
     <Content Include="Views\Profile\StaticAbout.cshtml" />
     <Content Include="Views\Profile\StaticEducation.cshtml" />
     <Content Include="Views\Profile\StaticExperience.cshtml" />
@@ -571,9 +573,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806081151063_expeienceIsPresent.resx">
-      <DependentUpon>201806081151063_expeienceIsPresent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

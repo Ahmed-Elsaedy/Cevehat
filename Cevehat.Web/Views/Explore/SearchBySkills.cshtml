@@ -1,14 +1,10 @@
 ﻿@using Cevehat.Web.Controllers;
-@model List<ChSkills>
-
-@{
-    ViewBag.Title = "SearchBySkills";
-}
-
-<h2>SearchBySkills</h2>
-
-@foreach (ChSkills skill in Model)
-{
-    @skill.skill.Title
-    <input type="checkbox" id="@skill.skill.Skill_Id" name="SelectedSport" value="@skill.skill.Skill_Id" checked=@skill.ischeckd />
-}
+@model List<TitlePer>
+<Ul>
+    @foreach (TitlePer Title in Model)
+    {
+        <li>
+            <B> @Title.JobTitle.JobName :</B>@Title.per %
+        </li>
+        }
+</Ul>
