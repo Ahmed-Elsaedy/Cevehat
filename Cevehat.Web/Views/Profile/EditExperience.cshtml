@@ -1,9 +1,36 @@
-﻿@model Cevehat.Web.Models.ApplicationUser
+﻿@model Cevehat.Web.Models.Experince
 
-@{
-    ViewBag.Title = "EditExperience";
-    Layout = "~/Template/_ProfileLayout.cshtml";
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "StaticExperience", OnSuccess = "hideModal" }))
+{
+    @Html.HiddenFor(model => model.ExpId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Place, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Place, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Responsbilty, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextAreaFor(model => model.Responsbilty, 4, 20, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Save Changes" />
+    </div>
 }
-
-<h2>EditExperience</h2>
 
