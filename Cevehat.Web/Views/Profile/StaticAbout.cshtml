@@ -1,11 +1,13 @@
 ﻿@using Cevehat.Web.Models
 @model  ApplicationUser
 
-<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-        @Ajax.ActionLink("Edit", "EditAbout", "Profile", new AjaxOptions() {
-        HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId= "modalBody", OnSuccess="showModal" })
-    <div class="my-auto">
 
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+    <div class="my-auto">
+        <div class="float-right">
+            @Ajax.ActionLink("Edit", "EditAbout", "Profile", new AjaxOptions() {
+               HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId= "modalBody", OnSuccess="showModal('Edit About')" }, new { @class = "btn btn-sm btn-warning" })
+        </div>
 
         <h1 class="mb-0">
             @(Model.Fname ?? "[FName]" )
@@ -54,4 +56,3 @@
         </ul>
     </div>
 </section>
-

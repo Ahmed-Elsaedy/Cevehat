@@ -8,33 +8,58 @@
     <link rel="stylesheet" href="~/Template/css/sb-admin.css" />
 }
 
-<div id="Ajax">
 
-</div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#templateModal">
-    Launch demo modal
-</button>
+@section Navigation{
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#certification">Certification</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#skill">Skills</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
+    </li>
+}
 
-<div id="StaticAbout">
-    @Html.Partial("StaticAbout", Model)
-</div>
 
-<div id="StaticEducation">
-    @Html.Partial("StaticEducation", Model)
-</div>
+<section id="about">
+    <div id="StaticAbout">
+        @Html.Partial("StaticAbout", Model)
+    </div>
+</section>
 
-<div id="StaticExperience">
-    @Html.Partial("StaticExperience", Model)
-</div>
+<section id="education">
+    <div id="StaticEducation">
+        @Html.Partial("StaticEducation", Model)
+    </div>
+</section>
 
-<div id="StaticAwards">
-    @Html.Partial("StaticAwards", Model)
-</div>
+<section id="experience">
+    <div id="StaticExperience">
+        @Html.Partial("StaticExperience", Model)
+    </div>
+</section>
 
-<div id="StaticSkills">
-    @Html.Partial("StaticSkills", Model)
-</div>
+<section id="certification">
+    <div id="StaticCertification">
+        @Html.Partial("StaticCertification", Model)
+    </div>
+</section>
 
+<section id="skill">
+    <div id="StaticSkills">
+        @Html.Partial("StaticSkills", Model)
+    </div>
+</section>
 
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
     <div class="my-auto">
@@ -43,9 +68,6 @@
         <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technolgy advancements in the front-end web development world.</p>
     </div>
 </section>
-
-
-
 
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

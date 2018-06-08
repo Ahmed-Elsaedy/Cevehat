@@ -1,66 +1,64 @@
 ﻿@model Cevehat.Web.Controllers.AboutViewModel
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "StaticAbout", OnSuccess = "hideModal" }))
 {
-    <div class="form-horizontal">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EnumDropDownListFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TwitterUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaritaSutes, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EnumDropDownListFor(model => model.MaritaSutes, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LinkedUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.LinkedUrl, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MilitaryStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EnumDropDownListFor(model => model.MilitaryStatus, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LinkedUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.LinkedUrl, new { htmlAttributes = new { type = "url", @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { type = "url", @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TwitterUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { type = "url", @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextAreaFor(model => model.Address, 2, 20, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextAreaFor(model => model.Summary, 3, 20, new { @class = "form-control" })
+    </div>
+
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Save Changes" />
     </div>
 }

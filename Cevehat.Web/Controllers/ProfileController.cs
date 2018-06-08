@@ -14,6 +14,7 @@ namespace Cevehat.Web.Controllers
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Gender Gender { get; set; }
+        public string Phone { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
         public MaritalStutes MaritaSutes { get; set; }
         public string Address { get; set; }
@@ -26,10 +27,21 @@ namespace Cevehat.Web.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
+
+        private ApplicationUser _CurrentUser;
+        public ApplicationUser CurrentUser
+        {
+            get
+            {
+                if (_CurrentUser == null)
+                    _CurrentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                return _CurrentUser;
+            }
+        }
+
         public ActionResult Static()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            return View(user);
+            return View(CurrentUser);
         }
 
         [HttpGet]
@@ -71,67 +83,97 @@ namespace Cevehat.Web.Controllers
             _currentUser.TwitterUrl = model.TwitterUrl;
 
             db.SaveChanges();
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            return PartialView("StaticAbout", _currentUser);
         }
 
 
         [HttpGet]
-        public ActionResult EditEducation()
+        public ActionResult EditEducation(int? educationId)
         {
-            
-            return PartialView();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Education edu = educationId.HasValue ? db.Education.Find(educationId) : new Education();
+                return PartialView(edu);
+            }
         }
 
         [HttpPost]
-        public ActionResult EditEducation(ApplicationUser model)
+        public ActionResult EditEducation(Education model)
         {
-            return PartialView();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                model.userId = CurrentUser.Id;
+                if (model.EducationId != 0)
+                {
+                    Education edu = db.Education.Find(model.EducationId);
+                    db.Entry(edu).CurrentValues.SetValues(model);
+                }
+                else
+                    db.Education.Add(model);
+                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.userId);
+                return PartialView("StaticEducation", CurrentUser);
+            }
         }
 
-        public ActionResult Certification()
-        {
-            string userId = User.Identity.GetUserId();
-            //List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            return View();
-        }
-        // GET: Certification/Create
+
         [HttpGet]
-        public ActionResult CreateCertification()
+        public ActionResult EditExperience(int? experienceId)
         {
-            string userId = User.Identity.GetUserId();
-            //List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            //ViewBag.allCertification = cert;
-            return View();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Experince exp = experienceId.HasValue ? db.Experinces.Find(experienceId) : new Experince();
+                return PartialView(exp);
+            }
         }
-        // POST: Certification/Create
+
         [HttpPost]
-        public ActionResult CreateCertification([Bind(Exclude ="Cerid")] Certification cert)
+        public ActionResult EditExperience(Experince model)
         {
-            try
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                cert.userid= User.Identity.GetUserId();
-                //db.Certification.Add(cert);
-                //db.SaveChanges();
-                return RedirectToAction("Certification");
+                model.UserID = CurrentUser.Id;
+                if (model.ExpId != 0)
+                {
+                    Experince exp = db.Experinces.Find(model.ExpId);
+                    db.Entry(exp).CurrentValues.SetValues(model);
+                }
+                else
+                    db.Experinces.Add(model);
+                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.UserID);
+                return PartialView("StaticExperience", CurrentUser);
             }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult EditCertification()
-        {
-            return View();
         }
 
-        public ActionResult EditExperience()
+
+        [HttpGet]
+        public ActionResult EditCertification(int? Cerid)
         {
-            return View();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Certification cer = Cerid.HasValue ? db.Certification.Find(Cerid) : new Certification();
+                return PartialView(cer);
+            }
         }
 
-        public ActionResult EditSkill()
+        [HttpPost]
+        public ActionResult EditCertification(Certification model)
         {
-            return View();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                model.userid = CurrentUser.Id;
+                if (model.Cerid != 0)
+                {
+                    Certification cer = db.Certification.Find(model.Cerid);
+                    db.Entry(cer).CurrentValues.SetValues(model);
+                }
+                else
+                    db.Certification.Add(model);
+                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.userid);
+                return PartialView("StaticCertification", CurrentUser);
+            }
         }
     }
 }
