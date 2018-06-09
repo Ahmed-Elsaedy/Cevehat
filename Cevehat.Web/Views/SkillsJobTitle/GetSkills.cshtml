@@ -23,7 +23,9 @@
             <h5 class="card-title">@Vacancie.Company.CompanyName</h5>
             <p class="card-text">@Vacancie.ExpYears | @Vacancie.JobType | @Vacancie.Date.Day/@Vacancie.Date.Month/@Vacancie.Date.Year</p>
             <p>@Vacancie.State</p>
-      @*      <a href="#" class="btn btn-primary">Go somewhere</a>*@
+            
+            @Html.ActionLink("see more", "JobDit", "SkillsJobTitle", Vacancie , new { @class = "btn btn-primary" })
+            @*      <a href="#" class="btn btn-primary">Go somewhere</a>*@
         </div>
     </div>
     <hr />
