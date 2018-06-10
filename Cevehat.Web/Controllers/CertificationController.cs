@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-
     public class CertificationController : Controller
     {
 

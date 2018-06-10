@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Cevehat.Web.Controllers
 {
+    [Authorize(Roles ="Manager")]
     public class EducationController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
