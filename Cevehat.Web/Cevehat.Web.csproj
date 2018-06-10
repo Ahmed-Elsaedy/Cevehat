@@ -46,12 +46,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -130,6 +124,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -199,13 +199,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
+    <Compile Include="Controllers\ExploreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobIndicatorController.cs" />
     <Compile Include="Controllers\JobRequirementsController.cs" />
@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201806051059418_AddSkilluser.Designer.cs">
       <DependentUpon>201806051059418_AddSkilluser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806052259080_add_Skill_Count_dicimal.cs" />
+    <Compile Include="Migrations\201806052259080_add_Skill_Count_dicimal.Designer.cs">
+      <DependentUpon>201806052259080_add_Skill_Count_dicimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201806060856166_AppUserModifications.cs" />
     <Compile Include="Migrations\201806060856166_AppUserModifications.Designer.cs">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
@@ -255,6 +259,18 @@
     <Compile Include="Migrations\201806061129156_s.cs" />
     <Compile Include="Migrations\201806061129156_s.Designer.cs">
       <DependentUpon>201806061129156_s.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061444132_6-6-2018-4.40.cs" />
+    <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
+      <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806071328357_Commit-all-changes.cs" />
+    <Compile Include="Migrations\201806071328357_Commit-all-changes.Designer.cs">
+      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
+    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
+      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -287,63 +303,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\dashboard.css" />
-    <Content Include="Content\images\animated-overlay.gif" />
-    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
-    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
-    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="Content\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
-    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
-    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
-    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery-ui.min.css" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -353,15 +313,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Template\account.html" />
     <Content Include="Template\css\resume.css" />
     <Content Include="Template\css\resume.min.css" />
@@ -372,8 +323,6 @@
     <Content Include="Template\js\resume.js" />
     <Content Include="Template\js\resume.min.js" />
     <Content Include="Template\_ProfileLayout.cshtml" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Template\_LoginRegisterLayout.cshtml" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
@@ -402,6 +351,8 @@
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -567,9 +518,16 @@
     <Content Include="Views\Profile\EditCertification.cshtml" />
     <Content Include="Views\Profile\EditExperience.cshtml" />
     <Content Include="Views\Profile\EditSkill.cshtml" />
-    <Content Include="Views\AutoComplete\ShowSkill.cshtml" />
-    <Content Include="Views\AutoComplete\Index.cshtml" />
-    <Content Include="Views\AutoComplete\GetAutoCompleteSkillTitle.cshtml" />
+    <Content Include="Views\Explore\SearchByJobTitle.cshtml" />
+    <Content Include="Views\Explore\SearchBySkills.cshtml" />
+    <Content Include="Views\Profile\Certification.cshtml" />
+    <Content Include="Views\Profile\CreateCertification.cshtml" />
+    <Content Include="Views\Profile\StaticAbout.cshtml" />
+    <Content Include="Views\Profile\StaticEducation.cshtml" />
+    <Content Include="Views\Profile\StaticExperience.cshtml" />
+    <Content Include="Views\Profile\StaticCertification.cshtml" />
+    <Content Include="Views\Profile\StaticSkills.cshtml" />
+    <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -585,6 +543,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805271502112_sec.resx">
@@ -608,11 +567,23 @@
     <EmbeddedResource Include="Migrations\201806051059418_AddSkilluser.resx">
       <DependentUpon>201806051059418_AddSkilluser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806052259080_add_Skill_Count_dicimal.resx">
+      <DependentUpon>201806052259080_add_Skill_Count_dicimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806060856166_AppUserModifications.resx">
       <DependentUpon>201806060856166_AppUserModifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061129156_s.resx">
       <DependentUpon>201806061129156_s.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
+      <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806071328357_Commit-all-changes.resx">
+      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806081347541_Add-date_state_toVacancy.resx">
+      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

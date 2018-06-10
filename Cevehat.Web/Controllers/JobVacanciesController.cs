@@ -53,6 +53,8 @@ namespace Cevehat.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                jobVacancie.State = State.Active;
+                jobVacancie.Date = DateTime.Now;
                 db.JobVacancie.Add(jobVacancie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,7 +121,8 @@ namespace Cevehat.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             JobVacancie jobVacancie = db.JobVacancie.Find(id);
-            db.JobVacancie.Remove(jobVacancie);
+            jobVacancie.State = State.Closed;
+            //db.JobVacancie.Remove(jobVacancie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

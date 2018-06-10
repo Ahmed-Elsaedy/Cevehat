@@ -16,6 +16,8 @@ namespace Cevehat.Web.Models
         public int JobTitleID { get; set; }
         [ForeignKey("Company")]
         public int CompanyID { get; set; }
+        public DateTime Date { get; set; }
+        public State State { get; set; }
         public virtual Company Company { get; set; }
         public JobType JobType { get; set; }
         public virtual JobTitle JobTitle { get; set; }
@@ -33,6 +35,11 @@ namespace Cevehat.Web.Models
         public virtual JobVacancie JobVacancie { get; set; }
     }
 
+    public enum State
+    {
+        Active,
+        Closed
+    }
     public enum JobType
     {
         FullTime,

@@ -13,7 +13,21 @@
         </div>
         <div>
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="find" class="btn btn-danger" />
+                <input type="submit" value="find" class="btn btn-outline-danger" />
+            </div>
+        </div>
+    </div>
+</form>
+<form action="/SkillsJobTitle/GetJobTitles" method="post">
+    <div class="form-group">
+        @Html.Label("title", new { @class = "col-sm-2 label-control" })
+
+        <div class="col-sm-6">
+            @Html.DropDownList("Id", new SelectList(ViewBag.Skills, "Skill_Id", "Title"), new { @class = "form-control" })
+        </div>
+        <div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="find" class="btn btn-outline-danger btn-dark" />
             </div>
         </div>
     </div>
