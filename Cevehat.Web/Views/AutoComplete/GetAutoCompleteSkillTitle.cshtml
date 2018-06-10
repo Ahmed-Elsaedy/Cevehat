@@ -1,5 +1,8 @@
 ﻿@model  IEnumerable<Cevehat.Web.Models.Skill>
-
+@{
+    ViewBag.Title = "GetAutoCompleteSkillTitle";
+    Layout = "~/Template/_ProfileLayout.cshtml";
+}
 
 <ul>
     @foreach (var item in Model)
@@ -7,3 +10,4 @@
         <li> @item.Title </li>
     }
 </ul>
+
