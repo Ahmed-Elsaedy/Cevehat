@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    [Authorize(Roles = "Employee")]
     public class CertificationController : Controller
     {
 
