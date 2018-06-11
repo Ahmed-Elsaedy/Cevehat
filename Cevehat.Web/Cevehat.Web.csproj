@@ -277,6 +277,10 @@
     <Compile Include="Migrations\201806092202211_t.Designer.cs">
       <DependentUpon>201806092202211_t.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.cs" />
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
+      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -590,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806081347541_Add-date_state_toVacancy.resx">
       <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111138354_resolveDbConfict2.resx">
+      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806092202211_t.resx">
       <DependentUpon>201806092202211_t.cs</DependentUpon>
