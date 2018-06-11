@@ -31,13 +31,17 @@ namespace Cevehat.Web.Controllers
                                         select titles).ToList();
             foreach (JobTitle Title in jobtitles)
             {
-                var list = usertecskills.Select(x => x.Skill_Id).ToList();
+                var listSkillsIds = usertecskills.Select(x => x.Skill_Id).ToList();
                 var titleCount = (from titleskill in Title.JobTitles_Skills
-                                  where list.Contains(titleskill.skill.Skill_Id)
+                                  where listSkillsIds.Contains(titleskill.skill.Skill_Id)
                                   select titleskill.Skill_ID).ToList().Count();
                 decimal Pers = (titleCount / Title.SkillCount) * 100;
-                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Pers });
+                List<Skill> RemaingSkills = (from titleskills in Title.JobTitles_Skills
+                                             where !listSkillsIds.Contains(titleskills.skill.Skill_Id)
+                                             select titleskills.skill).ToList();
+                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Math.Round(Pers, 2), RemaingSkills = RemaingSkills });
             }
+            AllTitlesToFit = AllTitlesToFit.OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
             return View(AllTitlesToFit);
         }
     }
@@ -46,6 +50,7 @@ namespace Cevehat.Web.Controllers
     {
         public JobTitle JobTitle { get; set; }
         public decimal per { get; set; }
+        public List<Skill> RemaingSkills { get; set; }
 
     }
 
