@@ -11,7 +11,11 @@ namespace Cevehat.Web.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: SkillsJobTitle
-
+        /// <summary>
+        /// test
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Index()
         {
