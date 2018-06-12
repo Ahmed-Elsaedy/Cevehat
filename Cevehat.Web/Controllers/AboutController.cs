@@ -1,5 +1,5 @@
 ﻿using Cevehat.Web.Models;
-using CrystalDecisions.CrystalReports.Engine;
+//using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -27,33 +27,33 @@ namespace Cevehat.Web.Controllers
             model.Education = educations;
             return View();
         }
-        public ActionResult DownloadCV()
-        {
-            string UserId = User.Identity.GetUserId();
-            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
-            List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
-            List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
-            //dynamic model = new ExpandoObject();
-            //model.Certification = certifications;
-            //model.Education = educations;
-            ReportDocument mycv = new ReportDocument();
-            mycv.Load(Path.Combine(Server.MapPath("~/Reports"), "CV.rpt"));
-            mycv.SetDataSource(certifications);
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            try
-            {
-                Stream stream = mycv.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "cv.pdf");
-            }
-            catch (Exception)
-            {
+        //public ActionResult DownloadCV()
+        //{
+        //    string UserId = User.Identity.GetUserId();
+        //    //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
+        //    List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
+        //    List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
+        //    //dynamic model = new ExpandoObject();
+        //    //model.Certification = certifications;
+        //    //model.Education = educations;
+        //    ReportDocument mycv = new ReportDocument();
+        //    mycv.Load(Path.Combine(Server.MapPath("~/Reports"), "CV.rpt"));
+        //    mycv.SetDataSource(certifications);
+        //    Response.Buffer = false;
+        //    Response.ClearContent();
+        //    Response.ClearHeaders();
+        //    try
+        //    {
+        //        Stream stream = mycv.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+        //        stream.Seek(0, SeekOrigin.Begin);
+        //        return File(stream, "application/pdf", "cv.pdf");
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
         // GET: About
         [Authorize]
         public ActionResult Index()
