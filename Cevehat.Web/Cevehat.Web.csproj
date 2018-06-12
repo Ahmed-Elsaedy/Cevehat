@@ -130,6 +130,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -202,6 +208,7 @@
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
@@ -265,9 +272,9 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.cs" />
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.Designer.cs">
-      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
+    <Compile Include="Migrations\201806091135052_company.cs" />
+    <Compile Include="Migrations\201806091135052_company.Designer.cs">
+      <DependentUpon>201806091135052_company.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
     <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
@@ -362,6 +369,7 @@
     <Content Include="Template\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Template\vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Views\Company\jobVacComp.cshtml" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -540,7 +548,11 @@
     <Content Include="Views\Profile\StaticExperience.cshtml" />
     <Content Include="Views\Profile\StaticCertification.cshtml" />
     <Content Include="Views\Profile\StaticSkills.cshtml" />
-    <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
+    <Content Include="Views\Company\StaticCompany.cshtml" />
+    <Content Include="Views\Company\EditAboutCompany.cshtml" />
+    <Content Include="Views\Company\StaticAboutCompany.cshtml" />
+    <Content Include="Views\Company\editJobVac.cshtml" />
+	<Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
