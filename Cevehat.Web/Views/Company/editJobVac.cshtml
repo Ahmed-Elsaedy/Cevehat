@@ -1,0 +1,46 @@
+﻿@model Cevehat.Web.Models.JobVacancie
+@using Cevehat.Web.Models
+
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "StaticAboutCompany", OnSuccess = "hideModal" }))
+{
+    @Html.HiddenFor(model=>model.CompanyID)
+    @Html.HiddenFor(model => model.JobVacancieID)
+    @Html.HiddenFor(model=>model.JobTitleID)
+    <div class="form-group">
+        @Html.Label("Job Title : ", Model.JobTitle.JobName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownList("JobTitle", new SelectList(ViewBag.allJobTitles, "JobId", "JobName"), new { @class = "form-control" });
+       
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExpYears, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.ExpYears, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @*@Html.Label("Job Type : ",Model.JobType.ToString(), new { htmlAttributes = new { @class = "form-control" } })*@
+        @Html.EnumDropDownListFor(model=>model.JobType)
+    </div>
+    <div class="form-group">
+        @Html.Label("Job Requirements", htmlAttributes: new { @class = "control-label col-md-2" })
+        @foreach (var jr in Model.JobRequirements)
+        {
+            @Html.EditorFor(model => jr.ReqText, new { htmlAttributes = new { @class = "form-control" } })
+        }
+    </div>
+    <div class="form-group">
+        @Html.Label("Current Skills",htmlAttributes:new { @class="control-label col-md-2"})
+        <ul>
+            @foreach(Skill skill in ViewBag.currentSkills as List<Skill>)
+            {
+                <li>@skill.Title</li>
+            }
+        </ul>
+        @Html.Label("Select Skills",htmlAttributes:new { @class="control-label col-md-2"})
+        @*@Html.DropDownListFor(model=> model.Skills, (MultiSelectList)ViewBag.allSkills ,new {multiple="multiple" ,@class="form-control"})*@
+    </div>
+
+
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Save Changes" />
+    </div>
+}
+

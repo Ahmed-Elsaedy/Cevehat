@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
@@ -264,9 +265,9 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.cs" />
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.Designer.cs">
-      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
+    <Compile Include="Migrations\201806091135052_company.cs" />
+    <Compile Include="Migrations\201806091135052_company.Designer.cs">
+      <DependentUpon>201806091135052_company.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -345,6 +346,7 @@
     <Content Include="Template\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Template\vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Views\Company\jobVacComp.cshtml" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -523,6 +525,10 @@
     <Content Include="Views\Profile\StaticExperience.cshtml" />
     <Content Include="Views\Profile\StaticCertification.cshtml" />
     <Content Include="Views\Profile\StaticSkills.cshtml" />
+    <Content Include="Views\Company\StaticCompany.cshtml" />
+    <Content Include="Views\Company\EditAboutCompany.cshtml" />
+    <Content Include="Views\Company\StaticAboutCompany.cshtml" />
+    <Content Include="Views\Company\editJobVac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -573,6 +579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806091135052_company.resx">
+      <DependentUpon>201806091135052_company.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
