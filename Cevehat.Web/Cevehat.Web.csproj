@@ -548,8 +548,9 @@
     <Content Include="Views\Company\EditAboutCompany.cshtml" />
     <Content Include="Views\Company\StaticAboutCompany.cshtml" />
     <Content Include="Views\Company\editJobVac.cshtml" />
-	<Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
+    <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Shared\loginView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
