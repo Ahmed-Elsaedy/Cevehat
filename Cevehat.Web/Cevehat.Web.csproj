@@ -49,6 +49,12 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -206,6 +212,7 @@
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
@@ -220,6 +227,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\User_SkillsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,13 +276,25 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.cs" />
-    <Compile Include="Migrations\201806071328357_Commit-all-changes.Designer.cs">
-      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
+    <Compile Include="Migrations\201806091135052_company.cs" />
+    <Compile Include="Migrations\201806091135052_company.Designer.cs">
+      <DependentUpon>201806091135052_company.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
     <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
       <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806092202211_t.cs" />
+    <Compile Include="Migrations\201806092202211_t.Designer.cs">
+      <DependentUpon>201806092202211_t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.cs" />
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
+      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.cs" />
+    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.Designer.cs">
+      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -360,6 +380,7 @@
     <Content Include="Template\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Template\vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="Template\vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Views\Company\jobVacComp.cshtml" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -539,6 +560,12 @@
     <Content Include="Views\Profile\StaticSkills.cshtml" />
     <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\AutoCompletee\Index.cshtml" />
+    <Content Include="Views\Company\StaticCompany.cshtml" />
+    <Content Include="Views\Company\EditAboutCompany.cshtml" />
+    <Content Include="Views\Company\StaticAboutCompany.cshtml" />
+    <Content Include="Views\Company\editJobVac.cshtml" />
+	<Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -598,6 +625,15 @@
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CV.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111138354_resolveDbConfict2.resx">
+      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806092202211_t.resx">
+      <DependentUpon>201806092202211_t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111450276_Add_user_applied_to_job.resx">
+      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

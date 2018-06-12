@@ -11,7 +11,11 @@ namespace Cevehat.Web.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: SkillsJobTitle
-
+        /// <summary>
+        /// 
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Index()
         {
@@ -71,7 +75,10 @@ namespace Cevehat.Web.Controllers
         {
             Vacancie.Company = db.Company.Find(Vacancie.CompanyID);
             Vacancie.JobTitle = db.JobTitle.Find(Vacancie.JobTitleID);
-
+            Vacancie.JobRequirements = (from jobreq in db.JobRequirements
+                                        where jobreq.JobVacID == Vacancie.JobVacancieID
+                                        select jobreq).ToList();
+            //Vacancie.Skills;
             return View(Vacancie);
         }
     }

@@ -23,6 +23,18 @@ namespace Cevehat.Web.Models
         public virtual JobTitle JobTitle { get; set; }
         public virtual List<JobRequirements> JobRequirements { get; set; }
         public virtual List<Skill> Skills { get; set; }
+        public virtual List<ApplayedUsers> ApplayedUsers { get; set; }
+    }
+
+    public class ApplayedUsers
+    {
+        [Key]
+        public int ApplayedUsers_Id { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
+        public AppliedUserState AppliedUserState { get; set; }
+
     }
 
     public class JobRequirements
@@ -40,6 +52,15 @@ namespace Cevehat.Web.Models
         Active,
         Closed
     }
+    public enum AppliedUserState
+    {
+        Applied,
+        Shortlisted,
+        w8ing_for_intervew,
+        Rejected,
+        Accepted
+    }
+
     public enum JobType
     {
         FullTime,
