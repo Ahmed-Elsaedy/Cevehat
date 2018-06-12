@@ -1,8 +1,10 @@
 ﻿using Cevehat.Web.Models;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +22,7 @@ namespace Cevehat.Web.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             return View(user);
         }
+       
 
         [HttpGet]//Get Action to view data to user
         public ActionResult EditAbout()
@@ -115,6 +118,7 @@ namespace Cevehat.Web.Controllers
         public ActionResult Certification()
         {
             string userId = User.Identity.GetUserId();
+
             List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
             return View(cert);
         }
@@ -143,19 +147,126 @@ namespace Cevehat.Web.Controllers
                 return View();
             }
         }
-        public ActionResult EditCertification()
+        [HttpGet]
+        public ActionResult EditCertification(int id)
         {
-            return View();
+       
+            string userId = User.Identity.GetUserId();
+            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
+            ViewBag.allCertification = cert;
+            Certification certt = db.Certification.FirstOrDefault(a => a.Cerid == id);
+            if (certt == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(certt);
+            }
         }
 
+        [HttpPost]
+        public ActionResult EditCertification(int id, [Bind(Exclude = "userid,Cerid")]Certification cert)
+        {
+
+            try
+            {
+                Certification oldcert = db.Certification.FirstOrDefault(c => c.Cerid == id);
+                if (cert == null)
+                    return HttpNotFound();
+                else
+                {
+                    oldcert.CerName = cert.CerName;
+                    oldcert.CerPlace = cert.CerPlace;
+                    oldcert.CerYear = cert.CerYear;
+                    db.SaveChanges();
+
+
+                    return RedirectToAction("Create");
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Certification/Delete/5
+        public ActionResult DeleteCertification(int id)
+        {
+            Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
+            if (cert == null)
+                return HttpNotFound("Certifications Not Exists");
+
+            return View(cert);
+        }
+
+        // POST: Certification/Delete/5
+        [HttpPost]
+        public ActionResult DeleteCertification(int id, FormCollection collection)
+        {
+            try
+            {
+                Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
+                if (cert == null)
+                    return HttpNotFound("Certifications Not Exists");
+                db.Certification.Remove(cert);
+                db.SaveChanges();
+                return RedirectToAction("Create");
+            }
+            catch
+            {
+                return View();
+            }
+        }
         public ActionResult EditExperience()
         {
             return View();
         }
+        ///as  admin 
 
+
+
+
+        [HttpGet]
+        public ActionResult matchSkill()
+        {
+            ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName");
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult matchSkill([Bind(Include = "Skill_ID,JbTitle_ID")] JobTitles_Skills jobTitles_Skills)
+        {
+            if (ModelState.IsValid)
+            {
+                db.JobTitles_Skills.Add(jobTitles_Skills);
+                JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
+                jobTitle.SkillCount++;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName", jobTitles_Skills.JbTitle_ID);
+            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title", jobTitles_Skills.Skill_ID);
+            return View(jobTitles_Skills);
+            
+        }
+        [HttpGet]
         public ActionResult EditSkill()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult EditSkill(int id)
+        {
+            return View();
+        }
     }
+
+
+
+  
+
 }

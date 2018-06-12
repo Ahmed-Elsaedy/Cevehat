@@ -1,7 +1,10 @@
 ﻿using Cevehat.Web.Models;
+using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,12 +13,52 @@ namespace Cevehat.Web.Controllers
 {
     public class AboutController : Controller
     {
+        //create object of db context
+        ApplicationDbContext db = new ApplicationDbContext();
+
+        public ActionResult AllData()
+        {
+            string UserId = User.Identity.GetUserId();
+            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
+            List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
+            List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
+            dynamic model = new ExpandoObject();
+            model.Certification = certifications;
+            model.Education = educations;
+            return View();
+        }
+        public ActionResult DownloadCV()
+        {
+            string UserId = User.Identity.GetUserId();
+            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
+            List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
+            List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
+            //dynamic model = new ExpandoObject();
+            //model.Certification = certifications;
+            //model.Education = educations;
+            ReportDocument mycv = new ReportDocument();
+            mycv.Load(Path.Combine(Server.MapPath("~/Reports"), "CV.rpt"));
+            mycv.SetDataSource(certifications);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            try
+            {
+                Stream stream = mycv.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "cv.pdf");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         // GET: About
         [Authorize]
         public ActionResult Index()
         {
-            //create object of db context
-            ApplicationDbContext db = new ApplicationDbContext();
+            
 
             //Get user by ID and user attached to this ID "Global"
             string userId = User.Identity.GetUserId();
