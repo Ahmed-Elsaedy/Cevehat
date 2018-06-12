@@ -9,7 +9,7 @@ namespace Cevehat.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Cevehat.Web.Models.ApplicationDbContext context)

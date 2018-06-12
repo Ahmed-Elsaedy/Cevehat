@@ -281,6 +281,10 @@
     <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
       <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.cs" />
+    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.Designer.cs">
+      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -600,6 +604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806092202211_t.resx">
       <DependentUpon>201806092202211_t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111450276_Add_user_applied_to_job.resx">
+      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
