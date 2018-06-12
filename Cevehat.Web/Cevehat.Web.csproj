@@ -46,12 +46,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -294,16 +288,11 @@
     <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
       <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.cs" />
-    <Compile Include="Migrations\201806111450276_Add_user_applied_to_job.Designer.cs">
-      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
     <Compile Include="Models\Certification.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\DataView.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Experince.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
@@ -316,18 +305,6 @@
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\User_Skills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\CV.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CV.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -461,11 +438,11 @@
     <Content Include="Views\JobVacancies\Details.cshtml" />
     <Content Include="Views\JobVacancies\Edit.cshtml" />
     <Content Include="Views\JobVacancies\Index.cshtml" />
-    <Content Include="Views\Manage\JobRequirements\Create.cshtml" />
-    <Content Include="Views\Manage\JobRequirements\Delete.cshtml" />
-    <Content Include="Views\Manage\JobRequirements\Details.cshtml" />
-    <Content Include="Views\Manage\JobRequirements\Edit.cshtml" />
-    <Content Include="Views\Manage\JobRequirements\Index.cshtml" />
+    <Content Include="Views\JobRequirements\Create.cshtml" />
+    <Content Include="Views\JobRequirements\Delete.cshtml" />
+    <Content Include="Views\JobRequirements\Details.cshtml" />
+    <Content Include="Views\JobRequirements\Edit.cshtml" />
+    <Content Include="Views\JobRequirements\Index.cshtml" />
     <Content Include="Views\JobTitles_Skills\Create.cshtml" />
     <Content Include="Views\JobTitles_Skills\Delete.cshtml" />
     <Content Include="Views\JobTitles_Skills\Details.cshtml" />
@@ -571,12 +548,8 @@
     <Content Include="Views\Company\EditAboutCompany.cshtml" />
     <Content Include="Views\Company\StaticAboutCompany.cshtml" />
     <Content Include="Views\Company\editJobVac.cshtml" />
-	<Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
+    <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Profile\DeleteCertification.cshtml" />
-    <Content Include="Views\Profile\matchSkill.cshtml" />
-    <Content Include="Views\Shared\_Admin1.cshtml" />
-    <Content Include="Views\Profile\CreateSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -591,7 +564,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -628,32 +603,6 @@
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806071328357_Commit-all-changes.resx">
-      <DependentUpon>201806071328357_Commit-all-changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806081347541_Add-date_state_toVacancy.resx">
-      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806111138354_resolveDbConfict2.resx">
-      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806092202211_t.resx">
-      <DependentUpon>201806092202211_t.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806111450276_Add_user_applied_to_job.resx">
-      <DependentUpon>201806111450276_Add_user_applied_to_job.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\CV.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CV.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
