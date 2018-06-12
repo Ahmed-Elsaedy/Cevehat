@@ -20,62 +20,28 @@ namespace Cevehat.Web.Controllers
         }
 
         // GET: Explore/SearchBySkills
-        //[HttpGet]
-        //public ActionResult SearchBySkills()
-        //{
-        //    List<ChSkills> AllSkills = new List<ChSkills>();
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        string userid = User.Identity.GetUserId();
-        //        foreach (Skill skill in db.Skill.ToList())
-        //        {
-        //            User_Skills usskill = (from uskills in db.User_Skills
-        //                                   where uskills.SkillID == skill.Skill_Id
-        //                                   && uskills.UserId == userid
-        //                                   select uskills).FirstOrDefault();
-
-        //            bool skillExists = usskill != null;
-        //            AllSkills.Add(new ChSkills() { skill = skill, ischeckd = skillExists });
-        //        }
-        //    }
-        //    else
-        //        foreach (Skill skill in db.Skill.ToList())
-        //        {
-        //            AllSkills.Add(new ChSkills() { skill = skill, ischeckd = false });
-        //        }
-
-        //    return View(AllSkills);
-        //}
-
         [HttpGet]
         public ActionResult SearchBySkills()
         {
             ApplicationUser existsuser = db.Users.Find(User.Identity.GetUserId());
             List<TitlePer> AllTitlesToFit = new List<TitlePer>();
             List<Skill> usertecskills = existsuser.TecSkills;
-            //List<Skill> userskills = from skills in db.Skill
-            //                         where usertecskills.Contains()
-
-            List < JobTitle > jobtitles = (from titles in db.JobTitle
-                                           where titles.SkillCount > 0
-                                           select titles).ToList();
-            //, (from titleskill in db.JobTitles_Skills
-            //   where userskills.Contains(titleskill.skill)
-            //   select titleskill).Count() / titles.JobTitles_Skills.Count
+            List<JobTitle> jobtitles = (from titles in db.JobTitle
+                                        where titles.SkillCount > 0
+                                        select titles).ToList();
             foreach (JobTitle Title in jobtitles)
             {
-                //var count = db.JobTitles_Skills.Where(x => usertecskills.Any(y => y.Skill_Id == x.Skill_ID)).Count();
-
-                var list = usertecskills.Select(x => x.Skill_Id).ToList();
+                var listSkillsIds = usertecskills.Select(x => x.Skill_Id).ToList();
                 var titleCount = (from titleskill in Title.JobTitles_Skills
-                                where list.Contains(titleskill.skill.Skill_Id)
-                                select titleskill.Skill_ID).ToList().Count();
-
-
-                decimal Pers = (titleCount / Title.SkillCount )*100;
-                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per= Pers });
+                                  where listSkillsIds.Contains(titleskill.skill.Skill_Id)
+                                  select titleskill.Skill_ID).ToList().Count();
+                decimal Pers = (titleCount / Title.SkillCount) * 100;
+                List<Skill> RemaingSkills = (from titleskills in Title.JobTitles_Skills
+                                             where !listSkillsIds.Contains(titleskills.skill.Skill_Id)
+                                             select titleskills.skill).ToList();
+                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Math.Round(Pers, 2), RemaingSkills = RemaingSkills });
             }
-
+            AllTitlesToFit = AllTitlesToFit.OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
             return View(AllTitlesToFit);
         }
     }
@@ -84,6 +50,7 @@ namespace Cevehat.Web.Controllers
     {
         public JobTitle JobTitle { get; set; }
         public decimal per { get; set; }
+        public List<Skill> RemaingSkills { get; set; }
 
     }
 

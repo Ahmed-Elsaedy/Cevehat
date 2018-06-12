@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -217,6 +223,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\User_SkillsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,6 +275,18 @@
     <Compile Include="Migrations\201806091135052_company.cs" />
     <Compile Include="Migrations\201806091135052_company.Designer.cs">
       <DependentUpon>201806091135052_company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
+    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
+      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806092202211_t.cs" />
+    <Compile Include="Migrations\201806092202211_t.Designer.cs">
+      <DependentUpon>201806092202211_t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.cs" />
+    <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
+      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -529,6 +548,8 @@
     <Content Include="Views\Company\EditAboutCompany.cshtml" />
     <Content Include="Views\Company\StaticAboutCompany.cshtml" />
     <Content Include="Views\Company\editJobVac.cshtml" />
+	<Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -579,9 +600,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806091135052_company.resx">
-      <DependentUpon>201806091135052_company.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
