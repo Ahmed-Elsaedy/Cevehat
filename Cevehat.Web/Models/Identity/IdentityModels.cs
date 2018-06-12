@@ -44,7 +44,7 @@ namespace Cevehat.Web.Models
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<JobRequirements> JobRequirements { get; set; }
         public virtual DbSet<User_Skills> User_Skills { get; set; }
-        public virtual DbSet<ApplayedUsers> ApplayedUsers { get; set; }
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

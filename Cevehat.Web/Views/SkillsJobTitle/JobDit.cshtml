@@ -1,7 +1,4 @@
-﻿@using Cevehat.Web.Models
-@model Cevehat.Web.Models.JobVacancie
-
-
+﻿@model Cevehat.Web.Models.JobVacancie
 
 <div class="dj-item">
     <div class="title_top info">
@@ -124,16 +121,10 @@
                         <h2>Description</h2><div class="desc_content">
                             <h4 style="box-sizing: border-box; font-family: Oswald, sans-serif; font-weight: 500; line-height: 1.4; color: #7e8890; margin: 16px 0px; font-size: 25px; letter-spacing: 1px;">Responsibilities</h4>
                             <p style="box-sizing: border-box; margin: 0px 0px 10px; color: #7e8890; font-family: 'Open Sans', sans-serif; font-size: 16px;">&nbsp;</p>
-                            <ul>
-                                @foreach (JobRequirements req in Model.JobRequirements)
-                                {
-                                    <li style="box-sizing: border-box;">@req.ReqText</li>
-                                }
-                            </ul>
                             <h4 style="box-sizing: border-box; font-family: Oswald, sans-serif; font-weight: 500; line-height: 1.4; color: #7e8890; margin: 16px 0px; font-size: 25px; letter-spacing: 1px;">qualifications</h4>
                             <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 28px; color: #7e8890; font-family: 'Open Sans', sans-serif; font-size: 16px;">
                                 <li style="box-sizing: border-box;">Interest in user interface design.</li>
-
+                                <li style="box-sizing: border-box;">Web application development experience.</li>
                                 <li style="box-sizing: border-box;">Experience working on cross-browser platforms.</li>
                                 <li style="box-sizing: border-box;">Development experience designing object-oriented JavaScript.</li>
                                 <li style="box-sizing: border-box;">Experience with user interface frameworks such as XUL, Flex and XAML.</li>
@@ -147,7 +138,7 @@
                             <div class="row row_company_name">
                                 <span class="row_label">Company Name</span>
                                 <span class="row_value" rel="">
-                                    @Model.Company.CompanyName
+                                    semsun
                                 </span>
                             </div>
                             <div class="row row_degree">
@@ -157,9 +148,9 @@
                                 </span>
                             </div>
                             <div class="row row_experience_level">
-                                <span class="row_label">Experience</span>
+                                <span class="row_label">Experience Level</span>
                                 <span class="row_value" rel="">
-                                    @Model.ExpYears
+                                    Mid Level
                                 </span>
                             </div>
                             <div class="row row_salary_range">

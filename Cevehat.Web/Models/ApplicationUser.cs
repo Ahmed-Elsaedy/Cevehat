@@ -27,8 +27,6 @@ namespace Cevehat.Web.Models
         public virtual List<Experince> Experinces { get; set; }
         public virtual List<Education> Educations { get; set; }
         public virtual List<User_Skills> User_TecSkills { get; set; }
-        public virtual List<ApplayedUsers> ApplayedUsers { get; set; }
-
         [ForeignKey("Company")]
         public int? CompanyID { get; set; }
         public virtual Company Company { get; set; }
