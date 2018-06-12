@@ -272,21 +272,9 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806091135052_company.cs" />
-    <Compile Include="Migrations\201806091135052_company.Designer.cs">
-      <DependentUpon>201806091135052_company.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
-    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
-      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806092202211_t.cs" />
-    <Compile Include="Migrations\201806092202211_t.Designer.cs">
-      <DependentUpon>201806092202211_t.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806111138354_resolveDbConfict2.cs" />
-    <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
-      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
+    <Compile Include="Migrations\201806121042412_Last_update_of_database.cs" />
+    <Compile Include="Migrations\201806121042412_Last_update_of_database.Designer.cs">
+      <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -602,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121042412_Last_update_of_database.resx">
+      <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
