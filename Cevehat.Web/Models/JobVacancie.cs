@@ -28,6 +28,8 @@ namespace Cevehat.Web.Models
 
     public class ApplayedUsers
     {
+        [Key]
+        public int ApplayedUsers_ID { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }

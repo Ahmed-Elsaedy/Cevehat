@@ -43,9 +43,9 @@
             @Html.DisplayFor(modelItem => item.CerYear)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Cerid }) |
+            @Html.ActionLink("Edit", "EditCertification", new { id=item.Cerid }) |
             @Html.ActionLink("Details", "Details", new { id=item.Cerid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Cerid })
+            @Html.ActionLink("Delete", "DeleteCertification", new { id=item.Cerid })
         </td>
     </tr>
 }

@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -210,6 +213,7 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
     <Compile Include="Controllers\ExploreController.cs" />
@@ -272,21 +276,9 @@
     <Compile Include="Migrations\201806061444132_6-6-2018-4.40.Designer.cs">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806091135052_company.cs" />
-    <Compile Include="Migrations\201806091135052_company.Designer.cs">
-      <DependentUpon>201806091135052_company.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.cs" />
-    <Compile Include="Migrations\201806081347541_Add-date_state_toVacancy.Designer.cs">
-      <DependentUpon>201806081347541_Add-date_state_toVacancy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806092202211_t.cs" />
-    <Compile Include="Migrations\201806092202211_t.Designer.cs">
-      <DependentUpon>201806092202211_t.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806111138354_resolveDbConfict2.cs" />
-    <Compile Include="Migrations\201806111138354_resolveDbConfict2.Designer.cs">
-      <DependentUpon>201806111138354_resolveDbConfict2.cs</DependentUpon>
+    <Compile Include="Migrations\201806121042412_Last_update_of_database.cs" />
+    <Compile Include="Migrations\201806121042412_Last_update_of_database.Designer.cs">
+      <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -305,6 +297,12 @@
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\User_Skills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -324,6 +322,41 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="JobBoard\_Layout.cshtml" />
+    <Content Include="JobBoard\Job Board_files\bootstrap.min.css" />
+    <Content Include="JobBoard\Job Board_files\company-1-post.png" />
+    <Content Include="JobBoard\Job Board_files\company-1.png" />
+    <Content Include="JobBoard\Job Board_files\company-2-post.png" />
+    <Content Include="JobBoard\Job Board_files\company-2.png" />
+    <Content Include="JobBoard\Job Board_files\company-3.png" />
+    <Content Include="JobBoard\Job Board_files\company-4.png" />
+    <Content Include="JobBoard\Job Board_files\company-5.png" />
+    <Content Include="JobBoard\Job Board_files\dummy-job-open-1.png" />
+    <Content Include="JobBoard\Job Board_files\dummy-job-open-2.png" />
+    <Content Include="JobBoard\Job Board_files\dummy-slide-1.jpg" />
+    <Content Include="JobBoard\Job Board_files\dummy-slide-2.jpg" />
+    <Content Include="JobBoard\Job Board_files\font-awesome.css" />
+    <Content Include="JobBoard\Job Board_files\jslider.css" />
+    <Content Include="JobBoard\Job Board_files\jslider.round.css" />
+    <Content Include="JobBoard\Job Board_files\logo.png" />
+    <Content Include="JobBoard\Job Board_files\owl.carousel.css" />
+    <Content Include="JobBoard\Job Board_files\owl.theme.css" />
+    <Content Include="JobBoard\Job Board_files\owl.transitions.css" />
+    <Content Include="JobBoard\Job Board_files\step-icon-1.png" />
+    <Content Include="JobBoard\Job Board_files\step-icon-2.png" />
+    <Content Include="JobBoard\Job Board_files\step-icon-3.png" />
+    <Content Include="JobBoard\Job Board_files\step-icon-4.png" />
+    <Content Include="JobBoard\Job Board_files\style.css" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-1.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-10.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-2.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-3.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-4.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-5.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-6.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-7.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-8.jpg" />
+    <Content Include="JobBoard\Job Board_files\testimony-image-9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -339,6 +372,24 @@
     <Content Include="Template\js\resume.js" />
     <Content Include="Template\js\resume.min.js" />
     <Content Include="Template\_ProfileLayout.cshtml" />
+    <Content Include="JobBoard\Job Board_files\bootstrap.min.js.download" />
+    <Content Include="JobBoard\Job Board_files\common.js.download" />
+    <Content Include="JobBoard\Job Board_files\css" />
+    <Content Include="JobBoard\Job Board_files\css%281%29" />
+    <Content Include="JobBoard\Job Board_files\draggable-0.1.js.download" />
+    <Content Include="JobBoard\Job Board_files\job-board.js.download" />
+    <Content Include="JobBoard\Job Board_files\jquery.dependClass-0.1.js.download" />
+    <Content Include="JobBoard\Job Board_files\jquery.easytabs.min.js.download" />
+    <Content Include="JobBoard\Job Board_files\jquery.min.js.download" />
+    <Content Include="JobBoard\Job Board_files\jquery.numberformatter-1.2.3.js.download" />
+    <Content Include="JobBoard\Job Board_files\jquery.slider.js.download" />
+    <Content Include="JobBoard\Job Board_files\js" />
+    <Content Include="JobBoard\Job Board_files\jshashtable-2.1_src.js.download" />
+    <Content Include="JobBoard\Job Board_files\modernizr.custom.49511.js.download" />
+    <Content Include="JobBoard\Job Board_files\owl.carousel.js.download" />
+    <Content Include="JobBoard\Job Board_files\stats.js.download" />
+    <Content Include="JobBoard\Job Board_files\tmpl.js.download" />
+    <Content Include="JobBoard\Job Board_files\util.js.download" />
     <None Include="Template\_LoginRegisterLayout.cshtml" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
@@ -551,6 +602,7 @@
     <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Shared\loginView.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -565,7 +617,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -602,6 +656,16 @@
     <EmbeddedResource Include="Migrations\201806061444132_6-6-2018-4.40.resx">
       <DependentUpon>201806061444132_6-6-2018-4.40.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121042412_Last_update_of_database.resx">
+      <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CV.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

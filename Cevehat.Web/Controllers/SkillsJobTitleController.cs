@@ -1,4 +1,5 @@
 ﻿using Cevehat.Web.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +78,13 @@ namespace Cevehat.Web.Controllers
             Vacancie.JobTitle = db.JobTitle.Find(Vacancie.JobTitleID);
 
             return View(Vacancie);
+        }
+
+        public ActionResult ApplayToJob(int Id)
+        {
+            JobVacancie applayedVac = db.JobVacancie.Find(Id);
+            applayedVac.ApplayedUsers.Add(new ApplayedUsers() { UserId = User.Identity.GetUserId() , AppliedUserState = AppliedUserState.Applied , ApplicationUser= db.Users.Find(User.Identity.GetUserId()) });
+            return View();
         }
     }
 }
