@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-    public class AutoCompleteController : Controller
+    public class AutoCompleteeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: AutoComplete
@@ -25,7 +25,7 @@ namespace Cevehat.Web.Controllers
 
         public JsonResult GetAutoCompleteSkillTitle(string search)
         {
-         
+
             List<SKILLNAME> allsearch = db.Skill.Where(x => x.Title.Contains(search)).Select(x => new SKILLNAME
             {
                 Id = x.Skill_Id,
@@ -38,5 +38,5 @@ namespace Cevehat.Web.Controllers
             public int Id { get; set; }
             public string Name { get; set; }
         }
-            }
-        }
+    }
+}

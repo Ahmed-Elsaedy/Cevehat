@@ -1,7 +1,9 @@
 ﻿using Cevehat.Web.Models;
+using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +12,30 @@ namespace Cevehat.Web.Controllers
 {
     public class AboutController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+        public ActionResult DownloadCV()
+        {
+            string UserId = User.Identity.GetUserId();
+            List<Certification> certs = db.Certification.Where(c => c.userid == UserId).ToList<Certification>();
+            ReportDocument myCv = new ReportDocument();
+            myCv.Load(Path.Combine(Server.MapPath("~/Reprot"), "CV.rpt"));
+            myCv.SetDataSource(certs);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            try
+            {
+                Stream stm = myCv.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stm.Seek(0, SeekOrigin.Begin);
+                return File(stm, "application/pdf", "mycv.pdf");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         // GET: About
         [Authorize]
         public ActionResult Index()

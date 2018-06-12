@@ -1,4 +1,5 @@
-﻿@model  Cevehat.Web.Models.Skill
+﻿
+@model  Cevehat.Web.Models.Skill
 @{
     ViewBag.Title = "Index";
     Layout = "~/Template/_ProfileLayout.cshtml";
@@ -19,7 +20,7 @@
     $("#searchInput").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: '@Url.Action("GetAutoCompleteSkillTitle", "AutoComplete")',
+                url: '@Url.Action("GetAutoCompleteSkillTitle", "AutoCompletee")',
                 dataType: "json",
                 data: { search: $("#searchInput").val() },
                 success: function (data) {

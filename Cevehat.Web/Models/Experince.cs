@@ -14,7 +14,7 @@ namespace Cevehat.Web.Models
         public string Place { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool IsPresent { get; set; }
+       // public bool IsPresent { get; set; }
         public string Position { get; set; }
         public string Responsbilty { get; set; }
         [ForeignKey("ApplicationUser")]
