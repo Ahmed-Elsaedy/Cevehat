@@ -1,272 +1,179 @@
 ﻿using Cevehat.Web.Models;
-
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    public class AboutViewModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Gender Gender { get; set; }
+        public string Phone { get; set; }
+        public MilitaryStatus MilitaryStatus { get; set; }
+        public MaritalStutes MaritaSutes { get; set; }
+        public string Address { get; set; }
+        public string Summary { get; set; }
+        public string FacebookUrl { get; set; }
+        public string TwitterUrl { get; set; }
+        public string LinkedUrl { get; set; }
+    }
 
     [Authorize]
     public class ProfileController : Controller
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
+
+        private ApplicationUser _CurrentUser;
+        public ApplicationUser CurrentUser
+        {
+            get
+            {
+                if (_CurrentUser == null)
+                    _CurrentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                return _CurrentUser;
+            }
+        }
 
         public ActionResult Static()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            return View(user);
+            return View(CurrentUser);
         }
-       
 
-        [HttpGet]//Get Action to view data to user
+        [HttpGet]
         public ActionResult EditAbout()
         {
-            //create object of db context
-            ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            //Get user by ID and user attached to this ID "Global"
-            string userId = User.Identity.GetUserId();
-            ApplicationUser _currentUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-
-            //Get list of all required and send it with a "ViewBag" 
-            List<string> _allGenders = Enum.GetNames(typeof(Gender)).ToList();
-            List<string> _allMilitaryStatus = Enum.GetNames(typeof(MilitaryStatus)).ToList();
-            List<string> _allMaritalStatus = Enum.GetNames(typeof(MaritalStutes)).ToList();
-
-            //drop down list take a thing of type "SelectListItem"
-            List<SelectListItem> _genderList = new List<SelectListItem>();
-            List<SelectListItem> _MilitarList = new List<SelectListItem>();
-            List<SelectListItem> _MaritalList = new List<SelectListItem>();
-
-            //iteration list of genders
-            foreach (var item in _allGenders)
+            AboutViewModel viewModel = new AboutViewModel()
             {
-                bool _IsSelected = false;
-                if (_currentUser.Gender.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _genderList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //iteration list of Marital status
-            foreach (var item in _allMaritalStatus)
-            {
-                bool _IsSelected = false;
-                if (_currentUser.MaritaSutes.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _MaritalList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //iteration list of Military status
-            foreach (var item in _allMilitaryStatus)
-            {
-                bool _IsSelected = false;
-                if (_currentUser.MilitaryStatus.ToString() == item.ToString())
-                {
-                    _IsSelected = true;
-                }
-                _MilitarList.Add(new SelectListItem() { Text = item, Value = item, Selected = _IsSelected });
-            }
-            //return all viewbags with all lists => Gender / military Status / Marital Status
-            ViewBag.MilitaryList = _MilitarList;
-
-            ViewBag.MaritalList = _MaritalList;
-
-            ViewBag.GendersList = _genderList;
-            return View(_currentUser);
+                FirstName = user.Fname,
+                LastName = user.Lname,
+                Address = user.Address,
+                FacebookUrl = user.FacebookUrl,
+                Gender = user.Gender,
+                LinkedUrl = user.LinkinUrl,
+                MilitaryStatus = user.MilitaryStatus,
+                Summary = user.Summary,
+                TwitterUrl = user.TwitterUrl
+            };
+            return PartialView(viewModel);
         }
 
-
-        public ActionResult EditAbout2(ApplicationUser model)
+        [HttpPost]
+        public ActionResult EditAbout(AboutViewModel model)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             string userId = User.Identity.GetUserId();
             ApplicationUser _currentUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-            _currentUser.Fname = model.Fname;
-            _currentUser.Lname = model.Lname;
+
+            _currentUser.Fname = model.FirstName;
+            _currentUser.Lname = model.LastName;
             _currentUser.Gender = model.Gender;
             _currentUser.MilitaryStatus = model.MilitaryStatus;
             _currentUser.MaritaSutes = model.MaritaSutes;
             _currentUser.Address = model.Address;
             _currentUser.Summary = model.Summary;
             _currentUser.FacebookUrl = model.FacebookUrl;
-            _currentUser.LinkinUrl = model.LinkinUrl;
+            _currentUser.LinkinUrl = model.LinkedUrl;
+            _currentUser.TwitterUrl = model.TwitterUrl;
+
             db.SaveChanges();
-            return RedirectToAction("EditAbout");
+            return PartialView("StaticAbout", _currentUser);
         }
+
 
         [HttpGet]
-        public ActionResult EditEducation()
+        public ActionResult EditEducation(int? educationId)
         {
-            
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult EditEducation(ApplicationUser model)
-        {
-            return View();
-        }
-
-        public ActionResult Certification()
-        {
-            string userId = User.Identity.GetUserId();
-
-            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            return View(cert);
-        }
-        // GET: Certification/Create
-        [HttpGet]
-        public ActionResult CreateCertification()
-        {
-            string userId = User.Identity.GetUserId();
-            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            ViewBag.allCertification = cert;
-            return View();
-        }
-        // POST: Certification/Create
-        [HttpPost]
-        public ActionResult CreateCertification([Bind(Exclude ="Cerid")] Certification cert)
-        {
-            try
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                cert.userid= User.Identity.GetUserId();
-                db.Certification.Add(cert);
-                db.SaveChanges();
-                return RedirectToAction("Certification");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        [HttpGet]
-        public ActionResult EditCertification(int id)
-        {
-       
-            string userId = User.Identity.GetUserId();
-            List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            ViewBag.allCertification = cert;
-            Certification certt = db.Certification.FirstOrDefault(a => a.Cerid == id);
-            if (certt == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(certt);
+                Education edu = educationId.HasValue ? db.Education.Find(educationId) : new Education();
+                return PartialView(edu);
             }
         }
 
         [HttpPost]
-        public ActionResult EditCertification(int id, [Bind(Exclude = "userid,Cerid")]Certification cert)
+        public ActionResult EditEducation(Education model)
         {
-
-            try
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                Certification oldcert = db.Certification.FirstOrDefault(c => c.Cerid == id);
-                if (cert == null)
-                    return HttpNotFound();
-                else
+                model.userId = CurrentUser.Id;
+                if (model.EducationId != 0)
                 {
-                    oldcert.CerName = cert.CerName;
-                    oldcert.CerPlace = cert.CerPlace;
-                    oldcert.CerYear = cert.CerYear;
-                    db.SaveChanges();
-
-
-                    return RedirectToAction("Create");
+                    Education edu = db.Education.Find(model.EducationId);
+                    db.Entry(edu).CurrentValues.SetValues(model);
                 }
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Certification/Delete/5
-        public ActionResult DeleteCertification(int id)
-        {
-            Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
-            if (cert == null)
-                return HttpNotFound("Certifications Not Exists");
-
-            return View(cert);
-        }
-
-        // POST: Certification/Delete/5
-        [HttpPost]
-        public ActionResult DeleteCertification(int id, FormCollection collection)
-        {
-            try
-            {
-                Certification cert = db.Certification.FirstOrDefault(c => c.Cerid == id);
-                if (cert == null)
-                    return HttpNotFound("Certifications Not Exists");
-                db.Certification.Remove(cert);
+                else
+                    db.Education.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Create");
-            }
-            catch
-            {
-                return View();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.userId);
+                return PartialView("StaticEducation", CurrentUser);
             }
         }
-        public ActionResult EditExperience()
-        {
-            return View();
-        }
-        ///as  admin 
-
-
 
 
         [HttpGet]
-        public ActionResult matchSkill()
+        public ActionResult EditExperience(int? experienceId)
         {
-            ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName");
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title");
-            return View();
-        }
-        [HttpPost]
-        public ActionResult matchSkill([Bind(Include = "Skill_ID,JbTitle_ID")] JobTitles_Skills jobTitles_Skills)
-        {
-            if (ModelState.IsValid)
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                db.JobTitles_Skills.Add(jobTitles_Skills);
-                JobTitle jobTitle = db.JobTitle.Find(jobTitles_Skills.JbTitle_ID);
-                jobTitle.SkillCount++;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Experince exp = experienceId.HasValue ? db.Experinces.Find(experienceId) : new Experince();
+                return PartialView(exp);
             }
-
-            ViewBag.JbTitle_ID = new SelectList(db.JobTitle, "JobId", "JobName", jobTitles_Skills.JbTitle_ID);
-            ViewBag.Skill_ID = new SelectList(db.Skill, "Skill_Id", "Title", jobTitles_Skills.Skill_ID);
-            return View(jobTitles_Skills);
-            
-        }
-        [HttpGet]
-        public ActionResult EditSkill()
-        {
-            return View();
         }
 
         [HttpPost]
-        public ActionResult EditSkill(int id)
+        public ActionResult EditExperience(Experince model)
         {
-            return View();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                model.UserID = CurrentUser.Id;
+                if (model.ExpId != 0)
+                {
+                    Experince exp = db.Experinces.Find(model.ExpId);
+                    db.Entry(exp).CurrentValues.SetValues(model);
+                }
+                else
+                    db.Experinces.Add(model);
+                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.UserID);
+                return PartialView("StaticExperience", CurrentUser);
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult EditCertification(int? Cerid)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Certification cer = Cerid.HasValue ? db.Certification.Find(Cerid) : new Certification();
+                return PartialView(cer);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditCertification(Certification model)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                model.userid = CurrentUser.Id;
+                if (model.Cerid != 0)
+                {
+                    Certification cer = db.Certification.Find(model.Cerid);
+                    db.Entry(cer).CurrentValues.SetValues(model);
+                }
+                else
+                    db.Certification.Add(model);
+                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(a => a.Id == model.userid);
+                return PartialView("StaticCertification", CurrentUser);
+            }
         }
     }
-
-
-
-  
-
 }

@@ -1,0 +1,34 @@
+﻿@using Cevehat.Web.Models
+@model  ApplicationUser
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="certification">
+    <div class="my-auto">
+        <div class="float-right">
+            @Ajax.ActionLink("New Certification", "EditCertification", "Profile", new AjaxOptions() {
+           HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId= "modalBody", OnSuccess= "showModal('New Certification')"
+       }, new { @class = "btn btn-sm btn-primary" })
+        </div>
+        <h2 class="mb-5">Awards &amp; Certifications</h2>
+        <ul class="fa-ul mb-0">
+            @foreach (Certification cert in Model.Certifications)
+            {
+                <li>
+                    <div>
+                        <i class="fa-li fa fa-trophy text-warning"></i>
+                        <span>@cert.CerName from <strong>@cert.CerPlace</strong> (@cert.CerYear.ToString("yyyy"))</span>
+
+                        <div class="float-right">
+                            @Ajax.ActionLink("Edit", "EditCertification", "Profile", new { Cerid = cert.Cerid }, new AjaxOptions() {
+                               HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId= "modalBody", OnSuccess="showModal('Edit About')" }, new { @class = "mx-2" })
+
+                            @Html.ActionLink("Delete", "Delete", "Education", new { Cerid = cert.Cerid }, new { @class = "" })
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+

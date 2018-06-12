@@ -1,0 +1,182 @@
+﻿@using Cevehat.Web.Models
+@model Cevehat.Web.Models.JobVacancie
+
+
+
+<div class="dj-item">
+    <div class="title_top info">
+        <h2>@Model.JobTitle.JobName</h2><span class="type_button" style="display:inline-block;
+			 			border:1px solid #E32B75;background:#CC5092;color:#FFFFFF;border-radius:2px;padding:2px 4px;margin:3px 5px;">@Model.JobType</span>
+                </div>		<div class="dj-item-in">
+
+                    <div class="djcf_images_generaldet_box">
+                        <div class="images_wrap" style="width:200px">
+                            <div class="images">
+                                <div class="djc_images">
+                                    <div class="djc_mainimage">
+
+                                    </div>
+                                    <a id="djc_lb_0" rel="lightbox-djitem" title="client6" href="/joomla/premium/et-jobportal/components/com_djclassifieds/images/item/45_client6_thb.jpg" style="display: none;"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            this.DJCFImageSwitcher = function () {
+                                var mainimagelink = document.id('djc_mainimagelink');
+                                var mainimage = document.id('djc_mainimage');
+                                var thumbs = document.id('djc_thumbnails') ? document.id('djc_thumbnails').getElements('img') : null;
+                                var thumblinks = document.id('djc_thumbnails') ? document.id('djc_thumbnails').getElements('a') : null;
+
+                                if (mainimagelink && mainimage) {
+                                    mainimagelink.removeEvents('click').addEvent('click', function (evt) {
+                                        var rel = mainimagelink.rel;
+                                        document.id(rel).fireEvent('click', document.id(rel));
+
+                                        //if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+                                        return false;
+                                        //}
+                                        //return true;
+                                    });
+                                }
+
+                                if (!mainimage || !mainimagelink || !thumblinks || !thumbs) return false;
+
+                                thumblinks.each(function (thumblink, index) {
+                                    var fx = new Fx.Tween(mainimage, { link: 'cancel', duration: 200 });
+
+                                    thumblink.addEvent('click', function (event) {
+                                        event.preventDefault();
+                                        //new Event(element).stop();
+                                        /*
+                                        mainimage.onload = function() {
+                                            fx.start('opacity',0,1);
+                                        };
+                                        */
+                                        var img = new Image();
+                                        img.onload = function () {
+                                            fx.start('opacity', 0, 1);
+                                        };
+
+                                        fx.start('opacity', 1, 0).chain(function () {
+                                            mainimagelink.href = thumblink.href;
+                                            mainimagelink.title = thumblink.title;
+                                            mainimagelink.rel = 'djc_lb_' + index;
+                                            img.src = thumblink.rel;
+                                            mainimage.src = img.src;
+                                            mainimage.alt = thumblink.title;
+                                        });
+                                        return false;
+                                    });
+                                });
+                            };
+
+                            window.addEvent('load', function () {
+                                var img_width = document.id('dj-classifieds').getElement('.djc_images').getSize().x;
+                                var dj_item = document.id('dj-classifieds').getElement('.djcf_images_generaldet_box').getSize().x;
+                                var general_det = dj_item - img_width - 1;
+                                if (general_det < 150) {
+                                    document.id('dj-classifieds').getElement('.general_det').addClass('general_det_s');
+                                }
+                                if (general_det < 301) {
+                                    document.id('dj-classifieds').getElement('.general_det').addClass('general_det_m');
+                                }
+                                document.id('dj-classifieds').getElement('.general_det').setStyle('width', general_det);
+                            });
+                            window.addEvent('domready', function () {
+                                DJCFImageSwitcher();
+                            });
+                        </script>
+                        <div class="general_det" style="width: 927px;">
+                            <div class="general_det_in">
+
+
+                                <div class="row_gd djcf_contact">
+                                    <div class="contact_mainrow">
+                                        <span class="row_label">Contact</span>
+                                        <span class="row_value">
+                                            job@enginetemplates.com<br>
+                                            1-999-678-000<br><a target="_blank" href="http://@Model.Company.CompanyWebSite">@Model.Company.CompanyWebSite</a>
+                                        </span>
+                                    </div>
+
+
+                                </div>
+                                <div class="row_gd added">
+                                    <span class="row_label">Added</span>
+                                    <span class="row_value">
+                                        @Model.Date
+                                    </span>
+                                </div>
+                                <div class="row_gd user_name">
+                                    <span class="row_label">Created by</span>
+                                    <div class="row_value">
+                                        <div class="profile_item_box">
+                                            <div class="profile_name_data">
+                                                <a title="See all user adverts" class="profile_name" href="#">@Model.Company.CompanyName</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h2>Description</h2><div class="desc_content">
+                            <h4 style="box-sizing: border-box; font-family: Oswald, sans-serif; font-weight: 500; line-height: 1.4; color: #7e8890; margin: 16px 0px; font-size: 25px; letter-spacing: 1px;">Responsibilities</h4>
+                            <p style="box-sizing: border-box; margin: 0px 0px 10px; color: #7e8890; font-family: 'Open Sans', sans-serif; font-size: 16px;">&nbsp;</p>
+                            <ul>
+                                @foreach (JobRequirements req in Model.JobRequirements)
+                                {
+                                    <li style="box-sizing: border-box;">@req.ReqText</li>
+                                }
+                            </ul>
+                            <h4 style="box-sizing: border-box; font-family: Oswald, sans-serif; font-weight: 500; line-height: 1.4; color: #7e8890; margin: 16px 0px; font-size: 25px; letter-spacing: 1px;">qualifications</h4>
+                            <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; line-height: 28px; color: #7e8890; font-family: 'Open Sans', sans-serif; font-size: 16px;">
+                                <li style="box-sizing: border-box;">Interest in user interface design.</li>
+
+                                <li style="box-sizing: border-box;">Experience working on cross-browser platforms.</li>
+                                <li style="box-sizing: border-box;">Development experience designing object-oriented JavaScript.</li>
+                                <li style="box-sizing: border-box;">Experience with user interface frameworks such as XUL, Flex and XAML.</li>
+                                <li style="box-sizing: border-box;">Knowledge of user interface design.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="custom_det">
+                        <h2>Specific details</h2>
+                        <div class="custom_det_content">
+                            <div class="row row_company_name">
+                                <span class="row_label">Company Name</span>
+                                <span class="row_value" rel="">
+                                    @Model.Company.CompanyName
+                                </span>
+                            </div>
+                            <div class="row row_degree">
+                                <span class="row_label">Degree</span>
+                                <span class="row_value" rel="">
+                                    2 year Degree
+                                </span>
+                            </div>
+                            <div class="row row_experience_level">
+                                <span class="row_label">Experience</span>
+                                <span class="row_value" rel="">
+                                    @Model.ExpYears
+                                </span>
+                            </div>
+                            <div class="row row_salary_range">
+                                <span class="row_label">Salary Range</span>
+                                <span class="row_value djsvoc" title="8200 USD" rel="">
+                                    8200 USD
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="localization_det">
+                        <h2>Location</h2>
+                        <div class="row">
+                            <span class="row_value" style="display:inline-block;">
+                                Westminster<br>14325 Crescent Landing
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -23,40 +23,40 @@ namespace Cevehat.Web.Controllers
         [HttpGet]
         public ActionResult SearchBySkills()
         {
-            List<ChSkills> AllSkills = new List<ChSkills>();
-            if (User.Identity.IsAuthenticated)
+            ApplicationUser existsuser = db.Users.Find(User.Identity.GetUserId());
+            List<TitlePer> AllTitlesToFit = new List<TitlePer>();
+            List<Skill> usertecskills = existsuser.TecSkills;
+            List<JobTitle> jobtitles = (from titles in db.JobTitle
+                                        where titles.SkillCount > 0
+                                        select titles).ToList();
+            foreach (JobTitle Title in jobtitles)
             {
-                string userid = User.Identity.GetUserId();
-                foreach (Skill skill in db.Skill.ToList())
-                {
-                    User_Skills usskill = (from uskills in db.User_Skills
-                                           where uskills.SkillID == skill.Skill_Id
-                                           && uskills.UserId == userid
-                                           select uskills).FirstOrDefault();
-
-                    bool skillExists = usskill != null;
-                    AllSkills.Add(new ChSkills() { skill = skill, ischeckd = skillExists });
-                }
+                var listSkillsIds = usertecskills.Select(x => x.Skill_Id).ToList();
+                var titleCount = (from titleskill in Title.JobTitles_Skills
+                                  where listSkillsIds.Contains(titleskill.skill.Skill_Id)
+                                  select titleskill.Skill_ID).ToList().Count();
+                decimal Pers = (titleCount / Title.SkillCount) * 100;
+                List<Skill> RemaingSkills = (from titleskills in Title.JobTitles_Skills
+                                             where !listSkillsIds.Contains(titleskills.skill.Skill_Id)
+                                             select titleskills.skill).ToList();
+                AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Math.Round(Pers, 2), RemaingSkills = RemaingSkills });
             }
-            else
-                foreach (Skill skill in db.Skill.ToList())
-                {
-                    AllSkills.Add(new ChSkills() { skill = skill, ischeckd = false });
-                }
-
-            return View(AllSkills);
-        }
-
-        [HttpPost]
-        public ActionResult SearchBySkills(List<Skill> CheckedSkills)
-        { 
-
-            return View();
+            AllTitlesToFit = AllTitlesToFit.OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
+            return View(AllTitlesToFit);
         }
     }
-    public class ChSkills
+
+    public class TitlePer
     {
-        public Skill skill { get; set; }
-        public bool ischeckd { get; set; }
+        public JobTitle JobTitle { get; set; }
+        public decimal per { get; set; }
+        public List<Skill> RemaingSkills { get; set; }
+
     }
+
+    //public class ChSkills
+    //{
+    //    public Skill skill { get; set; }
+    //    public bool ischeckd { get; set; }
+    //}
 }

@@ -1,0 +1,41 @@
+﻿  @using Cevehat.Web.Models
+  @model  ApplicationUser
+    @{
+        ViewBag.Title = "StaticCompany";
+        Layout = "~/Template/_ProfileLayout.cshtml";
+        TempData.Keep();
+    }
+
+    @section Styles{
+        <link rel="stylesheet" href="~/Template/css/sb-admin.css" />
+    }
+
+    @section Navigation{
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#jobvacancies">Job Vacancies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#applications">Applications</a>
+        </li>
+    }
+
+    <section id="about">
+        <div id="StaticAboutCompany">
+            @Html.Partial("StaticAboutCompany", Model.Company)
+        </div>
+    </section>
+
+    <section id="jobvacancies">
+        <div id="jobVacComp">
+            @Html.Partial("JobVacComp",Model.Company.JobVacancies)
+        </div>
+    </section>
+
+
+    @section Scripts{
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    }
+

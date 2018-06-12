@@ -1,0 +1,58 @@
+﻿@using Cevehat.Web.Models
+@model  ApplicationUser
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+    <div class="my-auto">
+        <div class="float-right">
+            @Ajax.ActionLink("Edit", "EditAbout", "Profile", new AjaxOptions() {
+               HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId= "modalBody", OnSuccess="showModal('Edit About')" }, new { @class = "btn btn-sm btn-warning" })
+        </div>
+
+        <h1 class="mb-0">
+            @(Model.Fname ?? "[FName]" )
+            <span class="text-primary">@(Model.Lname ?? "[LName]")</span>
+        </h1>
+        <div class="subheading mb-5">
+            @(Model.Address ?? "[Address]") · @(Model.PhoneNumber ?? "[Phone]" ) ·
+            <a href="mailto:@Model.Email">@Model.Email</a>
+        </div>
+        <p class="mb-5">@(Model.Summary ?? "[Summary]" )</p>
+
+        <ul class="list-inline list-social-icons mb-0">
+            @if (!string.IsNullOrEmpty(Model.FacebookUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.FacebookUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+            @if (!string.IsNullOrEmpty(Model.TwitterUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.TwitterUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+            @if (!string.IsNullOrEmpty(Model.LinkinUrl))
+            {
+                <li class="list-inline-item">
+                    <a href="@Model.LinkinUrl">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</section>

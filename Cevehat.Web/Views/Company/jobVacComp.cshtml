@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Cevehat.Web.Models.JobVacancie>
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="jobvacancies">
+    <div class="my-auto">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Exp Years</th>
+                    <th>Job Type</th>
+                    <th>Requirments</th>
+                    <th>Skills</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr style="text-align: center;">
+                        <td colspan="6">
+                            No Job Vancancies Founded
+                        </td>
+                    </tr>
+                }
+                else
+                {
+
+
+
+                    foreach (Cevehat.Web.Models.JobVacancie j in Model)
+                {
+                        <tr>
+                            <td>@j.JobTitle.JobName</td>
+                            <td>@j.ExpYears</td>
+                            <td>@j.JobType</td>
+                            <td>@String.Join(",", j.JobRequirements.Select(x => x.ReqText))</td>
+                            <td>@String.Join(",", j.Skills.Select(x => x.Title))</td>
+
+
+                            <td>
+                                    @Ajax.ActionLink("edit", "editJobVac", "Company", new { jobVacId = j.JobVacancieID },
+                                    new AjaxOptions
+                                    {
+
+                                        HttpMethod = "GET",
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "modalBody",
+                                        OnSuccess = "showModal('JobVacComp')"
+                                    }, new { @Class = "btn btn-Primary" })
+
+
+                            </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

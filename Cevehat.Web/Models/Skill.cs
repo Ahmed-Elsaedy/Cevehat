@@ -15,6 +15,6 @@ namespace Cevehat.Web.Models
         public string Description { get; set; }
         public virtual List<JobTitles_Skills> JobTitles_Skills { get; set; }
         public virtual List<User_Skills> Users { get; set; }
-
+        public virtual List<JobVacancie> JobVacancies { get; set; }
     }
 }
