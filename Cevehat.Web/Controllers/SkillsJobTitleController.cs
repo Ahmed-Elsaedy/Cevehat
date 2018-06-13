@@ -81,9 +81,9 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ApplayToJob(int Id)
+        public ActionResult ApplayToJob(int JobVacancieID)
         {
-            JobVacancie applayedVac = db.JobVacancie.Find(Id);
+            JobVacancie applayedVac = db.JobVacancie.Find(JobVacancieID);
             applayedVac.ApplayedUsers.Add(new ApplayedUsers() { UserId = User.Identity.GetUserId() , AppliedUserState = AppliedUserState.Applied , ApplicationUser= db.Users.Find(User.Identity.GetUserId()) });
             return View();
         }

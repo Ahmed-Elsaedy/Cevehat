@@ -603,6 +603,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Shared\loginView.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\SkillsJobTitle\ApplayToJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

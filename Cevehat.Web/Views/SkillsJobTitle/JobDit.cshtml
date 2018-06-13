@@ -109,7 +109,10 @@
                                     <div class="row_value">
                                         <div class="profile_item_box">
                                             <div class="profile_name_data">
-                                                @Html.ActionLink("Applay to This Job", "ApplayToJob", "SkillsJobTitle", Model.JobVacancieID)
+                                                
+                                                    @Html.ActionLink("Applay to This Job", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = Model.JobVacancieID }, null)
+                                                
+
                                             </div>
                                         </div>
                                     </div>
