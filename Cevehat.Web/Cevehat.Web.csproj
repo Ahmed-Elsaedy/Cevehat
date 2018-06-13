@@ -601,6 +601,7 @@
     <Content Include="Views\Company\editJobVac.cshtml" />
     <Content Include="Views\SkillsJobTitle\JobDit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Shared\loginView.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
