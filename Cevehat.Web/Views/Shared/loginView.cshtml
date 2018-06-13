@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNet.Identity
+<div id="wrapper">
+    <!-- start main wrapper -->
+    <div id="header">
+        <!-- start main header -->
+        <div class="top-line">&nbsp;</div>
+        <div class="top">
+            <!-- top -->
+            <div class="container">
+                <div class="media-top-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            </ul>
+                        }
+
+                    }
+                    else
+                    {
+                        <ul class="media-top-2 clearfix">
+                            <li class="btn btn-default btn-blue btn-sm">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li class="btn btn-default btn-green btn-sm">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        </ul>
+                    }
+
+
+                    @*<ul class="media-top-2 clearfix">
+                        <li><a href="" class="btn btn-default btn-blue btn-sm">REGISTER</a></li>
+                        <li><a href="" class="btn btn-default btn-green btn-sm">LOG IN</a></li>
+                    </ul>*@
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div><!-- top -->
+        <div class="container">
+            <!-- container -->
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- logo -->
+                    <a href="index.html" title="Job Board" rel="home">
+                        <img class="main-logo" src="img/logo.png" alt="CEVEHAT" />
+                    </a>
+                </div><!-- logo -->
+                <div class="col-md-8 main-nav">
+                    <!-- Main Navigation -->
+                    <a id="touch-menu" class="mobile-menu" href="#"><i class="fa fa-bars fa-2x"></i></a>
+                    <nav>
+                        <ul class="menu">
+                            <li>@Html.ActionLink("HOME", "Index", "Default", routeValues: null, htmlAttributes: new { id = "homelink" })</li>
+                            <li>@Html.ActionLink("JOB SEARCH", "index", "SkillsJobTitle", routeValues: null, htmlAttributes: new { id = "jobsearchlink" })</li>
+                            <li>@Html.ActionLink("POST A JOB", "Create", "JobVacancies", routeValues: null, htmlAttributes: new { id = "postajoblink" })</li>
+                            <li>@Html.ActionLink("POST A RESUME", "Index", "Profile", routeValues: null, htmlAttributes: new { id = "postaresumelink" })</li>
+
+                        </ul>
+                    </nav>
+                </div><!-- Main Navigation -->
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- container -->
+    </div><!-- end main header -->
+
+
+
