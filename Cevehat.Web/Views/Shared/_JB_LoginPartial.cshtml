@@ -1,0 +1,63 @@
+﻿
+@using Microsoft.AspNet.Identity
+
+
+
+<div class="top">
+    <!-- top -->
+    <div class="container">
+        <div class="media-top-right">
+            <ul class="media-top clearfix">
+                <li class="item">
+                    <a href="" target="blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="" target="blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="" target="blank">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="" target="blank">
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="" target="blank">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                </li>
+            </ul>
+
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="media-top-2 clearfix">
+                        <li>
+                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="media-top-2 clearfix">
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-default btn-blue btn-sm" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-default btn-green btn-sm" })</li>
+                </ul>
+            }
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
