@@ -39,6 +39,7 @@ namespace Cevehat.Web.Controllers
             ReportDocument mycv = new ReportDocument();
             mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CV.rpt"));
             mycv.SetDataSource(certifications);
+            mycv.SetDataSource(educations);
             Response.Buffer = false;
             Response.ClearContent();
             Response.ClearHeaders();

@@ -46,7 +46,7 @@ namespace Cevehat.Web.Controllers
 
             return View(skills);
         }
-        
+
         public ActionResult GetJobTitles(int Id)
         {
             Skill chSkill = db.Skill.Find(Id);
@@ -80,6 +80,7 @@ namespace Cevehat.Web.Controllers
             return View(Vacancie);
         }
 
+        [HttpGet]
         public ActionResult ApplayToJob(int Id)
         {
             JobVacancie applayedVac = db.JobVacancie.Find(Id);
