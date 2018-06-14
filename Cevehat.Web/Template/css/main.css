@@ -74,7 +74,7 @@ section {
   min-width: 100%;
   position: relative;
   width: 100%;
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 a:active,
@@ -99,9 +99,9 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 
 .title {
 	line-height: 34px;
-	color: #ffffff;
+	color: #fff;
 	font-family: 'Ubuntu', sans-serif;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .parallax-section {
@@ -2067,13 +2067,13 @@ input:-moz-placeholder {
 ========================================================================== */
 
 .banner-job {
-	background-image: url(../images/bg/job-bg.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	color: #fff;
-	position: relative;
-	z-index: 1;
-	padding: 65px 0 75px;
+    background-image: url(../images/gradient.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    padding: 65px 0 75px;
 }
 
 .banner-overlay {
@@ -2331,7 +2331,7 @@ input:-moz-placeholder {
 /* Job List Page */
 
 .job-bg {
-	background-image: url(../images/bg/job-list-bg.jpg);
+	background-image: url(../images/gradient.png);
 	background-repeat: no-repeat;
 	background-size: contain;
 }

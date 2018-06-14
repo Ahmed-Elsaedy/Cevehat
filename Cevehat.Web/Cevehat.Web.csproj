@@ -330,6 +330,7 @@
     <Content Include="Template\css\owl.transitions.css" />
     <Content Include="Template\css\style.css" />
     <Content Include="Template\images\cevehatLogo.png" />
+    <Content Include="Template\images\gradient.png" />
     <Content Include="Template\images\logo.png" />
     <Content Include="Template\images\step-icon-1.png" />
     <Content Include="Template\images\step-icon-2.png" />
