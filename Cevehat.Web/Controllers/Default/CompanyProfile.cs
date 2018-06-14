@@ -6,16 +6,11 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-    public partial class DefaultController : Controller
+    public partial class DefaultController
     {
-        // GET: Default
-        public ActionResult Index()
+        public ActionResult CompanyProfile()
         {
             return View();
         }
-
-
-
-
     }
 }

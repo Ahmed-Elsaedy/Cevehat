@@ -7,34 +7,6 @@
     <!-- top -->
     <div class="container">
         <div class="media-top-right">
-            <ul class="media-top clearfix">
-                <li class="item">
-                    <a href="" target="blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="" target="blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="" target="blank">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="" target="blank">
-                        <i class="fa fa-rss"></i>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="" target="blank">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-            </ul>
-
             @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -43,9 +15,9 @@
 
                     <ul class="media-top-2 clearfix">
                         <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { @class="h5 my-1", title = "Manage" })
                         </li>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        <li><a class="h5 my-1" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                     </ul>
                 }
             }

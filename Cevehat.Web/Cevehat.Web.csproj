@@ -214,6 +214,8 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\Default\CompanyProfile.cs" />
+    <Compile Include="Controllers\Default\UserProfile.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperinceController.cs" />
     <Compile Include="Controllers\ExploreController.cs" />

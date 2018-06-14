@@ -1699,7 +1699,7 @@ a.verified {
 
         .job-profile .user h2 a {
             font-weight: 700;
-            color: #00a651;
+            color: #8f8ffb;
         }
 
     .job-profile .user h5 {
@@ -1728,7 +1728,7 @@ a.verified {
 
 .job-profile .favorites-user a {
     font-size: 48px;
-    color: #00a651;
+    color: #8f8ffb;
     display: block;
 }
 
@@ -2340,7 +2340,6 @@ input:-moz-placeholder {
 
 .job-bg {
     background-image: url(../images/gradient.png);
-    background-repeat: no-repeat;
     background-size: contain;
 }
 
