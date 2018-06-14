@@ -16,30 +16,28 @@ namespace Cevehat.Web.Controllers
         //create object of db context
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult AllData()
-        {
-            string UserId = User.Identity.GetUserId();
-            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
-            List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
-            List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
-            dynamic model = new ExpandoObject();
-            model.Certification = certifications;
-            model.Education = educations;
-            return View();
-        }
+       
         public ActionResult DownloadCV()
         {
             string UserId = User.Identity.GetUserId();
+
+           // var user_Skill = db.User_Skills.Include(us).Include(u => u.User).ToList<User_Skills>();
+
             //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
             List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
             List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
-            //dynamic model = new ExpandoObject();
-            //model.Certification = certifications;
-            //model.Education = educations;
+            List<Experince> experinces = db.Experinces.Where(e => e.UserID == UserId).ToList<Experince>();
+            List<User_Skills> user_Skills = db.User_Skills.Where(u => u.UserId == UserId ).ToList<User_Skills>();
+        
+        
             ReportDocument mycv = new ReportDocument();
             mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CV.rpt"));
-            mycv.SetDataSource(certifications);
-            mycv.SetDataSource(educations);
+            //mycv.SetDataSource(certifications);
+            //mycv.SetDataSource(educations);
+            mycv.Database.Tables[1].SetDataSource(certifications);
+            mycv.Database.Tables[2].SetDataSource(educations);
+            mycv.Database.Tables[3].SetDataSource(experinces);
+            mycv.Database.Tables[4].SetDataSource(user_Skills);
             Response.Buffer = false;
             Response.ClearContent();
             Response.ClearHeaders();
