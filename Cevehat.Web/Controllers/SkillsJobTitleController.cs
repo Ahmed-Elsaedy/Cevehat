@@ -74,17 +74,28 @@ namespace Cevehat.Web.Controllers
 
         public ActionResult JobDit(JobVacancie Vacancie)
         {
-            Vacancie.Company = db.Company.Find(Vacancie.CompanyID);
-            Vacancie.JobTitle = db.JobTitle.Find(Vacancie.JobTitleID);
-
-            return View(Vacancie);
+            JobVacancie vac = db.JobVacancie.Find(Vacancie.JobVacancieID); 
+            vac.Company = db.Company.Find(Vacancie.CompanyID);
+            vac.JobTitle = db.JobTitle.Find(Vacancie.JobTitleID);
+            bool isAppl = false;
+            string userid = User.Identity.GetUserId();
+            foreach (ApplayedUsers apuser in vac.ApplayedUsers)
+            {
+                if (apuser.UserId == userid)
+                {
+                    isAppl = true;
+                }
+            }
+            ViewBag.isAppl = isAppl;
+            return View(vac);
         }
 
         [HttpGet]
         public ActionResult ApplayToJob(int JobVacancieID)
         {
             JobVacancie applayedVac = db.JobVacancie.Find(JobVacancieID);
-            applayedVac.ApplayedUsers.Add(new ApplayedUsers() { UserId = User.Identity.GetUserId() , AppliedUserState = AppliedUserState.Applied , ApplicationUser= db.Users.Find(User.Identity.GetUserId()) });
+            applayedVac.ApplayedUsers.Add(new ApplayedUsers() { UserId = User.Identity.GetUserId(), AppliedUserState = AppliedUserState.Applied, ApplicationUser = db.Users.Find(User.Identity.GetUserId()) });
+            db.SaveChanges();
             return View();
         }
     }
