@@ -34,8 +34,8 @@ namespace Cevehat.Web.Controllers
         {
             string userId = User.Identity.GetUserId();
             List<Certification> cert = db.Certification.Where(a => a.userid == userId).ToList<Certification>();
-            //ViewBag.allCertification = cert;
-            return View(cert);
+            ViewBag.allCertification = cert;
+            return View();
         }
         // POST: Certification/Create
         [HttpPost]
