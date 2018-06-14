@@ -324,11 +324,13 @@
     <Content Include="Template\css\font-awesome.css" />
     <Content Include="Template\css\jslider.css" />
     <Content Include="Template\css\jslider.round.css" />
+    <Content Include="Template\css\main.css" />
     <Content Include="Template\css\owl.carousel.css" />
     <Content Include="Template\css\owl.theme.css" />
     <Content Include="Template\css\owl.transitions.css" />
     <Content Include="Template\css\style.css" />
     <Content Include="Template\images\cevehatLogo.png" />
+    <Content Include="Template\images\gradient.png" />
     <Content Include="Template\images\logo.png" />
     <Content Include="Template\images\step-icon-1.png" />
     <Content Include="Template\images\step-icon-2.png" />
@@ -504,6 +506,9 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Shared\_JobBoardLayout.cshtml" />
     <Content Include="Views\Shared\_JB_LoginPartial.cshtml" />
+    <Content Include="Views\Default\Profile.cshtml" />
+    <Content Include="Views\Shared\_JB_UserProfileLayout.cshtml" />
+    <Content Include="Views\Default\UserProfile.cshtml" />
     <Content Include="Views\SkillsJobTitle\ApplayToJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
