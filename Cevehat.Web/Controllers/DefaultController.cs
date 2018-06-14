@@ -13,5 +13,15 @@ namespace Cevehat.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
+        public ActionResult CompanyProfile()
+        {
+            return View();
+        }
     }
 }
