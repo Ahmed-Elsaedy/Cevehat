@@ -508,6 +508,7 @@
     <Content Include="Views\Default\Profile.cshtml" />
     <Content Include="Views\Shared\_JB_UserProfileLayout.cshtml" />
     <Content Include="Views\Default\UserProfile.cshtml" />
+    <Content Include="Views\SkillsJobTitle\ApplayToJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
