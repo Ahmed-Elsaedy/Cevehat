@@ -38,7 +38,6 @@ namespace Cevehat.Web.Controllers
         [HttpPost]
         public ActionResult EditPersonal(ApplicationUser model)
         {
-
             return RedirectToAction("Details");
         }
     }
