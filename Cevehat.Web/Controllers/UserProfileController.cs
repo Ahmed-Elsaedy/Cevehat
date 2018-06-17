@@ -9,7 +9,8 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-    public partial class DefaultController
+    [Authorize]
+    public class UserProfileController : Controller
     {
         private ApplicationUser _CurrentUser;
         public ApplicationUser CurrentUser
@@ -22,16 +23,23 @@ namespace Cevehat.Web.Controllers
             }
         }
 
-        public ActionResult UserProfile()
+        // GET: UserProfile
+        public ActionResult Details()
         {
             return View(CurrentUser);
         }
 
         [HttpGet]
-        public ActionResult EditUserProfile()
+        public ActionResult EditPersonal()
         {
             return View(CurrentUser);
         }
 
+        [HttpPost]
+        public ActionResult EditPersonal(ApplicationUser model)
+        {
+
+            return RedirectToAction("Details");
+        }
     }
 }

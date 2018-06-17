@@ -2340,6 +2340,7 @@ input:-moz-placeholder {
 
 .job-bg {
     background-image: url(../images/gradient.png);
+    background-repeat: repeat-x;
     background-size: contain;
 }
 

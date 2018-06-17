@@ -2,14 +2,8 @@
 @model ApplicationUser
 @{
     ViewBag.Title = "Static";
-    Layout = "~/Template/_ProfileLayout.cshtml";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
 }
-@section Styles{
-    <link rel="stylesheet" href="~/Template/css/sb-admin.css" />
-}
-
-
-
 
 <section id="about">
     <div id="StaticAbout">
@@ -41,6 +35,7 @@
     </div>
 </section>
 
+
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
     <div class="my-auto">
         <h2 class="mb-5">Interests</h2>
@@ -49,6 +44,3 @@
     </div>
 </section>
 
-@section Scripts{
-    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
-}

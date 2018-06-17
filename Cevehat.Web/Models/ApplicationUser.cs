@@ -18,7 +18,9 @@ namespace Cevehat.Web.Models
         public string TwitterUrl { get; set; }
         public string LinkinUrl { get; set; }
 
-        // public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public byte[] UserImage { get; set; }
+
         public MaritalStutes MaritaSutes { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
         public Gender Gender { get; set; }
