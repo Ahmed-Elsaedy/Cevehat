@@ -44,7 +44,7 @@ namespace Cevehat.Web.Controllers
 
 
         [HttpPost]
-        public ActionResult EditAboutCompany(Company newComp)
+        public ActionResult EditAboutCompany(Company newComp, HttpPostedFileBase img)
         {
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
@@ -54,6 +54,13 @@ namespace Cevehat.Web.Controllers
             comp.CompanyID = newComp.CompanyID;
             comp.CompanyName = newComp.CompanyName;
             comp.CompanyWebSite = newComp.CompanyWebSite;
+            comp.CompanyPhone = newComp.CompanyPhone;
+            comp.CompanyInfo = newComp.CompanyInfo;
+            comp.CompanyEmail = newComp.CompanyEmail;
+            string ext = img.FileName.Substring(img.FileName.LastIndexOf("."));
+            comp.CompanyImage = newComp.CompanyID.ToString() + ext;
+            db.SaveChanges();
+            img.SaveAs(Server.MapPath("~/images/" +newComp.CompanyImage));
 
             db.SaveChanges();
             return PartialView("StaticAboutCompany", comp);

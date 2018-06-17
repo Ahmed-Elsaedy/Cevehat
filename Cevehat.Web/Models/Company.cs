@@ -12,6 +12,10 @@ namespace Cevehat.Web.Models
         public int CompanyID { get; set; }
         public string CompanyName { get; set; }
         public string CompanyWebSite { get; set; }
+        public string CompanyPhone { get; set; }
+        public string CompanyInfo { get; set; }
+        public string CompanyEmail { get; set; }
+        public string CompanyImage { get; set; }
         public virtual List<JobVacancie> JobVacancies { get; set; }
         //public virtual ApplicationUser ApplicationUser { get; set; }
         

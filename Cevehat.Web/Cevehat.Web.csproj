@@ -607,6 +607,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
     <Folder Include="Template\js\maps\" />
   </ItemGroup>
   <ItemGroup>
