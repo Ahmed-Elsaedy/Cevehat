@@ -1,0 +1,60 @@
+﻿@using Cevehat.Web.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "EditPersonal";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+}
+
+<div class="section company-information">
+    @using (Html.BeginForm("EditPersonal", "UserProfile", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <h4>Personal Deatils</h4>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">First Name</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Fname, new { @class = "form-control", placeholder = "First Name" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Last Name</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Lname, new { @class = "form-control", placeholder = "Last Name" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Phone Number</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", type = "number", placeholder = "PhoneNumber" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">BirthDate</label>
+            <div class="col-sm-9">
+                @Html.TextBox("BirthDate", Model.BirthDate ?? DateTime.Now, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Address</label>
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Address, 3, 20, new { @class = "form-control", placeholder = "Address" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Military Status</label>
+            <div class="col-sm-9">
+                @Html.EnumDropDownListFor(m => m.MilitaryStatus, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Martial Status</label>
+            <div class="col-sm-9">
+                @Html.EnumDropDownListFor(m => m.MaritaSutes, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="buttons pull-right">
+            <input type="submit" value="Save Changes" class="btn" />
+        </div>
+    }
+</div>

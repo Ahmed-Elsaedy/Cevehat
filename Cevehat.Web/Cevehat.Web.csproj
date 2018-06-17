@@ -229,6 +229,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Controllers\SkillsJobTitleController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\User_SkillsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -281,6 +282,10 @@
     <Compile Include="Migrations\201806121042412_Last_update_of_database.cs" />
     <Compile Include="Migrations\201806121042412_Last_update_of_database.Designer.cs">
       <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806161242139_birthdate_Image.cs" />
+    <Compile Include="Migrations\201806161242139_birthdate_Image.Designer.cs">
+      <DependentUpon>201806161242139_birthdate_Image.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -342,6 +347,7 @@
     <Content Include="Template\images\cevehatLogo.png" />
     <Content Include="Template\images\gradient.png" />
     <Content Include="Template\images\logo.png" />
+    <Content Include="Template\images\resume.jpg" />
     <Content Include="Template\images\step-icon-1.png" />
     <Content Include="Template\images\step-icon-2.png" />
     <Content Include="Template\images\step-icon-3.png" />
@@ -367,6 +373,7 @@
     <Content Include="Template\images\upload\testimony-image-7.jpg" />
     <Content Include="Template\images\upload\testimony-image-8.jpg" />
     <Content Include="Template\images\upload\testimony-image-9.jpg" />
+    <Content Include="Template\images\user.jpg" />
     <Content Include="Template\img\logo.PNG" />
     <Content Include="Template\img\profile.jpg" />
     <Content Include="Template\js\bootstrap\bootstrap.min.js" />
@@ -604,6 +611,9 @@
     <Content Include="Template\vendor\simple-line-icons\less\simple-line-icons.less" />
     <Content Include="Template\vendor\simple-line-icons\scss\simple-line-icons.scss" />
     <Content Include="Template\_ProfileLayout.cshtml" />
+    <Content Include="Views\Default\EditUserProfile.cshtml" />
+    <Content Include="Views\UserProfile\Details.cshtml" />
+    <Content Include="Views\UserProfile\EditPersonal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -661,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806121042412_Last_update_of_database.resx">
       <DependentUpon>201806121042412_Last_update_of_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806161242139_birthdate_Image.resx">
+      <DependentUpon>201806161242139_birthdate_Image.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
