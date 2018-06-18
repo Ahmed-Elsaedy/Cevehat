@@ -1,0 +1,29 @@
+﻿@using Cevehat.Web.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_JB_CompanyProfileLayout.cshtml";
+
+    ViewBag.CompanyName = Model.Company.CompanyName;
+    ViewBag.CompanyImage = Model.Company.CompanyImage;
+    ViewBag.RecentJobCount = Model.Company.JobVacancies.Where(x => x.State == State.Active).Count();
+    ViewBag.ArchivedJobCount = Model.Company.JobVacancies.Where(x => x.State == State.Closed).Count();
+ }
+
+<div class="personal-deatils section">
+    <div class="icons">
+        <i class="fa fa-user-secret" aria-hidden="true"></i>
+    </div>
+    <div class="personal-info">
+        <h3>Company Deatils</h3>
+        <ul class="address">
+            <li><h5>Company Name </h5> <span>:</span>@Model.Company.CompanyName</li>
+            <li><h5>Company Information </h5> <span>:</span>@Model.Company.CompanyInfo</li>
+            <li><h5>Company Website</h5> <span>:</span><a href="@Model.Company.CompanyWebSite">@Model.Company.CompanyWebSite</a></li>
+            <li><h5>Company Phone </h5> <span>:</span>@Model.Company.CompanyPhone</li>
+            <li><h5>Company Email </h5> <span>:</span>@Model.Company.CompanyEmail</li>       
+        </ul>
+    </div>
+</div><!-- personal-deatils -->
+
+

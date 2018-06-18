@@ -23,26 +23,25 @@
         <div class="job-profile section">
             <div class="user-profile">
                 <div class="user-images">
-                    <img src="~/Template/images/user.jpg" alt="User Images" class="img-responsive">
+                    <img src="~/images/@ViewBag.CompanyImage" width="150" height="150" alt="Company Images" class="img-responsive">
                 </div>
                 <div class="user">
                     <h2>
-                        Hello,
-                        <a href="#">[Company Name]</a>
+                        Hello 
+                        <a href="#"> @ViewBag.CompanyName</a>
                     </h2>
-                    <h5>You last logged in at: 10-01-2017 6:40 AM [ USA time (GMT + 6:00hrs)]</h5>
                 </div>
 
                 <div class="favorites-user">
                     <div class="my-ads">
-                        <a href="applied-job.html">
-                            29
+                        <a href="#">
+                            @ViewBag.RecentJobCount
                             <small>Recent Jobs</small>
                         </a>
                     </div>
                     <div class="favorites">
-                        <a href="bookmark.html">
-                            18
+                        <a href="#">
+                            @ViewBag.ArchivedJobCount
                             <small>Archived Jobs</small>
                         </a>
                     </div>
@@ -52,16 +51,22 @@
 
             <ul class="user-menu">
                 <li>
-                    <a href="profile.html">Company Details</a>
+                    @Html.ActionLink("Company Details","Details","CompanyProfile")
                 </li>
                 <li>
-                    <a href="resume.html">Recent Jobs</a>
+                    @Html.ActionLink("Edit Details", "EditDetails", "CompanyProfile")
                 </li>
                 <li>
-                    <a href="edit-resume.html">Archived Jobs</a>
+                    @Html.ActionLink("Recent Jobs", "RecentJobs", "CompanyProfile")
                 </li>
                 <li>
-                    <a href="profile-details.html">Users Applications</a>
+                    @Html.ActionLink("Archived Jobs", "ArchivedJobs", "CompanyProfile")
+                </li>
+                <li>
+                    @Html.ActionLink("User Applications", "userApplications", "CompanyProfile")
+                </li>
+                <li>
+                    @Html.ActionLink("Add Job", "AddJob", "CompanyProfile")
                 </li>
             </ul>
         </div>
