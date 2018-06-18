@@ -397,6 +397,10 @@
     <Content Include="Template\images\upload\dummy-job-open-2.png" />
     <Content Include="Template\images\upload\dummy-slide-1.jpg" />
     <Content Include="Template\images\upload\dummy-slide-2.jpg" />
+    <Content Include="Template\images\upload\dummy-slide-3.jpg" />
+    <Content Include="Template\images\upload\dummy-slide-4.jpg" />
+    <Content Include="Template\images\upload\dummy-slide-5.jpg" />
+    <Content Include="Template\images\upload\dummy-slide-6.jpg" />
     <Content Include="Template\images\upload\testimony-image-1.jpg" />
     <Content Include="Template\images\upload\testimony-image-10.jpg" />
     <Content Include="Template\images\upload\testimony-image-2.jpg" />

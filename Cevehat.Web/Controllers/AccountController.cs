@@ -145,7 +145,7 @@ namespace Cevehat.Web.Controllers
         {
             //For user registration we will not display the Admin roles. User can select rest of any role type during registration.
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
-                                            .ToList(), "Name", "Name");
+                                            .ToList(), "Name", "Name","Employee");
             return View();
         }
 
