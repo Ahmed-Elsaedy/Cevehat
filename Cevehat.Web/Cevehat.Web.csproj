@@ -208,10 +208,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteeController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\DefaultController\CompanyProfile.cs" />
@@ -639,6 +641,12 @@
     <Content Include="Views\UserProfile\EditCertification.cshtml" />
     <Content Include="Views\UserProfile\AppliedJobs.cshtml" />
     <Content Include="Views\UserProfile\MySkills.cshtml" />
+    <Content Include="Views\AutoCompletee\Index.cshtml" />
+    <Content Include="Views\CompanyProfile\Details.cshtml" />
+    <Content Include="Views\CompanyProfile\EditDetails.cshtml" />
+    <Content Include="Views\CompanyProfile\userApplications.cshtml" />
+    <Content Include="Views\CompanyProfile\RecentJobs.cshtml" />
+    <Content Include="Views\CompanyProfile\ArchivedJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

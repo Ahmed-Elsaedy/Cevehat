@@ -31,6 +31,13 @@ namespace Cevehat.Web.Controllers
             return View(CurrentUser);
         }
 
+        public ActionResult ViewProfile(string userId)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.Find(userId);
+            return View("Details", user);
+        }
+
         [HttpGet]
         public ActionResult EditPersonal()
         {
