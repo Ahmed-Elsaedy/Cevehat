@@ -16,7 +16,7 @@ namespace Cevehat.Web.Models
         public int Skill_ID { get; set; }
         [ForeignKey("jobTitle"), Key, Column(Order = 1)]
         public int JbTitle_ID { get; set; }
-        //public int Pers { get; set; }
+        public int SkillWeight { get; set; }
 
     }
 }

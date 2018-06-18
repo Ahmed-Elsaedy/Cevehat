@@ -17,6 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.skill.Title)
         </th>
+        <th>
+            @*@Html.DisplayFor(Model => Model.SkillWeight)*@
+        </th>
         <th></th>
     </tr>
 
@@ -30,7 +33,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { Jobid=item.JbTitle_ID , Skillid = item.Skill_ID }) |
-            @Html.ActionLink("Details", "Details", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |
+            @*@Html.ActionLink("Details", "Details", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |*@
             @Html.ActionLink("Delete", "Delete", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID })
         </td>
     </tr>

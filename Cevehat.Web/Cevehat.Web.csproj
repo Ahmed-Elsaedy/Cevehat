@@ -293,6 +293,10 @@
     <Compile Include="Migrations\201806170920145_CompaniesData.Designer.cs">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806181352505_ADD_SkillWeight.cs" />
+    <Compile Include="Migrations\201806181352505_ADD_SkillWeight.Designer.cs">
+      <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -689,6 +693,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806170920145_CompaniesData.resx">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181352505_ADD_SkillWeight.resx">
+      <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
