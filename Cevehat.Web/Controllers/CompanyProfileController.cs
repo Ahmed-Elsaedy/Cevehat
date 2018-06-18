@@ -73,11 +73,21 @@ namespace Cevehat.Web.Controllers
         public ActionResult ChangeState(int id)
         {
             JobVacancie currentJob= db.JobVacancie.Find(id);
-            
+            if (currentJob.State == State.Active)
+            {
                 currentJob.State = State.Closed;
                 db.SaveChanges();
+                return RedirectToAction("RecentJobs");
+            }
+            else
+            {
+                currentJob.State = State.Active;
+                db.SaveChanges();
+                return RedirectToAction("ArchivedJobs");
+
+            }
             
-            return RedirectToAction("RecentJobs");
+           
         }
 
         [Authorize(Roles = "Employer")]
@@ -85,6 +95,40 @@ namespace Cevehat.Web.Controllers
         {
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             return View(currentComp);
+        }
+
+        [HttpGet,Authorize(Roles = "Employer")]
+        public ActionResult AddJob()
+        {
+            JobVacancie newjob = new JobVacancie();
+            Company currentComp = db.Company.Find(CurrentUser.CompanyID);
+            newjob.Date = DateTime.Now;
+            newjob.CompanyID = currentComp.CompanyID;
+            newjob.Company = currentComp;
+
+
+            SelectList jobTitles = new SelectList(db.JobTitle.ToList(), "JobId", "JobName");
+            ViewBag.JobTitles = jobTitles;
+
+            MultiSelectList jobSkills = new MultiSelectList(db.Skill.ToList(),"Skill_Id", "Title");
+            ViewBag.JobSkills = jobSkills;
+      
+            return View(newjob);
+        }
+
+
+        [HttpPost, Authorize(Roles = "Employer")]
+        public ActionResult AddJob(JobVacancie newjob, List<int> Skills)
+        {
+            db.JobVacancie.Add(newjob);
+            for (int i = 0; i < Skills.Count; i++)
+            {
+                Skill currentskill = db.Skill.Find(i);
+                newjob.Skills.Add(currentskill);
+            }
+         
+            db.SaveChanges();
+            return RedirectToAction("RecentJobs");
         }
 
 

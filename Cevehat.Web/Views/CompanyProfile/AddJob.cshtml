@@ -1,0 +1,56 @@
+﻿@using Cevehat.Web.Models
+@model JobVacancie
+@{
+    ViewBag.Title = "AddJob";
+    Layout = "~/Views/Shared/_JB_CompanyProfileLayout.cshtml";
+    ViewBag.CompanyName = Model.Company.CompanyName;
+    ViewBag.CompanyImage = Model.Company.CompanyImage;
+    ViewBag.RecentJobCount = Model.Company.JobVacancies.Where(x => x.State == State.Active).Count();
+    ViewBag.ArchivedJobCount = Model.Company.JobVacancies.Where(x => x.State == State.Closed).Count();
+}
+
+<div>
+
+    <form role="form" class="post-job-form" action="/CompanyProfile/AddJob" method="post">
+        @Html.HiddenFor(m => m.JobVacancieID)
+        @Html.HiddenFor(m => m.CompanyID)
+
+        <div class="form-group">
+            <label>Job Title</label>
+            @Html.DropDownListFor(m => m.JobTitleID, ViewBag.JobTitles as IEnumerable<SelectListItem>, new { @class = "form-control", placeholder = "JobTitles" })
+        </div>
+        <div class="form-group">
+            <label>Experience Years</label>
+            @Html.TextBoxFor(m => m.ExpYears, new { @class = "form-control", placeholder = "Experience Years" })
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            @Html.TextBoxFor(m => m.Date, new { @class = "form-control", placeholder = "Date" })
+        </div>
+        <div class="form-group">
+            <label>State</label>
+            @Html.EnumDropDownListFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+        </div>
+        <div class="form-group">
+            <label>Job Type</label>
+            @Html.EnumDropDownListFor(m => m.JobType, new { @class = "form-control", placeholder = "State" })
+        </div>
+        <div class="form-group">
+            <label>Skills</label>
+            @Html.ListBoxFor(m => m.Skills, ViewBag.JobSkills as MultiSelectList, new { @class = "form-control", data_placeholder = "Skills" })
+            @*@Html.DropDownListFor(m => m.Skills, ViewBag.JobSkills as IEnumerable<SelectListItem>, new { @class = "form-control", placeholder = "JobSkills" })*@
+        </div>
+        <div class="form-group">
+            <label>Requirements</label>
+            @Html.TextAreaFor(m => m.Requirements, new { @class = "form-control", placeholder = "Requirements" })
+        </div>
+
+
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default btn-green">ADD A JOB</button>
+        </div>
+    </form>
+    <div class="spacer-2">&nbsp;</div>
+</div>

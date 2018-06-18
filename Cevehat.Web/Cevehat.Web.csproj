@@ -292,6 +292,10 @@
     <Compile Include="Migrations\201806170920145_CompaniesData.Designer.cs">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806181235145_finalCompany.cs" />
+    <Compile Include="Migrations\201806181235145_finalCompany.Designer.cs">
+      <DependentUpon>201806181235145_finalCompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -624,6 +628,7 @@
     <Content Include="Views\CompanyProfile\userApplications.cshtml" />
     <Content Include="Views\CompanyProfile\RecentJobs.cshtml" />
     <Content Include="Views\CompanyProfile\ArchivedJobs.cshtml" />
+    <Content Include="Views\CompanyProfile\AddJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -687,6 +692,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806170920145_CompaniesData.resx">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181235145_finalCompany.resx">
+      <DependentUpon>201806181235145_finalCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
