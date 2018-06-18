@@ -53,7 +53,6 @@
                                 </li>
                                 <li>
                                @Html.ActionLink("JOB SEARCH", "Index", "AutoCompletee")
-                     @*               <a href="#">JOB SEARCH</a>*@
                                 </li>
                                 <li>
                                     @Html.ActionLink("Add Job", "AddJob", "CompanyProfile")
@@ -105,10 +104,10 @@
                         <div class="footer-widget-nav">
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    @Html.ActionLink("HOME", "Index", "Default")
                                 </li>
                                 <li>
-                                    <a href="#">Post A Job</a>
+                                    @Html.ActionLink("JOB SEARCH", "Index", "AutoCompletee")
                                 </li>
                                 <li>
                                     <a href="#">Post A Resume</a>
