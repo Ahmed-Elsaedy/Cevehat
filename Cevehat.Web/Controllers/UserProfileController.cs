@@ -154,12 +154,39 @@ namespace Cevehat.Web.Controllers
         public ActionResult MySkills()
         {
             ViewBag.SkillId = new SelectList(db.Skill.ToList(), "Skill_Id", "Title");
+            ViewBag.WeightRange = new SelectList(Enumerable.Range(1, 10));
+
+            var s = CurrentUser;
             return View(CurrentUser);
         }
 
         [HttpPost]
-        public ActionResult AddSkill(int SkillId)
+        public ActionResult AddSkill(int SkillId, int WeightRange)
         {
+            Skill skill = db.Skill.Find(SkillId);
+            if (CurrentUser.User_TecSkills.FirstOrDefault(x => x.SkillID == SkillId) == null)
+            {
+                User_Skills user_Skill = new User_Skills()
+                {
+                    UserId = CurrentUser.Id,
+                    SkillID = SkillId,
+                    Weight = WeightRange
+                };
+                db.User_Skills.Add(user_Skill);
+                db.SaveChanges();
+            }
+            return RedirectToAction("MySkills");
+        }
+
+        [HttpGet]
+        public ActionResult RemoveSkill(int id)
+        {
+            var local = db.User_Skills.Find(id);
+            if (local != null)
+            {
+                db.User_Skills.Remove(local);
+                db.SaveChanges();
+            }
             return RedirectToAction("MySkills");
         }
     }
