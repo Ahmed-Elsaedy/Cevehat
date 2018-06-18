@@ -16,7 +16,7 @@ namespace Cevehat.Web.Models
         public virtual ApplicationUser User { get; set; }
         [ForeignKey("Skill")]
         public int SkillID { get; set; }
-        public Skill Skill { get; set; }
+        public virtual Skill Skill { get; set; }
         public int Weight { get; set; }
     }
 }

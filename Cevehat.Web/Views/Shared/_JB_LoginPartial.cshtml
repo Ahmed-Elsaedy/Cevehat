@@ -21,6 +21,7 @@
                             }
                             else if (User.IsInRole("Employer"))
                             {
+                                
                                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Details", "CompanyProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1", title = "profile" })
                             }
 

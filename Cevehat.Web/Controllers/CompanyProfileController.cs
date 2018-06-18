@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-   
+
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -23,12 +23,12 @@ namespace Cevehat.Web.Controllers
                 return _CurrentUser;
             }
         }
-        
+
         public ActionResult Details()
         {
             return View(CurrentUser);
         }
-        [HttpGet,Authorize(Roles = "Employer")]
+        [HttpGet, Authorize(Roles = "Employer")]
         public ActionResult EditDetails()
         {
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
@@ -54,7 +54,7 @@ namespace Cevehat.Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Details");
         }
-        [Authorize(Roles="Employer")]
+        [Authorize(Roles = "Employer")]
         public ActionResult userApplications()
         {
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
@@ -68,11 +68,11 @@ namespace Cevehat.Web.Controllers
             return View(currentComp);
         }
 
-        
+
         [Authorize(Roles = "Employer")]
         public ActionResult ChangeState(int id)
         {
-            JobVacancie currentJob= db.JobVacancie.Find(id);
+            JobVacancie currentJob = db.JobVacancie.Find(id);
             if (currentJob.State == State.Active)
             {
                 currentJob.State = State.Closed;
@@ -86,8 +86,8 @@ namespace Cevehat.Web.Controllers
                 return RedirectToAction("ArchivedJobs");
 
             }
-            
-           
+
+
         }
 
         [Authorize(Roles = "Employer")]
@@ -97,7 +97,7 @@ namespace Cevehat.Web.Controllers
             return View(currentComp);
         }
 
-        [HttpGet,Authorize(Roles = "Employer")]
+        [HttpGet, Authorize(Roles = "Employer")]
         public ActionResult AddJob()
         {
             JobVacancie newjob = new JobVacancie();
@@ -110,9 +110,9 @@ namespace Cevehat.Web.Controllers
             SelectList jobTitles = new SelectList(db.JobTitle.ToList(), "JobId", "JobName");
             ViewBag.JobTitles = jobTitles;
 
-            MultiSelectList jobSkills = new MultiSelectList(db.Skill.ToList(),"Skill_Id", "Title");
+            MultiSelectList jobSkills = new MultiSelectList(db.Skill.ToList(), "Skill_Id", "Title");
             ViewBag.JobSkills = jobSkills;
-      
+
             return View(newjob);
         }
 
@@ -126,7 +126,7 @@ namespace Cevehat.Web.Controllers
                 Skill currentskill = db.Skill.Find(i);
                 newjob.Skills.Add(currentskill);
             }
-         
+
             db.SaveChanges();
             return RedirectToAction("RecentJobs");
         }
