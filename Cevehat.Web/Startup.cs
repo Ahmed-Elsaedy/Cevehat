@@ -72,6 +72,7 @@ namespace Cevehat.Web
                 var role = new IdentityRole();
                 role.Name = "Employer";
                 roleManager.Create(role);
+                
             }
         }
     }
