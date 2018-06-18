@@ -17,5 +17,6 @@ namespace Cevehat.Web.Models
         [ForeignKey("Skill")]
         public int SkillID { get; set; }
         public Skill Skill { get; set; }
+        public int Weight { get; set; }
     }
 }

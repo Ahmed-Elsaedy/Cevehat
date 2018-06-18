@@ -297,6 +297,22 @@
     <Compile Include="Migrations\201806181352505_ADD_SkillWeight.Designer.cs">
       <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806171224048_gradYearNullable.cs" />
+    <Compile Include="Migrations\201806171224048_gradYearNullable.Designer.cs">
+      <DependentUpon>201806171224048_gradYearNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806171410116_experienceStartEndDate.cs" />
+    <Compile Include="Migrations\201806171410116_experienceStartEndDate.Designer.cs">
+      <DependentUpon>201806171410116_experienceStartEndDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181206315_appliedUserJunktionTable.cs" />
+    <Compile Include="Migrations\201806181206315_appliedUserJunktionTable.Designer.cs">
+      <DependentUpon>201806181206315_appliedUserJunktionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181358279_skillweight.cs" />
+    <Compile Include="Migrations\201806181358279_skillweight.Designer.cs">
+      <DependentUpon>201806181358279_skillweight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -624,6 +640,11 @@
     <Content Include="Views\Default\EditUserProfile.cshtml" />
     <Content Include="Views\UserProfile\Details.cshtml" />
     <Content Include="Views\UserProfile\EditPersonal.cshtml" />
+    <Content Include="Views\UserProfile\EditEducation.cshtml" />
+    <Content Include="Views\UserProfile\EditExperience.cshtml" />
+    <Content Include="Views\UserProfile\EditCertification.cshtml" />
+    <Content Include="Views\UserProfile\AppliedJobs.cshtml" />
+    <Content Include="Views\UserProfile\MySkills.cshtml" />
     <Content Include="Views\AutoCompletee\Index.cshtml" />
     <Content Include="Views\CompanyProfile\Details.cshtml" />
     <Content Include="Views\CompanyProfile\EditDetails.cshtml" />
@@ -635,6 +656,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Template\js\maps\" />
+    <Folder Include="UImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -696,6 +718,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806181352505_ADD_SkillWeight.resx">
       <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171224048_gradYearNullable.resx">
+      <DependentUpon>201806171224048_gradYearNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171410116_experienceStartEndDate.resx">
+      <DependentUpon>201806171410116_experienceStartEndDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181206315_appliedUserJunktionTable.resx">
+      <DependentUpon>201806181206315_appliedUserJunktionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181358279_skillweight.resx">
+      <DependentUpon>201806181358279_skillweight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
