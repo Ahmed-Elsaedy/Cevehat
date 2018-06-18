@@ -1,0 +1,60 @@
+﻿@using Cevehat.Web.Models
+@model Company
+@{
+    ViewBag.Title = "EditDetails";
+    Layout = "~/Views/Shared/_JB_CompanyProfileLayout.cshtml";
+
+    ViewBag.CompanyName = Model.CompanyName;
+    ViewBag.CompanyImage = Model.CompanyImage;
+    ViewBag.RecentJobCount = Model.JobVacancies.Where(x => x.State == State.Active).Count();
+    ViewBag.ArchivedJobCount = Model.JobVacancies.Where(x => x.State == State.Closed).Count();
+}
+
+<div class="section company-information">
+    @using (Html.BeginForm("EditDetails", "CompanyProfile", FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.CompanyID)
+        <h4>Personal Deatils</h4>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Name</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", placeholder = "Company Name" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Information</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CompanyInfo, new { @class = "form-control", placeholder = "Company Information" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Phone</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CompanyPhone, new { @class = "form-control", type = "number", placeholder = "Company Phone" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Website</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CompanyWebSite, new { @class = "form-control", placeholder = "Company Website" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Email</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CompanyEmail, new { @class = "form-control", placeholder = "Company Email" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Company Image</label>
+            <div class="col-sm-9">
+                <img src="~/images/@Model.CompanyImage" width="150" height="150" />
+                <input type="file" name="img" />
+            </div>
+        </div>
+
+        <div class="buttons pull-right">
+            <input type="submit" value="Save Changes" class="btn" />
+        </div>
+    }
+</div>

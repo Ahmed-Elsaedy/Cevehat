@@ -1,0 +1,57 @@
+﻿
+@using Cevehat.Web.Models
+@model Company
+@{
+    ViewBag.Title = "userApplications";
+    Layout = "~/Views/Shared/_JB_CompanyProfileLayout.cshtml";
+
+    ViewBag.CompanyName = Model.CompanyName;
+    ViewBag.CompanyImage = Model.CompanyImage;
+    ViewBag.RecentJobCount = Model.JobVacancies.Where(x => x.State == State.Active).Count();
+    ViewBag.ArchivedJobCount = Model.JobVacancies.Where(x => x.State == State.Closed).Count();
+}
+
+<div class="panel-container">
+    <div id="all" class="active" style="display: block;">
+        <!-- Tabs section 1 -->
+    @foreach (Cevehat.Web.Models.JobVacancie j in Model.JobVacancies)
+    {
+        <div class="recent-job-list">
+            <!-- Tabs content -->
+           
+            <div class="col-md-5 job-list-desc">
+                <h3>@j.JobTitle.JobName</h3>
+            </div>
+            <div class="col-md-3 job-list-location">
+                <h5>@j.State</h5>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-7 job-list-type">
+                        <h6><i class="fa fa-user"></i>@j.JobType</h6>
+                    </div>
+                    <div>
+                        @foreach(Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
+                        { 
+                        @Html.ActionLink("View Profile of "+appUser.ApplicationUser.UserName,"ViewProfile", "UserProfile", new { userId = appUser.ApplicationUser.Id })<br />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- Tabs content -->
+    }
+    </div><!-- Tabs section 1 -->
+    <div id="contract" style="display: none;">
+        <!-- Tabs section 2 -->
+    </div><!-- Tabs section 2 -->
+    <div id="full" style="display: none;">
+        <!-- Tabs section 3 -->
+    </div><!-- Tabs section 3 -->
+    <div id="free" style="display: none;">
+        <!-- Tabs section 4 -->
+    </div><!-- Tabs section 4 -->
+</div>
+
+
+

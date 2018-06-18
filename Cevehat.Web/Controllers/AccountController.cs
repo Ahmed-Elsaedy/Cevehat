@@ -171,11 +171,23 @@ namespace Cevehat.Web.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    if (model.UserRoles == "Employer")
+                    {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                        var appUser = db.Users.Find(user.Id);
+                        Company newComp = new Company();
+                        newComp.CompanyEmail = user.Email;
+                        db.Company.Add(newComp);
+                        db.SaveChanges();
+                        appUser.Company = newComp;
+                        appUser.CompanyID = newComp.CompanyID;
+                        db.SaveChanges();
+                    }
                     //Ends Here    
                     //return RedirectToAction("Index", "Users");
 
                     //The Original Code
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Default");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");
@@ -463,7 +475,7 @@ namespace Cevehat.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Default");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
