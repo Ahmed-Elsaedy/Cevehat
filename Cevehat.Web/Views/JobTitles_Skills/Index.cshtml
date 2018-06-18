@@ -18,25 +18,29 @@
             @Html.DisplayNameFor(model => model.skill.Title)
         </th>
         <th>
-            @*@Html.DisplayFor(Model => Model.SkillWeight)*@
+            @Html.DisplayNameFor(model => model.Weight)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.jobTitle.JobName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.skill.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { Jobid=item.JbTitle_ID , Skillid = item.Skill_ID }) |
-            @*@Html.ActionLink("Details", "Details", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |*@
-            @Html.ActionLink("Delete", "Delete", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.skill.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |
+                @*@Html.ActionLink("Details", "Details", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID }) |*@
+                @Html.ActionLink("Delete", "Delete", new { Jobid = item.JbTitle_ID, Skillid = item.Skill_ID })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -49,7 +49,7 @@ namespace Cevehat.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Skill_ID,JbTitle_ID")] JobTitles_Skills jobTitles_Skills)
+        public ActionResult Create([Bind(Include = "Skill_ID,JbTitle_ID,Weight")] JobTitles_Skills jobTitles_Skills)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace Cevehat.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Skill_ID,JbTitle_ID")] JobTitles_Skills jobTitles_Skills)
+        public ActionResult Edit([Bind(Include = "Skill_ID,JbTitle_ID,Weight")] JobTitles_Skills jobTitles_Skills)
         {
             if (ModelState.IsValid)
             {
