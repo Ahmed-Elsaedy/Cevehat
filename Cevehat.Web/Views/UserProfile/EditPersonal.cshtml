@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "EditPersonal";
     Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "Edit Personal Data";
+    Page.EditMode = true;
 }
 
 <div class="section company-information">
     @using (Html.BeginForm("EditPersonal", "UserProfile", FormMethod.Post))
     {
         @Html.HiddenFor(m => m.Id)
-        <h4>Personal Deatils</h4>
         <div class="row form-group">
             <label class="col-sm-3 label-title">First Name</label>
             <div class="col-sm-9">
@@ -52,7 +53,24 @@
                 @Html.EnumDropDownListFor(m => m.MaritaSutes, new { @class = "form-control" })
             </div>
         </div>
-
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Martial Status</label>
+            <div class="col-sm-9">
+                @Html.EnumDropDownListFor(m => m.MaritaSutes, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Carier Objective</label>
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Summary, 3, 20, new { @class = "form-control", placeholder = "Carier Objective" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Profile Image</label>
+            <div class="col-sm-9">
+               <input type="file" name="profileImage" value="Choose User Profile"/> 
+            </div>
+        </div>
         <div class="buttons pull-right">
             <input type="submit" value="Save Changes" class="btn" />
         </div>

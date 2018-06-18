@@ -208,6 +208,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteeController.cs" />
     <Compile Include="Controllers\CareerObjectivesController.cs" />
     <Compile Include="Controllers\CertificationController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
@@ -291,6 +292,30 @@
     <Compile Include="Migrations\201806170920145_CompaniesData.cs" />
     <Compile Include="Migrations\201806170920145_CompaniesData.Designer.cs">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181352505_ADD_SkillWeight.cs" />
+    <Compile Include="Migrations\201806181352505_ADD_SkillWeight.Designer.cs">
+      <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806171224048_gradYearNullable.cs" />
+    <Compile Include="Migrations\201806171224048_gradYearNullable.Designer.cs">
+      <DependentUpon>201806171224048_gradYearNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806171410116_experienceStartEndDate.cs" />
+    <Compile Include="Migrations\201806171410116_experienceStartEndDate.Designer.cs">
+      <DependentUpon>201806171410116_experienceStartEndDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181206315_appliedUserJunktionTable.cs" />
+    <Compile Include="Migrations\201806181206315_appliedUserJunktionTable.Designer.cs">
+      <DependentUpon>201806181206315_appliedUserJunktionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181358279_skillweight.cs" />
+    <Compile Include="Migrations\201806181358279_skillweight.Designer.cs">
+      <DependentUpon>201806181358279_skillweight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181542107_remove_un.cs" />
+    <Compile Include="Migrations\201806181542107_remove_un.Designer.cs">
+      <DependentUpon>201806181542107_remove_un.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201806181235145_finalCompany.cs" />
     <Compile Include="Migrations\201806181235145_finalCompany.Designer.cs">
@@ -623,6 +648,12 @@
     <Content Include="Views\Default\EditUserProfile.cshtml" />
     <Content Include="Views\UserProfile\Details.cshtml" />
     <Content Include="Views\UserProfile\EditPersonal.cshtml" />
+    <Content Include="Views\UserProfile\EditEducation.cshtml" />
+    <Content Include="Views\UserProfile\EditExperience.cshtml" />
+    <Content Include="Views\UserProfile\EditCertification.cshtml" />
+    <Content Include="Views\UserProfile\AppliedJobs.cshtml" />
+    <Content Include="Views\UserProfile\MySkills.cshtml" />
+    <Content Include="Views\AutoCompletee\Index.cshtml" />
     <Content Include="Views\CompanyProfile\Details.cshtml" />
     <Content Include="Views\CompanyProfile\EditDetails.cshtml" />
     <Content Include="Views\CompanyProfile\userApplications.cshtml" />
@@ -634,6 +665,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
     <Folder Include="Template\js\maps\" />
+    <Folder Include="UImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -692,6 +724,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806170920145_CompaniesData.resx">
       <DependentUpon>201806170920145_CompaniesData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181352505_ADD_SkillWeight.resx">
+      <DependentUpon>201806181352505_ADD_SkillWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171224048_gradYearNullable.resx">
+      <DependentUpon>201806171224048_gradYearNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171410116_experienceStartEndDate.resx">
+      <DependentUpon>201806171410116_experienceStartEndDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181206315_appliedUserJunktionTable.resx">
+      <DependentUpon>201806181206315_appliedUserJunktionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181358279_skillweight.resx">
+      <DependentUpon>201806181358279_skillweight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181542107_remove_un.resx">
+      <DependentUpon>201806181542107_remove_un.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806181235145_finalCompany.resx">
       <DependentUpon>201806181235145_finalCompany.cs</DependentUpon>

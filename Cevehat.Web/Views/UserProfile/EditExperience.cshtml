@@ -1,0 +1,48 @@
+﻿@using Cevehat.Web.Models
+@model Experince
+@{
+    ViewBag.Title = "EditExperience";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "Edit Experience";
+    Page.EditMode = true;
+}
+
+<div class="section">
+    @using (Html.BeginForm("EditExperience", "UserProfile", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.ExpId)
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Compnay</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Place, new { @class = "form-control", placeholder = "Company" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Position</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Position, new { @class = "form-control", placeholder = "Position" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">StartDate</label>
+            <div class="col-sm-9">
+                @Html.TextBox("StartDate", Model.StartDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "dd/mm/yy" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">EndDate</label>
+            <div class="col-sm-9">
+                @Html.TextBox("EndDate", Model.EndDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control pull-right", placeholder = "dd/mm/yy" })
+            </div>
+        </div>
+        <div class="row form-group job-description">
+            <label class="col-sm-3 label-title">Responsibilities</label>
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Responsbilty, 4, 20, new { @class = "form-control", placeholder = "Responsibilities" })
+            </div>
+        </div>
+        <div class="buttons pull-right">
+            <input type="submit" value="Save Changes" class="btn" />
+        </div>
+    }
+</div>
