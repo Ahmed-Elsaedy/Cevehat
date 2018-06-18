@@ -24,6 +24,7 @@ namespace Cevehat.Web.Models
         public virtual List<JobRequirements> JobRequirements { get; set; }
         public virtual List<Skill> Skills { get; set; }
         public virtual List<ApplayedUsers> ApplayedUsers { get; set; }
+        public string Requirements { get; set; }
     }
 
     public class ApplayedUsers

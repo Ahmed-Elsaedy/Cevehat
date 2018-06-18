@@ -19,23 +19,20 @@
         <div class="recent-job-list">
             <!-- Tabs content -->
            
-            <div class="col-md-5 job-list-desc">
-                <h3>@j.JobTitle.JobName</h3>
+            <div class="col-md-3 job-list-desc">
+                <h5>@j.JobTitle.JobName</h5>
             </div>
-            <div class="col-md-3 job-list-location">
+            <div class="col-md-2 job-list-location">
                 <h5>@j.State</h5>
             </div>
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-7 job-list-type">
-                        <h6><i class="fa fa-user"></i>@j.JobType</h6>
-                    </div>
-                    <div>
-                        @foreach(Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
-                        { 
-                        @Html.ActionLink("View Profile of "+appUser.ApplicationUser.UserName,"ViewProfile", "UserProfile", new { userId = appUser.ApplicationUser.Id })<br />
-                        }
-                    </div>
+            <div class="col-md-2">
+                        <h6>@j.JobType</h6>
+            <div>
+                @foreach(Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
+                { 
+                  @Html.ActionLink("View Profile of "+appUser.ApplicationUser.UserName,"ViewProfile", "UserProfile", new { userId = appUser.ApplicationUser.Id })<br />
+                }
+            </div>
                 </div>
             </div>
             <div class="clearfix"></div>
