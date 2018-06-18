@@ -2,10 +2,9 @@
 @model  Cevehat.Web.Models.Skill
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Template/_ProfileLayout.cshtml";
+    Layout = "~/Views/Shared/_JobBoardLayout.cshtml";
 }
-
-<h2>Show Skill</h2>
+@*<h2>Show Skill</h2>*@
 @*ListOfJobTitles:@Model.Title*@
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -13,9 +12,29 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <div>
-    <label>Skill Search</label>
-    <input class="form-control" id="searchInput" />
+    <div class="job-finder">
+        <!-- start job finder -->
+        <div class="container">
+            <h3>Find a Job</h3>
+            <form method="get" action="/AutoCompletee/SearchByTitle">
+                <div class="col-md-7 form-group group-1">
+                    <label for="searchjob" class="label">Search by Job Title</label>
+                    <input type="text" class="input-job" id="searchTitle" name="searchTitle">
+                    <input type="submit" class="btn btn-default btn-green" value="search" />
+                </div>
+            </form>
+            <form method="get" action="/AutoCompletee/Search">
+                <div class="col-md-5 form-group group-2">
+                    <label for="searchplace" class="label">Search by Skill</label>
+                    <input type="text" id="searchInput" name="searchInput" class="input-location">
+                </div>
+
+                <input type="submit" class="btn btn-default btn-green" value="search" />
+            </form>
+        </div>
+    </div>
 </div>
+@*@Html.Partial("~/Views/SkillsJobTitle/GetSkills.cshtml")*@
 <script>
     $("#searchInput").autocomplete({
         source: function (request, response) {
@@ -23,6 +42,23 @@
                 url: '@Url.Action("GetAutoCompleteSkillTitle", "AutoCompletee")',
                 dataType: "json",
                 data: { search: $("#searchInput").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item.Name, value: item.Name };
+                    }));
+                },
+                error: function (xhr, status, error) {
+                    alert("Error");
+                }
+            });
+        }
+    });
+    $("#searchTitle").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("GetAutoCompleteJobTitle", "AutoCompletee")',
+                dataType: "json",
+                data: { search: $("#searchTitle").val() },
                 success: function (data) {
                     response($.map(data, function (item) {
                         return { label: item.Name, value: item.Name };

@@ -27,32 +27,44 @@ namespace Cevehat.Web.Controllers
         }
 
 
+        //please add your view to this action 
+        public ActionResult getSkillsByTitle(int Titleid)
+        {
+            List<Skill> skills = (from x in db.JobTitles_Skills
+                                  where x.JbTitle_ID == Titleid
+                                  select x.skill).ToList();
+            return View(skills);
+        }
         /// <summary>
         /// Get The Skills And Active Vacancies Of the JobTitle
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         public ActionResult GetSkills(int Id)
         {
-            //db.JobTitles_Skills.Where(x => x.JbTitle_ID == Id);
-            List<Skill> skills = (from x in db.JobTitles_Skills
-                                  where x.JbTitle_ID == Id
-                                  select x.skill).ToList();
             List<JobVacancie> JobVacancies = (from Vacancie in db.JobVacancie
                                               where Vacancie.JobTitleID == Id && Vacancie.State == State.Active
                                               select Vacancie).ToList();
-            ViewBag.JobVacancies = JobVacancies;
-
-            return View(skills);
+            return View(JobVacancies);
         }
+
+
+        //please add your view to this action 
+        public ActionResult GetTitlsBySkill(int Skillid)
+        {
+            List<JobTitle> jbTitles = (from x in db.JobTitles_Skills
+                                       where x.Skill_ID == Skillid
+                                       select x.jobTitle).ToList();
+            return View(jbTitles);
+        }
+
+
+
 
         public ActionResult GetJobTitles(int Id)
         {
-            Skill chSkill = db.Skill.Find(Id);
-            List<JobTitle> jbTitles = (from x in db.JobTitles_Skills
-                                       where x.Skill_ID == Id
-                                       select x.jobTitle).ToList();
+            //Skill chSkill = db.Skill.Find(Id);
             List<JobVacancie> allvacancies = db.JobVacancie.ToList();
             List<JobVacancie> JobVacancies = new List<JobVacancie>();
             foreach (JobVacancie Vac in allvacancies)
@@ -65,11 +77,7 @@ namespace Cevehat.Web.Controllers
                     }
                 }
             }
-            //List<JobVacancie> JobVacancies = (from z in db.JobVacancie
-            //where z.Skills.ToList().Contains(chSkill)
-            //select z).ToList();
-            ViewBag.JobVacancies = JobVacancies;
-            return View(jbTitles);
+            return View(JobVacancies);
         }
 
         public ActionResult JobDit(JobVacancie Vacancie)
