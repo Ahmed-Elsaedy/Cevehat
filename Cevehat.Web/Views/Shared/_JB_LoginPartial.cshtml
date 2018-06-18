@@ -15,7 +15,7 @@
 
                     <ul class="media-top-2 clearfix">
                         <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { @class="h5 my-1", title = "Manage" })
+                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" , "Manage", routeValues: null, htmlAttributes: new { @class="h5 my-1", title = "Manage" })
                         </li>
                         <li><a class="h5 my-1" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                     </ul>

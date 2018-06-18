@@ -1,0 +1,44 @@
+﻿@using Cevehat.Web.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "AppliedJobs";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "Applied Jobs";
+    Page.UserName = Model.Fname + " " + Model.Lname;
+    Page.EditMode = false;
+    Page.JobsCount = Model.ApplayedUsers.Count;
+
+}
+
+<div id="tab-container" class="tab-container">
+    <div class="panel-container">
+        @foreach (ApplayedUsers jv in Model.ApplayedUsers)
+        {
+            <div class="recent-job-list">
+                <!-- Tabs content -->
+                <div class="col-md-1 job-list-logo">
+                    <img src="~/images/@jv.ApplicationUser.Company.CompanyImage" class="img-responsive" alt="company-logo">
+                </div>
+
+                <div class="col-md-5 job-list-desc">
+                    <h6>@jv.JobVacancie.JobTitle.JobName</h6>
+                    <p>Job Description</p>
+                </div>
+                <div class="col-md-3 job-list-location">
+                    <h6><i class="fa fa-map-marker"></i>Egypt</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-7 job-list-type">
+                            <h6><i class="fa fa-user"></i>@jv.JobVacancie.State.ToString()</h6>
+                        </div>
+                        <div class="col-md-5 job-list-button">
+                            <button class="btn-view-job">View Job</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- Tabs content -->
+        }
+    </div>
+</div>

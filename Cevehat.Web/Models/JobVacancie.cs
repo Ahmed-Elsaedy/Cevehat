@@ -30,11 +30,16 @@ namespace Cevehat.Web.Models
     {
         [Key]
         public int ApplayedUsers_ID { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public AppliedUserState AppliedUserState { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
+        [ForeignKey("JobVacancie")]
+        public int JobVacancieID { get; set; }
+        public virtual JobVacancie JobVacancie { get; set; }
+
+        public AppliedUserState AppliedUserState { get; set; }
     }
 
     public class JobRequirements

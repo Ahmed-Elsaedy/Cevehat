@@ -1,0 +1,48 @@
+﻿@using  Cevehat.Web.Models
+@model Education
+@{
+    ViewBag.Title = "EditEducation";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "Edit Education";
+    Page.EditMode = true;
+}
+
+<div class="section">
+    @using (Html.BeginForm("EditEducation", "UserProfile", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.EducationId)
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">University</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.OrganizationName, new { @class = "form-control", placeholder = "University" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Degree</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.DegreeTitle, new { @class = "form-control", placeholder = "Degree" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Major</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control", placeholder = "Major" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Graduation Date</label>
+            <div class="col-sm-9">
+                @Html.TextBox("GradYear", Model.GradYear.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "Graduation Date" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">GPA</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.GPA, new { @class = "form-control", placeholder = "GPA" })
+            </div>
+        </div>
+        <div class="buttons pull-right">
+            <input type="submit" value="Save Changes" class="btn" />
+        </div>
+    }
+</div>

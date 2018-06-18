@@ -12,8 +12,8 @@ namespace Cevehat.Web.Models
         [Key]
         public int EducationId { get; set; }
         public decimal GPA { get; set; }
-        public DateTime StartYear { get; set; }
-        public DateTime GradYear { get; set; }
+        public DateTime? StartYear { get; set; }
+        public DateTime? GradYear { get; set; }
         public string DepartmentName { get; set; }
 
         public string OrganizationName { get; set; }
