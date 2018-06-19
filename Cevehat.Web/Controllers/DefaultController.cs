@@ -19,9 +19,10 @@ namespace Cevehat.Web.Controllers
             ViewBag.companiesCount = companies;
             var allJobVacancies = db.JobVacancie.Count();
             ViewBag.allJobVacanciesCount = allJobVacancies;
+
             var activeJobVacancies = db.JobVacancie.Where(a => a.State == State.Active).Count();
             ViewBag.activeJobVacanciesCount = activeJobVacancies;
-            var users = db.Users.Where(a => a.CompanyID == 0).Count();
+            var users = db.Users.Where(a => a.CompanyID == null).Count();
             ViewBag.usersCount = users;
             List<JobVacancie> activeJobVacanciesList = db.JobVacancie.Where(a => a.State == State.Active).Take(10).ToList();
             ViewBag.activeJobVacanciesList = activeJobVacanciesList;
