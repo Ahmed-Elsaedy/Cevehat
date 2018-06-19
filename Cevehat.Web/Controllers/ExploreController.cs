@@ -59,6 +59,7 @@ namespace Cevehat.Web.Controllers
         }
 
         // GET: Explore/SearchBySkills
+        [Authorize(Roles = "Employee")]
         [HttpGet]
         public ActionResult SearchBySkills()
         {
