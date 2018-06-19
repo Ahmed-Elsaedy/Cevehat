@@ -351,6 +351,12 @@
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\User_Skills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CEEEVEE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CEEEVEE.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\CV.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -775,6 +781,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806191442445_nullableLastLogin.resx">
       <DependentUpon>201806191442445_nullableLastLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CEEEVEE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CEEEVEE.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
