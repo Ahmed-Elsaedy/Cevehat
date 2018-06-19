@@ -38,7 +38,7 @@ namespace Cevehat.Web.Controllers
                     User_Skills user_Skills = db.User_Skills.Where(x => x.SkillID == jobskill.Skill_ID && x.UserId == existsuser.Id).FirstOrDefault();
                     if (listSkillsIds.Contains(jobskill.skill.Skill_Id))
                     {
-                        userTotalweight += ((decimal)user_Skills.Weight / 10) * ((decimal)jobskill.Weight / 10)*100;
+                        userTotalweight += ((decimal)user_Skills.Weight / 10) * ((decimal)jobskill.Weight / TitleTotalWeight)*100;
                     }
                 }
                 List<Skill> RemaingSkills = (from titleskills in Title.JobTitles_Skills
@@ -46,7 +46,8 @@ namespace Cevehat.Web.Controllers
                                              select titleskills.skill).ToList();
                 AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Math.Round(userTotalweight, 2), RemaingSkills = RemaingSkills });
             }
-            AllTitlesToFit = AllTitlesToFit.OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
+            AllTitlesToFit = AllTitlesToFit.Where(z => z.per > 0).OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
+            ViewBag.user = existsuser;
             return View(AllTitlesToFit);
         }
     }
