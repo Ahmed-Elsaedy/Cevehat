@@ -29,9 +29,6 @@
     </div>
     <div id="home-slider" class="owl-carousel owl-theme">
         <div class="item-slide">
-            <img src="~/Template/images/upload/dummy-slide-1.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
-        </div>
-        <div class="item-slide">
             <img src="~/Template/images/upload/dummy-slide-3.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
         </div>
         <div class="item-slide">
@@ -219,6 +216,32 @@
             </div>
         </div>
         <div class="step-spacer"></div>
+    </div>
+</div>
+
+<div id="company-post">
+    <div class="container">
+
+        <h1>All Companies That Register At Site </h1>
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+        </p>
+
+        <div id="company-post-list" class="owl-carousel company-post owl-theme" style="display: block; opacity: 1;">
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper" style="width: 4860px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);">
+                    @foreach (Cevehat.Web.Models.Company c in ViewBag.AllCompaniesLogo)
+                    {
+                    <div class="owl-item" style="width: 243px;">
+                        <div class="company">
+                            <img src="~/images/@c.CompanyImage" class="img-responsive" alt="company-post">
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
+        </div>
     </div>
 </div>
 
