@@ -357,6 +357,12 @@
       <DependentUpon>CEEEVEE.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\CeV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CeV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\CV.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -565,12 +571,12 @@
     <Content Include="Views\Experince\Details.cshtml" />
     <Content Include="Views\Experince\Edit.cshtml" />
     <Content Include="Views\Experince\Index.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Home\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Home\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Home\Manage\Index.cshtml" />
+    <Content Include="Views\Home\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Home\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Home\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -785,6 +791,10 @@
     <EmbeddedResource Include="Report\CEEEVEE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CEEEVEE.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CeV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CeV.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
