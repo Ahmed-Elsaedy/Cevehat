@@ -10,11 +10,11 @@
 
 @model List<TitlePer>
 <Ul class="fa-ul">
-    @Html.ActionLink("Download CV", "DownloadCV", "Explore", null,null)
+    @*@Html.ActionLink("Download CV", "DownloadCV", "Explore", null,null)*@
     @foreach (TitlePer Title in Model)
     {
         <li>
-            <B> <h1>@Title.JobTitle.JobName :</h1></B>
+            <h1><B>@Title.JobTitle.JobName :</B></h1>
 
             <div class="w3-light-grey w3-round-xlarge">
                 @if (Title.per <= 40)
