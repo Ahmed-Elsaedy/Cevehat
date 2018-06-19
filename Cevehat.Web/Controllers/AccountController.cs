@@ -83,6 +83,7 @@ namespace Cevehat.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                 
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -145,7 +146,7 @@ namespace Cevehat.Web.Controllers
         {
             //For user registration we will not display the Admin roles. User can select rest of any role type during registration.
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
-                                            .ToList(), "Name", "Name","Employee");
+                                            .ToList(), "Name", "Name", "Employee");
             return View();
         }
 
@@ -411,6 +412,12 @@ namespace Cevehat.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            user.LastLogin = DateTime.Now;
+            db.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
 

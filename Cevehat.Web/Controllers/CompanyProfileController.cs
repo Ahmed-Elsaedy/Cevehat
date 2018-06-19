@@ -27,6 +27,7 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employee")]
         public ActionResult ViewProfile(int CompanyId)
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             var company = db.Company.Find(CompanyId);
             if(company==null)
             {
@@ -37,17 +38,20 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employer")]
         public ActionResult Details()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             return View(CurrentUser);
         }
         [HttpGet, Authorize(Roles = "Employer")]
         public ActionResult EditDetails()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             return View(currentComp);
         }
         [HttpPost, Authorize(Roles = "Employer")]
         public ActionResult EditDetails(Company newComp, HttpPostedFileBase img)
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
 
             currentComp.CompanyID = newComp.CompanyID;
@@ -70,6 +74,7 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employer")]
         public ActionResult userApplications()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             return View(currentComp);
         }
@@ -77,6 +82,7 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employer")]
         public ActionResult RecentJobs()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             return View(currentComp);
         }
@@ -85,6 +91,7 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employer")]
         public ActionResult ChangeState(int id)
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             JobVacancie currentJob = db.JobVacancie.Find(id);
             if (currentJob.State == State.Active)
             {
@@ -106,6 +113,7 @@ namespace Cevehat.Web.Controllers
         [Authorize(Roles = "Employer")]
         public ActionResult ArchivedJobs()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             return View(currentComp);
         }
@@ -113,6 +121,7 @@ namespace Cevehat.Web.Controllers
         [HttpGet, Authorize(Roles = "Employer")]
         public ActionResult AddJob()
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             JobVacancie newjob = new JobVacancie();
             Company currentComp = db.Company.Find(CurrentUser.CompanyID);
             newjob.Date = DateTime.Now;
@@ -133,6 +142,7 @@ namespace Cevehat.Web.Controllers
         [HttpPost, Authorize(Roles = "Employer")]
         public ActionResult AddJob(JobVacancie newjob, List<int> Skills)
         {
+            ViewBag.lastLogin = CurrentUser.LastLogin;
             db.JobVacancie.Add(newjob);
             for (int i = 0; i < Skills.Count; i++)
             {

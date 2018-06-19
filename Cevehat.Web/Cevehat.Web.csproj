@@ -326,6 +326,10 @@
     <Compile Include="Migrations\201806191210092_userImage.Designer.cs">
       <DependentUpon>201806191210092_userImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806191411419_userlogin.cs" />
+    <Compile Include="Migrations\201806191411419_userlogin.Designer.cs">
+      <DependentUpon>201806191411419_userlogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\careerObjective.cs" />
@@ -759,6 +763,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806191210092_userImage.resx">
       <DependentUpon>201806191210092_userImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806191411419_userlogin.resx">
+      <DependentUpon>201806191411419_userlogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\CV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
