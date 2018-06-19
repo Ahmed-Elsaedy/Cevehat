@@ -38,7 +38,7 @@
                 @foreach (Experince exp in Model.Experinces)
                 {
                     <li>
-                        <h4>@exp.Position @@ @exp.Place <span>@exp.StartDate.GetValueOrDefault().ToString("MMM yyyy") - @exp.EndDate.GetValueOrDefault().ToString("MMM yyyy")</span></h4>
+                        <h4>@exp.Position @@ @exp.Place <span>@exp.StartDate.GetValueOrDefault().ToShortDateString() - @exp.EndDate.GetValueOrDefault().ToString("MMM yyyy")</span></h4>
                         <p>@exp.Responsbilty</p>
                     </li>
 
@@ -79,7 +79,7 @@
                 @foreach (Certification cert in Model.Certifications)
                 {
                     <li>
-                        <h6>@cert.CerName @@ @cert.CerPlace <span>  --  @cert.CerYear.ToString("MMM yyyy")</span></h6>
+                        <h6>@cert.CerName @@ @cert.CerPlace <span>  --  @cert.CerYear.ToShortDateString()</span></h6>
                     </li>
                 }
             </ul>
