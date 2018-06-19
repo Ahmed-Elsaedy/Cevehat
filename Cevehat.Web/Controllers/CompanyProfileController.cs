@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
+    [Authorize(Roles = "Employer")]
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -23,6 +24,7 @@ namespace Cevehat.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Employee")]
         public ActionResult ViewProfile(int CompanyId)
         {
             var company = db.Company.Find(CompanyId);
