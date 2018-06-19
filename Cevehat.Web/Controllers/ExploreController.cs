@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
 
 namespace Cevehat.Web.Controllers
 {
@@ -18,6 +20,44 @@ namespace Cevehat.Web.Controllers
             List<JobTitle> JobTitles = db.JobTitle.ToList<JobTitle>();
             return View(JobTitles);
         }
+
+        public ActionResult DownloadCV()
+        {
+            string UserId = User.Identity.GetUserId();
+
+            // var user_Skill = db.User_Skills.Include(us).Include(u => u.User).ToList<User_Skills>();
+
+            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
+            List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
+            List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
+            List<Experince> experinces = db.Experinces.Where(e => e.UserID == UserId).ToList<Experince>();
+            List<User_Skills> user_Skills = db.User_Skills.Where(u => u.UserId == UserId).ToList<User_Skills>();
+
+
+            ReportDocument mycv = new ReportDocument();
+            mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CV.rpt"));
+            //mycv.SetDataSource(certifications);
+            //mycv.SetDataSource(educations);
+            mycv.Database.Tables[1].SetDataSource(certifications);
+            mycv.Database.Tables[2].SetDataSource(educations);
+            mycv.Database.Tables[3].SetDataSource(experinces);
+            mycv.Database.Tables[4].SetDataSource(user_Skills);
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            try
+            {
+                Stream stream = mycv.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "cv.pdf");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         // GET: Explore/SearchBySkills
         [HttpGet]
         public ActionResult SearchBySkills()
@@ -38,7 +78,7 @@ namespace Cevehat.Web.Controllers
                     User_Skills user_Skills = db.User_Skills.Where(x => x.SkillID == jobskill.Skill_ID && x.UserId == existsuser.Id).FirstOrDefault();
                     if (listSkillsIds.Contains(jobskill.skill.Skill_Id))
                     {
-                        userTotalweight += ((decimal)user_Skills.Weight / 10) * ((decimal)jobskill.Weight / 10)*100;
+                        userTotalweight += ((decimal)user_Skills.Weight / 10) * ((decimal)jobskill.Weight / TitleTotalWeight)*100;
                     }
                 }
                 List<Skill> RemaingSkills = (from titleskills in Title.JobTitles_Skills
@@ -46,7 +86,8 @@ namespace Cevehat.Web.Controllers
                                              select titleskills.skill).ToList();
                 AllTitlesToFit.Add(new TitlePer() { JobTitle = Title, per = Math.Round(userTotalweight, 2), RemaingSkills = RemaingSkills });
             }
-            AllTitlesToFit = AllTitlesToFit.OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
+            AllTitlesToFit = AllTitlesToFit.Where(z => z.per > 0).OrderBy(x => x.RemaingSkills.Count).OrderByDescending(y => y.per).ToList();
+            ViewBag.user = existsuser;
             return View(AllTitlesToFit);
         }
     }

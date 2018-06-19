@@ -163,6 +163,8 @@ namespace Cevehat.Web.Controllers
         [HttpPost]
         public ActionResult AddSkill(int SkillId, int WeightRange)
         {
+            ApplicationUser exuser = db.Users.Find(User.Identity.GetUserId());
+
             Skill skill = db.Skill.Find(SkillId);
             if (CurrentUser.User_TecSkills.FirstOrDefault(x => x.SkillID == SkillId) == null)
             {
@@ -170,8 +172,11 @@ namespace Cevehat.Web.Controllers
                 {
                     UserId = CurrentUser.Id,
                     SkillID = SkillId,
-                    Weight = WeightRange
+                    Weight = WeightRange,
+                    Skill = skill
                 };
+                exuser.TecSkills.Add(skill);
+
                 db.User_Skills.Add(user_Skill);
                 db.SaveChanges();
             }
@@ -181,9 +186,12 @@ namespace Cevehat.Web.Controllers
         [HttpGet]
         public ActionResult RemoveSkill(int id)
         {
+            ApplicationUser exuser = db.Users.Find(User.Identity.GetUserId());
+            
             var local = db.User_Skills.Find(id);
             if (local != null)
             {
+                exuser.TecSkills.Remove(db.Skill.Find(local.SkillID));
                 db.User_Skills.Remove(local);
                 db.SaveChanges();
             }
