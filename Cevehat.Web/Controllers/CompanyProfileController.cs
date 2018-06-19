@@ -24,6 +24,16 @@ namespace Cevehat.Web.Controllers
             }
         }
 
+        public ActionResult ViewProfile(int CompanyId)
+        {
+            var company = db.Company.Find(CompanyId);
+            if(company==null)
+            {
+                return HttpNotFound("Company Not Found");
+            }
+            return View(company);
+        }
+        [Authorize(Roles = "Employer")]
         public ActionResult Details()
         {
             return View(CurrentUser);

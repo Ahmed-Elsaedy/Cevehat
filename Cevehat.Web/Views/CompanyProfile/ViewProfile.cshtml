@@ -1,0 +1,35 @@
+﻿@using Cevehat.Web.Models
+@model Company
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_JobBoardLayout.cshtml";
+}
+
+@section head{
+    <link href="~/Template/css/main.css" rel="stylesheet" />
+}
+
+<div class="resume-content">
+    <div class="personal-deatils section">
+        <div class="icons">
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+        </div>
+        <div class="personal-info">
+            <h3>Company Deatils</h3>
+            <ul class="address">
+                <li>
+                    <h5>Company Image</h5> <span>:</span><div class="user-images">
+                        <img src="~/images/@Model.CompanyImage" width="150" height="150" alt="Company                                  Images" class="img-responsive">
+                    </div>
+                </li>
+
+                <li><h5>Company Name </h5> <span>:</span>@Model.CompanyName</li>
+                <li><h5>Company Information </h5> <span>:</span>@Model.CompanyInfo</li>
+                <li><h5>Company Website</h5> <span>:</span><a href="@Model.CompanyWebSite">@Model.CompanyWebSite</a></li>
+                <li><h5>Company Phone </h5> <span>:</span>@Model.CompanyPhone</li>
+                <li><h5>Company Email </h5> <span>:</span>@Model.CompanyEmail</li>
+            </ul>
+        </div>
+    </div><!-- personal-deatils -->
+</div>
+

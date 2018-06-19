@@ -664,6 +664,7 @@
     <Content Include="Views\CompanyProfile\RecentJobs.cshtml" />
     <Content Include="Views\CompanyProfile\ArchivedJobs.cshtml" />
     <Content Include="Views\CompanyProfile\AddJob.cshtml" />
+    <Content Include="Views\CompanyProfile\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
