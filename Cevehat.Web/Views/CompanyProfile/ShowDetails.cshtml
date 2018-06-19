@@ -1,0 +1,64 @@
+﻿@using Cevehat.Web.Models
+@model JobVacancie
+@{
+    ViewBag.Title = "ShowDetails";
+    Layout = "~/Views/Shared/_JobBoardLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <td>Company Name</td>
+        <td>@Model.Company.CompanyName</td>
+    </tr>
+    <tr>
+        <td>Job Title</td>
+        <td>@Model.JobTitle.JobName</td>
+    </tr>
+    <tr>
+        <td>Experience Years</td>
+        <td>@Model.ExpYears</td>
+    </tr>
+    <tr>
+        <td>Job Date</td>
+        <td>@Model.Date</td>
+    </tr>
+    <tr>
+        <td>Job Status</td>
+        <td>@Model.State</td>
+    </tr>
+    <tr>
+        <td>Job Type</td>
+        <td>@Model.JobType</td>
+    </tr>
+    <tr>
+        <td>Job Requirement</td>
+        <td>
+            @Model.Requirements
+        </td>
+    </tr>
+    <tr>
+        <td>Job Skills</td>
+        <td>
+            <ul>
+                @foreach (Skill skill in Model.Skills)
+                {
+                    <li>@skill.Title</li>
+                }
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><h4>If You Want Apply</h4></td>
+        <td>
+            @if (User != null && User.IsInRole("Employee"))
+           {
+           
+                @Html.ActionLink("Apply", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = Model.JobVacancieID }, null)
+            
+           }
+        </td>
+    </tr>
+
+
+</table>
+

@@ -680,6 +680,7 @@
     <Content Include="Views\AutoCompletee\search.cshtml" />
     <Content Include="Views\CompanyProfile\ViewProfile.cshtml" />
     <Content Include="Views\UserProfile\ViewProfile.cshtml" />
+    <Content Include="Views\CompanyProfile\ShowDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
