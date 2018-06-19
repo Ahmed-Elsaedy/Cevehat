@@ -46,7 +46,7 @@
                         <div class="form-group">
                             @*@Html.DropDownList("UserRoles", ViewBag.Name as IEnumerable<SelectListItem>, " ", new { @class = "form-control input-form" })*@
                             <select class="form-control input-form" data-val="true" data-val-required="The UserRoles field is required." id="UserRoles" name="UserRoles">
-                                <option selected="selected" value="Employer">Job Seeker</option>
+                                <option selected="selected" value="Employee">Job Seeker</option>
                                 <option value="Employer">Company HR</option>
                             </select>
                             @Html.ValidationMessageFor(m => m.UserRoles, "", new { @class = "text-danger" })
