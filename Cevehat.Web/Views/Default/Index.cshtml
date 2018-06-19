@@ -68,6 +68,152 @@
 <!-- end headline section -->
 
 
+
+<div class="panel-container">
+    <h1 class="step-to" style="text-align:center;">Recent Jobs</h1>
+    <div id="all" class="active" style="display: block;">
+        <!-- Tabs section 1 -->
+
+        @foreach (Cevehat.Web.Models.JobVacancie j in ViewBag.activeJobVacanciesList)
+        {
+
+            <div class="recent-job-list">
+                <!-- Tabs content -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <h5>@j.Company.CompanyName</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>@j.JobTitle.JobName</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>@j.Date</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>@j.State</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>@j.JobType</h5>
+                    </div>
+                    @if (User != null && User.IsInRole("Employee"))
+                    {
+                        <div class="col-md-2">
+                            @Html.ActionLink("Apply", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = j.JobVacancieID }, null)<br />
+                        </div>
+                    }
+                </div>
+            </div><!-- Tabs content -->
+
+        }
+        @*<div class="clearfix"></div>*@
+    </div><!-- Tabs section 1 -->
+    <div id="contract" style="display: none;">
+        <!-- Tabs section 2 -->
+    </div><!-- Tabs section 2 -->
+    <div id="full" style="display: none;">
+        <!-- Tabs section 3 -->
+    </div><!-- Tabs section 3 -->
+    <div id="free" style="display: none;">
+        <!-- Tabs section 4 -->
+    </div><!-- Tabs section 4 -->
+</div>
+
+
+
+<div class="job-status">
+    <div class="container">
+        <h1>Jobs Stats Updates</h1>
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+        </p>
+
+        <div class="counter clearfix">
+            <div class="counter-container">
+                <div class="counter-value">@ViewBag.allJobVacanciesCount</div>
+                <div class="line"></div>
+                <p>All Job Vacancies</p>
+            </div>
+
+
+            <div class="counter-container">
+                <div class="counter-value">@ViewBag.activeJobVacanciesCount</div>
+                <div class="line"></div>
+                <p>Active Job Vacancies</p>
+            </div>
+
+            <div class="counter-container">
+                <div class="counter-value">@ViewBag.companiesCount</div>
+                <div class="line"></div>
+                <p>Companies</p>
+            </div>
+
+            <div class="counter-container">
+                <div class="counter-value">@ViewBag.usersCount</div>
+                <div class="line"></div>
+                <p>Users</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="step-to">
+    <div class="container">
+        <h1>Easiest Way To Use</h1>
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas mo
+        </p>
+
+        <div class="step-spacer"></div>
+        <div id="step-image">
+            <div class="step-by-container">
+                <div class="step-by">
+                    First Step
+                    <div class="step-by-inner">
+                        <div class="step-by-inner-img">
+                            <img src="~/Template/images/step-icon-1.png" alt="step">
+                        </div>
+                    </div>
+                    <h5>Register with us</h5>
+                </div>
+
+                <div class="step-by">
+                    Second Step
+                    <div class="step-by-inner">
+                        <div class="step-by-inner-img">
+                            <img src="~/Template/images/step-icon-2.png" alt="step">
+                        </div>
+                    </div>
+                    <h5>Create your profile</h5>
+                </div>
+
+                <div class="step-by">
+                    Third Step
+                    <div class="step-by-inner">
+                        <div class="step-by-inner-img">
+                            <img src="~/Template/images/step-icon-3.png" alt="step">
+                        </div>
+                    </div>
+                    <h5>Search for job</h5>
+                </div>
+
+                <div class="step-by">
+                    Now it's our turn
+                    <div class="step-by-inner">
+                        <div class="step-by-inner-img">
+                            <img src="~/Template/images/step-icon-4.png" alt="step">
+                        </div>
+                    </div>
+                    <h5>Now take rest :)</h5>
+                </div>
+
+            </div>
+        </div>
+        <div class="step-spacer"></div>
+    </div>
+</div>
+
+
 @section Scripts{
     <!-- Tabs -->
     <script src="~/Template/js/tabs/jquery.easytabs.min.js"></script>
