@@ -52,7 +52,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                <a href="" class="btn btn-default btn-yellow">Find a Job</a>
+                @Html.ActionLink("Find a Job", "AutoCompletee", "Index", new { @class = "btn btn-default btn-yellow" })
             </p>
         </div>
         <div class="col-md-6 align-left">
@@ -62,7 +62,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                <a href="" class="btn btn-default btn-light">Post a Job</a>
+                @Html.ActionLink("Post a Job", "CompanyProfile", "AddJob", new { @class = "btn btn-default btn-light" })
             </p>
         </div>
         <div class="clearfix"></div>
@@ -79,7 +79,6 @@
 
         @foreach (Cevehat.Web.Models.JobVacancie j in ViewBag.activeJobVacanciesList)
         {
-
             <div class="recent-job-list">
                 <!-- Tabs content -->
                 <div class="row">
@@ -229,11 +228,11 @@
                 <div class="owl-wrapper" style="width: 4860px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);">
                     @foreach (Cevehat.Web.Models.Company c in ViewBag.AllCompaniesLogo)
                     {
-                    <div class="owl-item" style="width: 243px;">
-                        <div class="company">
-                            <img src="~/images/@c.CompanyImage" class="img-responsive" alt="company-post">
+                        <div class="owl-item" style="width: 243px;">
+                            <div class="company">
+                                <img src="~/images/@c.CompanyImage" class="img-responsive" alt="company-post">
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
             </div>
