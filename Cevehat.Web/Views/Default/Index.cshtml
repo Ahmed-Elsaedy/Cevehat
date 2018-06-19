@@ -29,6 +29,9 @@
     </div>
     <div id="home-slider" class="owl-carousel owl-theme">
         <div class="item-slide">
+            <img src="~/Template/images/upload/dummy-slide-1.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
+        </div>
+        <div class="item-slide">
             <img src="~/Template/images/upload/dummy-slide-3.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
         </div>
         <div class="item-slide">
@@ -92,7 +95,7 @@
                         <h5>@j.Date</h5>
                     </div>
                     <div class="col-md-2">
-                        <h5>@j.State</h5>
+                        @Html.ActionLink("View Profile of " + j.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = j.CompanyID })<br />
                     </div>
                     <div class="col-md-2">
                         <h5>@j.JobType</h5>
