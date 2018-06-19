@@ -54,9 +54,18 @@
                                 <li>
                                     @Html.ActionLink("JOB SEARCH", "Index", "AutoCompletee")
                                 </li>
-                                <li>
-                                    @Html.ActionLink("Add Job", "AddJob", "CompanyProfile")
-                                </li>
+                                @if (User.IsInRole("Employer"))
+                                {
+                                    <li>
+                                        @Html.ActionLink("Add Job", "AddJob", "CompanyProfile")
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        @Html.ActionLink("Discover your Title", "SearchBySkills", "Explore")
+                                    </li>
+                                }
                                 <li>
                                     @Html.ActionLink("BUILD A RESUME", "Details", "UserProfile")
                                 </li>
