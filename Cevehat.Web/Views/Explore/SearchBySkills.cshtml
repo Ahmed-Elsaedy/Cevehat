@@ -7,6 +7,7 @@
     Page.PageTitle = "Profile Details";
     Page.UserName = ViewBag.user.Fname + " " + ViewBag.user.Lname;
 }
+
 @model List<TitlePer>
 <Ul class="fa-ul">
     @foreach (TitlePer Title in Model)
@@ -18,25 +19,29 @@
                 @if (Title.per <= 40)
                 {
 
-                    <div class="progress-bar progress-bar-danger" style="width:@Title.per%">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
+                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
                         @Title.per%
                     </div>
                 }
                 else if (Title.per <= 60)
                 {
-                    <div class="progress-bar progress-bar-warning" style="width:@Title.per%">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
                         @Title.per%
                     </div>
                 }
                 else if (Title.per <= 80)
                 {
-                    <div class="progress-bar progress-bar-info" style="width:@Title.per%">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
                         @Title.per%
                     </div>
                 }
                 else if (Title.per <= 100)
                 {
-                    <div class="progress-bar progress-bar-success" style="width:@Title.per%">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
                         @Title.per%
                     </div>
                 }
