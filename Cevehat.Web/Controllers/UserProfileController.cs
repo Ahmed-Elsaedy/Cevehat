@@ -203,5 +203,40 @@ namespace Cevehat.Web.Controllers
             }
             return RedirectToAction("MySkills");
         }
+
+
+        [HttpGet]
+        public ActionResult DeleteEducation(int id)
+        {
+            Education edu = db.Education.Find(id);
+            if(edu != null)
+            {
+                db.Education.Remove(edu);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details");
+        }
+        [HttpGet]
+        public ActionResult DeleteExperience(int id)
+        {
+            Experince exp = db.Experinces.Find(id);
+            if (exp != null)
+            {
+                db.Experinces.Remove(exp);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details");
+        }
+        [HttpGet]
+        public ActionResult DeleteCertification(int id)
+        {
+            Certification cert = db.Certification.Find(id);
+            if (cert != null)
+            {
+                db.Certification.Remove(cert);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details");
+        }
     }
 }

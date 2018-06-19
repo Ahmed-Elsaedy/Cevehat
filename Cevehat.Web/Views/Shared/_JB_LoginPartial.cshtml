@@ -17,18 +17,18 @@
                         <li>
                             @if (User.IsInRole("Employee"))
                             {
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Details", "UserProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1", title = "profile" })
+                                @Html.ActionLink("Your Profile", "Details", "UserProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1 btn btn-primary mx-2", title = "profile" })
                             }
                             else if (User.IsInRole("Employer"))
                             {
                                 
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Details", "CompanyProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1", title = "profile" })
+                                @Html.ActionLink("Your Profile", "Details", "CompanyProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1 btn btn-primary mx-2", title = "profile" })
                             }
 
 
 
                         </li>
-                        <li><a class="h5 my-1" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        <li><a class="h5 my-1 btn btn-warning" href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
                     </ul>
                 }
             }
@@ -39,7 +39,6 @@
                     <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-default btn-green btn-sm" })</li>
                 </ul>
             }
-
             <div class="clearfix"></div>
         </div>
     </div>

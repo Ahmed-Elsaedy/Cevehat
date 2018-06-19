@@ -44,11 +44,12 @@
             <ul>
                 @foreach (Experince exp in Model.Experinces)
                 {
-                    <li>
-                        <span>@Html.ActionLink("Edit", "EditExperience", new { id = exp.ExpId })</span>
-                        <h4>@exp.Position @@ @exp.Place <span>@exp.StartDate.GetValueOrDefault().ToString("MMM yyyy") - @exp.EndDate.GetValueOrDefault().ToString("MMM yyyy")</span></h4>
-                        <p>@exp.Responsbilty</p>
-                    </li>
+                <li>
+                    <span>@Html.ActionLink("Edit", "EditExperience", new { id = exp.ExpId })</span>
+                    <span>@Html.ActionLink("Delete", "DeleteExperience", new { id = exp.ExpId })</span>
+                    <h4>@exp.Position @@ @exp.Place <span>@exp.StartDate.GetValueOrDefault().ToString("MMM yyyy") - @exp.EndDate.GetValueOrDefault().ToString("MMM yyyy")</span></h4>
+                    <p>@exp.Responsbilty</p>
+                </li>
 
                 }
             </ul>
@@ -65,15 +66,16 @@
             <ul>
                 @foreach (Education edu in Model.Educations)
                 {
-                    <li>
-                        <span>@Html.ActionLink("Edit", "EditEducation", new { id = edu.EducationId })</span>
-                        <h4>@edu.DegreeTitle @@ @edu.OrganizationName</h4>
-                        <ul>
-                            <li>Year: <span>@edu.GradYear.GetValueOrDefault().ToShortDateString()</span> </li>
-                            <li>Major: <span>@edu.DepartmentName</span></li>
-                            <li>Result: <span>@edu.GPA</span></li>
-                        </ul>
-                    </li>
+                <li>
+                    <span>@Html.ActionLink("Edit", "EditEducation", new { id = edu.EducationId })</span>
+                    <span>@Html.ActionLink("Delete", "DeleteEducation", new { id = edu.EducationId })</span>
+                    <h4>@edu.DegreeTitle @@ @edu.OrganizationName</h4>
+                    <ul>
+                        <li>Year: <span>@edu.GradYear.GetValueOrDefault().ToShortDateString()</span> </li>
+                        <li>Major: <span>@edu.DepartmentName</span></li>
+                        <li>Result: <span>@edu.GPA</span></li>
+                    </ul>
+                </li>
                 }
             </ul>
         </div>
@@ -89,10 +91,11 @@
             <ul>
                 @foreach (Certification cert in Model.Certifications)
                 {
-                    <li>
-                        <span>@Html.ActionLink("Edit", "EditCertification", new { id = cert.Cerid })</span>
-                        <h6>@cert.CerName @@ @cert.CerPlace <span>  --  @cert.CerYear.ToString("MMM yyyy")</span></h6>
-                    </li>
+                <li>
+                    <span>@Html.ActionLink("Edit", "EditCertification", new { id = cert.Cerid })</span>
+                    <span>@Html.ActionLink("Delete", "DeleteCertification", new { id = cert.Cerid })</span>
+                    <h6>@cert.CerName @@ @cert.CerPlace <span>  --  @cert.CerYear.ToString("MMM yyyy")</span></h6>
+                </li>
                 }
             </ul>
         </div>
