@@ -24,7 +24,6 @@ namespace Cevehat.Web
             //In Startup iam creating first Admin Role and creating a default Admin User
             if (!roleManager.RoleExists("Admin"))
             {
-
                 // first we create Admin role   
                 var role = new IdentityRole();
                 role.Name = "Admin";
@@ -33,18 +32,15 @@ namespace Cevehat.Web
                 //Here we create a Admin super user who will maintain the website                  
 
                 var user = new ApplicationUser();
-                user.UserName = "asmaa";
-                user.Email = "asmaa999@yahoo.com";
-
-                string userPWD = "As@123456";
-
+                user.UserName = "Admin";
+                user.Email = "Admin@cevehat.com";
+                string userPWD = "Qq@123456";
                 var checkUser = UserManager.Create(user, userPWD);
 
                 //Add default User to Role Admin   
                 if (checkUser.Succeeded)
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Admin");
-
                 }
             }
 
