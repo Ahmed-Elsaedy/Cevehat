@@ -23,7 +23,12 @@ namespace Cevehat.Web.Controllers
                 return _CurrentUser;
             }
         }
-
+        [Authorize(Roles="Employee")]
+        public ActionResult ShowDetails(int JobVacancieID)
+        {
+            JobVacancie currentJob = db.JobVacancie.Find(JobVacancieID);
+            return View(currentJob);
+        }
         [Authorize(Roles = "Employee")]
         public ActionResult ViewProfile(int CompanyId)
         {

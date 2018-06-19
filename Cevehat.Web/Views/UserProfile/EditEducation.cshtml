@@ -32,7 +32,7 @@
         <div class="row form-group">
             <label class="col-sm-3 label-title">Graduation Date</label>
             <div class="col-sm-9">
-                @Html.TextBox("GradYear", Model.GradYear.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "Graduation Date" })
+                @Html.TextBox("GradYear", Model.GradYear.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "Graduation Date", Type = "date" })
             </div>
         </div>
         <div class="row form-group">

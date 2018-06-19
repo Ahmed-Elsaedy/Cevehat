@@ -55,7 +55,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                @Html.ActionLink("Find a Job", "AutoCompletee", "Index", new { @class = "btn btn-default btn-yellow" })
+                @Html.ActionLink("Find a Job", "Index", "AutoCompletee", null, new { @class = "btn btn-default btn-yellow" })
             </p>
         </div>
         <div class="col-md-6 align-left">
@@ -85,13 +85,10 @@
             <div class="recent-job-list">
                 <!-- Tabs content -->
                 <div class="row">
-                    <div class="col-md-2">
-                        <h5>@j.Company.CompanyName</h5>
-                    </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <h5>@j.JobTitle.JobName</h5>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <h5>@j.Date</h5>
                     </div>
                     <div class="col-md-2">
@@ -100,12 +97,10 @@
                     <div class="col-md-2">
                         <h5>@j.JobType</h5>
                     </div>
-                    @if (User != null && User.IsInRole("Employee"))
-                    {
-                        <div class="col-md-2">
-                            @Html.ActionLink("Apply", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = j.JobVacancieID }, null)<br />
-                        </div>
-                    }
+                    <div class="col-md-2">
+                        @Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = j.JobVacancieID }, null)<br />
+                    </div>
+
                 </div>
             </div><!-- Tabs content -->
 

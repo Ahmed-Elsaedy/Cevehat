@@ -138,7 +138,7 @@ textarea {
     resize: none;
 }
 
-.btn.btn-primary {
+/*.btn.btn-primary {
     font-size: 18px;
     font-weight: 400;
     text-transform: capitalize;
@@ -150,7 +150,7 @@ textarea {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-}
+}*/
 
     .btn.btn-primary:hover {
         background-color: #0072bc;

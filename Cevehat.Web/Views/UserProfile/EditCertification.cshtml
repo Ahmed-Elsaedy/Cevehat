@@ -27,7 +27,7 @@
         <div class="row form-group">
             <label class="col-sm-3 label-title">Date</label>
             <div class="col-sm-9">
-                @Html.TextBox("CerYear", Model.CerYear.ToShortDateString(), new { @class = "form-control", placeholder = "Date" })
+                @Html.TextBox("CerYear", Model.CerYear.ToShortDateString(), new { @class = "form-control", placeholder = "Date", Type = "date" })
             </div>
         </div>
         <div class="buttons pull-right">
