@@ -34,7 +34,7 @@ namespace Cevehat.Web
 
                 var user = new ApplicationUser();
                 user.UserName = "asmaa";
-                user.Email = "asmaa@gmail.com";
+                user.Email = "asmaa999@yahoo.com";
 
                 string userPWD = "As@123456";
 
