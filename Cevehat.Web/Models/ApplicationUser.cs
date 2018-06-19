@@ -21,7 +21,7 @@ namespace Cevehat.Web.Models
         public DateTime? BirthDate { get; set; }
         public byte[] UserImage { get; set; }
         public string ImageUrl { get; set; }
-        public DateTime LastLogin { get; set; }
+        public DateTime? LastLogin { get; set; }
 
         public MaritalStutes MaritaSutes { get; set; }
         public MilitaryStatus MilitaryStatus { get; set; }
