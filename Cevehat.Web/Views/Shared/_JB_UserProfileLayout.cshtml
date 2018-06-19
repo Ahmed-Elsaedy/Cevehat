@@ -18,7 +18,7 @@
             <h2 class="title">@Page.PageTitle</h2>
         </div>
         <!-- breadcrumb-section -->
-
+            
         @if (!Page.EditMode)
         {
             <div class="job-profile section">
@@ -54,7 +54,9 @@
                     </li>
                     <li>
                         @Html.ActionLink("My Skills", "MySkills", "UserProfile")
-
+                    </li>
+                    <li>
+                        @Html.ActionLink("Discover your Title", "SearchBySkills", "Explore")
                     </li>
                 </ul>
             </div>
