@@ -65,7 +65,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                @Html.ActionLink("Post a Job", "CompanyProfile", "AddJob", new { @class = "btn btn-default btn-light" })
+                @Html.ActionLink("Post a Job", "AddJob", "CompanyProfile",null, new { @class = "btn btn-default btn-light" })
             </p>
         </div>
         <div class="clearfix"></div>
@@ -73,7 +73,7 @@
 </div>
 <!-- end headline section -->
 
-
+@Html.Partial("~/Views/AutoCompletee/search.cshtml", null)
 
 <div class="panel-container">
     <h1 class="step-to" style="text-align:center;">Recent Jobs</h1>
