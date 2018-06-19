@@ -25,17 +25,19 @@ namespace Cevehat.Web.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize(Roles = "Employee,Employer")]
         public ActionResult Details()
         {
             return View(CurrentUser);
         }
 
+        [Authorize(Roles = "Employer")]
         public ActionResult ViewProfile(string userId)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.Find(userId);
-            return View("Details", user);
+            if (user == null)
+                return HttpNotFound("User Not Found");
+            return View(user);
         }
 
         [HttpGet]
@@ -58,6 +60,13 @@ namespace Cevehat.Web.Controllers
             user.PhoneNumber = model.PhoneNumber;
             user.Address = model.Address;
             user.Summary = model.Summary;
+
+            if (profileImage != null)
+            {
+                string ext = profileImage.FileName.Substring(profileImage.FileName.LastIndexOf("."));
+                user.ImageUrl = user.Id.ToString() + ext;
+                profileImage.SaveAs(Server.MapPath("~/UImages/") + user.ImageUrl);
+            }
             db.SaveChanges();
             return RedirectToAction("Details");
         }
@@ -89,7 +98,6 @@ namespace Cevehat.Web.Controllers
             return RedirectToAction("Details");
         }
 
-
         [HttpGet]
         public ActionResult EditExperience(int? id)
         {
@@ -117,7 +125,6 @@ namespace Cevehat.Web.Controllers
             return RedirectToAction("Details");
         }
 
-
         [HttpGet]
         public ActionResult EditCertification(int? id)
         {
@@ -144,7 +151,6 @@ namespace Cevehat.Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Details");
         }
-
 
         public ActionResult AppliedJobs()
         {
@@ -187,7 +193,7 @@ namespace Cevehat.Web.Controllers
         public ActionResult RemoveSkill(int id)
         {
             ApplicationUser exuser = db.Users.Find(User.Identity.GetUserId());
-            
+
             var local = db.User_Skills.Find(id);
             if (local != null)
             {

@@ -25,11 +25,8 @@ namespace Cevehat.Web.Controllers
             ViewBag.usersCount = users;
             List<JobVacancie> activeJobVacanciesList = db.JobVacancie.Where(a => a.State == State.Active).Take(10).ToList();
             ViewBag.activeJobVacanciesList = activeJobVacanciesList;
-            //List<JobVacancie> FullTimeJobVacanciesList = db.JobVacancie.Where(a=>a.JobType==JobType.FullTime).ToList();
-            //ViewBag.FullTimeJobVacanciesList = FullTimeJobVacanciesList;
-            //List<JobVacancie> PartTimeJobVacanciesList = db.JobVacancie.Where(a => a.JobType == JobType.PartTime).ToList();
-            //ViewBag.PartTimeJobVacanciesList = PartTimeJobVacanciesList;
-
+            List<Company> AllCompaniesLogo = db.Company.ToList();
+            ViewBag.AllCompaniesLogo = AllCompaniesLogo;
             return View();
         }
 

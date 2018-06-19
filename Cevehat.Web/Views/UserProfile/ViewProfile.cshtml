@@ -1,12 +1,8 @@
 ﻿@using Cevehat.Web.Models
 @model ApplicationUser
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
-    Page.UserName = Model.Fname + " " + Model.Lname;
-    Page.PageTitle = "Profile Details";
-    Page.EditMode = false;
-    Page.JobsCount = Model.ApplayedUsers.Count;
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_JobBoardLayout.cshtml";
 }
 
 <div class="resume-content">
@@ -20,7 +16,6 @@
                 <p>Address: @Model.Address <br> Phone: @Model.PhoneNumber <br> Email:<a href="#"> @Model.Email</a></p>
             </address>
         </div>
-        @Html.ActionLink("Edit", "EditPersonal", null, new { @class = "btn btn-outline-primary" })
     </div>
 
     <div class="career-objective section">
@@ -38,13 +33,11 @@
             <i class="fa fa-briefcase" aria-hidden="true"></i>
         </div>
         <div class="work-info">
-            @Html.ActionLink("Add New", "EditExperience", null, null)
             <h3>Work Experince</h3>
             <ul>
                 @foreach (Experince exp in Model.Experinces)
                 {
                     <li>
-                        <span>@Html.ActionLink("Edit", "EditExperience", new { id = exp.ExpId })</span>
                         <h4>@exp.Position @@ @exp.Place <span>@exp.StartDate.GetValueOrDefault().ToString("MMM yyyy") - @exp.EndDate.GetValueOrDefault().ToString("MMM yyyy")</span></h4>
                         <p>@exp.Responsbilty</p>
                     </li>
@@ -59,13 +52,11 @@
             <i class="fa fa-graduation-cap" aria-hidden="true"></i>
         </div>
         <div class="educational-info">
-            @Html.ActionLink("Add New", "EditEducation", null, null)
             <h3>Education Background</h3>
             <ul>
                 @foreach (Education edu in Model.Educations)
                 {
                     <li>
-                        <span>@Html.ActionLink("Edit", "EditEducation", new { id = edu.EducationId })</span>
                         <h4>@edu.DegreeTitle @@ @edu.OrganizationName</h4>
                         <ul>
                             <li>Year: <span>@edu.GradYear.GetValueOrDefault().ToShortDateString()</span> </li>
@@ -83,13 +74,11 @@
             <i class="fas fa-trophy" aria-hidden="true"></i>
         </div>
         <div class="qualification">
-            @Html.ActionLink("Add New", "EditCertification", null, null)
             <h3>Certifications</h3>
             <ul>
                 @foreach (Certification cert in Model.Certifications)
                 {
                     <li>
-                        <span>@Html.ActionLink("Edit", "EditCertification", new { id = cert.Cerid })</span>
                         <h6>@cert.CerName @@ @cert.CerPlace <span>  --  @cert.CerYear.ToString("MMM yyyy")</span></h6>
                     </li>
                 }
@@ -112,9 +101,6 @@
                 <li><h5>Twitter Profile </h5> <span>:</span>@Model.TwitterUrl</li>
                 <li><h5>LinkedIn Profile </h5> <span>:</span>@Model.LinkinUrl</li>
             </ul>
-            <div class="buttons">
-                @Html.ActionLink("Edit", "EditPersonal", null, new { @class = "btn btn-outline-primary" })
-            </div>
         </div>
     </div><!-- personal-deatils -->
 </div>

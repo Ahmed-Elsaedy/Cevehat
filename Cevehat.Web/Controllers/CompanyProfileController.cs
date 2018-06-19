@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-
+    [Authorize(Roles = "Employer")]
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -24,6 +24,17 @@ namespace Cevehat.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Employee")]
+        public ActionResult ViewProfile(int CompanyId)
+        {
+            var company = db.Company.Find(CompanyId);
+            if(company==null)
+            {
+                return HttpNotFound("Company Not Found");
+            }
+            return View(company);
+        }
+        [Authorize(Roles = "Employer")]
         public ActionResult Details()
         {
             return View(CurrentUser);
@@ -45,11 +56,13 @@ namespace Cevehat.Web.Controllers
             currentComp.CompanyPhone = newComp.CompanyPhone;
             currentComp.CompanyInfo = newComp.CompanyInfo;
             currentComp.CompanyEmail = newComp.CompanyEmail;
-            string ext = img.FileName.Substring(img.FileName.LastIndexOf("."));
-            currentComp.CompanyImage = newComp.CompanyID.ToString() + ext;
-            db.SaveChanges();
 
-            img.SaveAs(Server.MapPath("~/images/") + currentComp.CompanyImage);
+            if (img != null)
+            {
+                string ext = img.FileName.Substring(img.FileName.LastIndexOf("."));
+                currentComp.CompanyImage = newComp.CompanyID.ToString() + ext;
+                img.SaveAs(Server.MapPath("~/images/") + currentComp.CompanyImage);
+            }
 
             db.SaveChanges();
             return RedirectToAction("Details");

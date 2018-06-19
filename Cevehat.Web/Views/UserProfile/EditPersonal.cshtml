@@ -8,7 +8,7 @@
 }
 
 <div class="section company-information">
-    @using (Html.BeginForm("EditPersonal", "UserProfile", FormMethod.Post))
+    @using (Html.BeginForm("EditPersonal", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.HiddenFor(m => m.Id)
         <div class="row form-group">
@@ -45,12 +45,6 @@
             <label class="col-sm-3 label-title">Military Status</label>
             <div class="col-sm-9">
                 @Html.EnumDropDownListFor(m => m.MilitaryStatus, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="row form-group">
-            <label class="col-sm-3 label-title">Martial Status</label>
-            <div class="col-sm-9">
-                @Html.EnumDropDownListFor(m => m.MaritaSutes, new { @class = "form-control" })
             </div>
         </div>
         <div class="row form-group">

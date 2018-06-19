@@ -38,9 +38,6 @@
             <img src="~/Template/images/upload/dummy-slide-4.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
         </div>
         <div class="item-slide">
-            <img src="~/Template/images/upload/dummy-slide-2.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
-        </div>
-        <div class="item-slide">
             <img src="~/Template/images/upload/dummy-slide-5.jpg" style="height: 350px;" class="img-responsive" alt="dummy-slide" />
         </div>
     </div>
@@ -58,7 +55,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                <a href="" class="btn btn-default btn-yellow">Find a Job</a>
+                @Html.ActionLink("Find a Job", "AutoCompletee", "Index", new { @class = "btn btn-default btn-yellow" })
             </p>
         </div>
         <div class="col-md-6 align-left">
@@ -68,7 +65,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                <a href="" class="btn btn-default btn-light">Post a Job</a>
+                @Html.ActionLink("Post a Job", "CompanyProfile", "AddJob", new { @class = "btn btn-default btn-light" })
             </p>
         </div>
         <div class="clearfix"></div>
@@ -85,7 +82,6 @@
 
         @foreach (Cevehat.Web.Models.JobVacancie j in ViewBag.activeJobVacanciesList)
         {
-
             <div class="recent-job-list">
                 <!-- Tabs content -->
                 <div class="row">
@@ -99,7 +95,7 @@
                         <h5>@j.Date</h5>
                     </div>
                     <div class="col-md-2">
-                        <h5>@j.State</h5>
+                        @Html.ActionLink("View Profile of " + j.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = j.CompanyID })<br />
                     </div>
                     <div class="col-md-2">
                         <h5>@j.JobType</h5>
@@ -219,6 +215,32 @@
             </div>
         </div>
         <div class="step-spacer"></div>
+    </div>
+</div>
+
+<div id="company-post">
+    <div class="container">
+
+        <h1>All Companies That Register At Site </h1>
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+        </p>
+
+        <div id="company-post-list" class="owl-carousel company-post owl-theme" style="display: block; opacity: 1;">
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper" style="width: 4860px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);">
+                    @foreach (Cevehat.Web.Models.Company c in ViewBag.AllCompaniesLogo)
+                    {
+                        <div class="owl-item" style="width: 243px;">
+                            <div class="company">
+                                <img src="~/images/@c.CompanyImage" class="img-responsive" alt="company-post">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
+        </div>
     </div>
 </div>
 
