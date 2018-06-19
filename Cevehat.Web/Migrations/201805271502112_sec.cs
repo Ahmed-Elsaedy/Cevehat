@@ -18,16 +18,16 @@ namespace Cevehat.Web.Migrations
                 .PrimaryKey(t => t.CareerId)
                 .ForeignKey("dbo.JobTitles", t => t.JobID, cascadeDelete: true)
                 .Index(t => t.JobID);
-            
+
             CreateTable(
                 "dbo.JobTitles",
                 c => new
-                    {
-                        JobId = c.Int(nullable: false, identity: true),
-                        JobName = c.String(),
-                    })
+                {
+                    JobId = c.Int(nullable: false, identity: true),
+                    JobName = c.String(),
+                })
                 .PrimaryKey(t => t.JobId);
-            
+
             CreateTable(
                 "dbo.InterviewQustions",
                 c => new

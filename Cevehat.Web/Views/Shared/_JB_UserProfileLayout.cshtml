@@ -7,69 +7,59 @@
     <link href="~/Template/css/main.css" rel="stylesheet" />
 }
 
-<section class=" job-bg page  ad-profile-page">
+<section class=" job-bg page ad-profile-page">
     <div class="container">
         <div class="breadcrumb-section">
             <ol class="breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    @Html.ActionLink("My Profile", "Details", "UserProfile")
                 </li>
-                <li>Applied Job</li>
             </ol>
-            <h2 class="title">Applied Job</h2>
+            <h2 class="title">@Page.PageTitle</h2>
         </div>
         <!-- breadcrumb-section -->
 
-        <div class="job-profile section">
-            <div class="user-profile">
-                <div class="user-images">
-                    <img src="~/Template/images/user.jpg" alt="User Images" class="img-responsive">
-                </div>
-                <div class="user">
-                    <h2>
-                        Hello,
-                        <a href="#">Jhon Doe</a>
-                    </h2>
-                    <h5>You last logged in at: 10-01-2017 6:40 AM [ USA time (GMT + 6:00hrs)]</h5>
-                </div>
+        @if (!Page.EditMode)
+        {
+            <div class="job-profile section">
+                <div class="user-profile">
+                    <div class="user-images">
+                        <img src="~/Template/images/user.jpg" alt="User Images" class="img-responsive">
+                    </div>
+                    <div class="user">
+                        <h2>
+                            Hello,
+                            <a href="#">@Page.UserName</a>
+                        </h2>
+                        <h5>You last logged in at: 10-01-2017 6:40 AM </h5>
+                    </div>
 
-                <div class="favorites-user">
-                    <div class="my-ads">
-                        <a href="applied-job.html">
-                            29
-                            <small>Apply Job</small>
-                        </a>
-                    </div>
-                    <div class="favorites">
-                        <a href="bookmark.html">
-                            18
-                            <small>Favorites</small>
-                        </a>
+                    <div class="favorites-user">
+                        <div class="my-ads">
+                            <a href="/UserProfile/AppliedJobs">
+                                @Page.JobsCount
+                                <small>Apply Job</small>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <!-- user-profile -->
+
+                <ul class="user-menu">
+                    <li>
+                        @Html.ActionLink("Profile Details", "Details", "UserProfile")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Applied Jobs", "AppliedJobs", "UserProfile")
+                    </li>
+                    <li>
+                        @Html.ActionLink("My Skills", "MySkills", "UserProfile")
+
+                    </li>
+                </ul>
             </div>
-            <!-- user-profile -->
-
-            <ul class="user-menu">
-                <li>
-                    <a href="resume.html">View Resume</a>
-                </li>
-                <li>
-                    <a href="edit-resume.html">Edit Resume</a>
-                </li>
-                <li>
-                    <a href="profile-details.html">Account Info</a>
-                </li>
-                <li>
-                    <a href="applied-job.html">Applied Jobs</a>
-                </li>
-                <li>
-                    <a href="bookmark.html">Bookmark</a>
-                </li>
-            </ul>
-        </div>
-        <!-- ad-profile -->
-
+            <!-- ad-profile -->
+        }
         @RenderBody()
     </div>
 </section>

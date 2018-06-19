@@ -1,0 +1,38 @@
+﻿@using Cevehat.Web.Models
+@model Certification
+@{
+    ViewBag.Title = "EditCertification";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "Edit Certification";
+    Page.EditMode = true;
+}
+
+<div class="section">
+    
+    @using (Html.BeginForm("EditCertification", "UserProfile", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Cerid)
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Title</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CerName, new { @class = "form-control", placeholder = "Title" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Place</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.CerPlace, new { @class = "form-control", placeholder = "Place" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Date</label>
+            <div class="col-sm-9">
+                @Html.TextBox("CerYear", Model.CerYear.ToShortDateString(), new { @class = "form-control", placeholder = "Date" })
+            </div>
+        </div>
+        <div class="buttons pull-right">
+            <input type="submit" value="Save Changes" class="btn" />
+        </div>
+    }
+</div>
+

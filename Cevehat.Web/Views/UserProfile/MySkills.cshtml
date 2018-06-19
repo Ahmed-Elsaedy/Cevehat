@@ -1,0 +1,50 @@
+﻿@using Cevehat.Web.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "MySkills";
+    Layout = "~/Views/Shared/_JB_UserProfileLayout.cshtml";
+    Page.PageTitle = "My Skills";
+    Page.UserName = Model.Fname + " " + Model.Lname;
+    Page.EditMode = false;
+    Page.JobsCount = Model.ApplayedUsers.Count;
+}
+
+<div class="section">
+    @using (Html.BeginForm("AddSkill", "UserProfile", FormMethod.Post))
+    {
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Skill Title</th>
+                    <th>Skill Weight</th>
+                    <th>Options</th>
+                </tr>
+                @foreach (var d in Model.User_TecSkills)
+                {
+                    <tr>
+                        <td>@d.Skill.Title</td>
+                        <td>@d.Weight</td>
+                        <td>
+                            @Html.ActionLink("Remove", "RemoveSkill", "UserProfile", new { id = d.User_Skills_ID }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <div class="form-group col-4">
+                <label>Choose A Skill</label>
+                @Html.DropDownList("SkillId", ViewBag.Skills as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-4">
+                <label>Skill Weight</label>
+                @Html.DropDownList("WeightRange", ViewBag.Skills as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-2">
+                <input type="submit" class="btn btn-outline-primary" value="Add Skill" />
+            </div>
+        </div>
+
+    }
+</div>
+

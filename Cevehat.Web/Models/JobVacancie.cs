@@ -24,17 +24,23 @@ namespace Cevehat.Web.Models
         public virtual List<JobRequirements> JobRequirements { get; set; }
         public virtual List<Skill> Skills { get; set; }
         public virtual List<ApplayedUsers> ApplayedUsers { get; set; }
+        public string Requirements { get; set; }
     }
 
     public class ApplayedUsers
     {
         [Key]
         public int ApplayedUsers_ID { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public AppliedUserState AppliedUserState { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
+        [ForeignKey("JobVacancie")]
+        public int JobVacancieID { get; set; }
+        public virtual JobVacancie JobVacancie { get; set; }
+
+        public AppliedUserState AppliedUserState { get; set; }
     }
 
     public class JobRequirements

@@ -49,13 +49,13 @@ namespace Cevehat.Web
             }
 
             // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Manager";
-                roleManager.Create(role);
+            //if (!roleManager.RoleExists("Manager"))
+            //{
+            //    var role = new IdentityRole();
+            //    role.Name = "Manager";
+            //    roleManager.Create(role);
 
-            }
+            //}
 
             // creating Creating Employee role    
             if (!roleManager.RoleExists("Employee"))
@@ -64,6 +64,15 @@ namespace Cevehat.Web
                 role.Name = "Employee";
                 roleManager.Create(role);
 
+            }
+
+            // creating Creating Employer role    
+            if (!roleManager.RoleExists("Employer"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Employer";
+                roleManager.Create(role);
+                
             }
         }
     }

@@ -41,30 +41,24 @@
                         </a>
                     </div>
                     <!-- logo -->
-                    <div class="col-md-8 main-nav">
+                    <div class="col-md-8 main-nav float-right" style="float: right;">
                         <!-- Main Navigation -->
                         <a id="touch-menu" class="mobile-menu" href="#">
                             <i class="fa fa-bars fa-2x"></i>
                         </a>
                         <nav>
-                            <ul class="menu">
+                            <ul class="menu" style="float: right;">
                                 <li>
                                     @Html.ActionLink("HOME", "Index", "Default")
                                 </li>
                                 <li>
-                                    <a href="#">JOB SEARCH</a>
+                               @Html.ActionLink("JOB SEARCH", "Index", "AutoCompletee")
                                 </li>
                                 <li>
-                                    <a href="post-job.html">POST A JOB</a>
+                                    @Html.ActionLink("Add Job", "AddJob", "CompanyProfile")
                                 </li>
                                 <li>
                                     <a href="post-resume.html">POST A RESUME</a>
-                                </li>
-                                <li>
-                                    <a href="#">PRICING</a>
-                                </li>
-                                <li>
-                                    <a href="short-codes.html">SHORTCODE</a>
                                 </li>
                             </ul>
                         </nav>
@@ -104,10 +98,10 @@
                         <div class="footer-widget-nav">
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    @Html.ActionLink("HOME", "Index", "Default")
                                 </li>
                                 <li>
-                                    <a href="#">Post A Job</a>
+                                    @Html.ActionLink("JOB SEARCH", "Index", "AutoCompletee")
                                 </li>
                                 <li>
                                     <a href="#">Post A Resume</a>

@@ -15,7 +15,18 @@
 
                     <ul class="media-top-2 clearfix">
                         <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!" + "Index", "Manage", routeValues: null, htmlAttributes: new { @class="h5 my-1", title = "Manage" })
+                            @if (User.IsInRole("Employee"))
+                            {
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Details", "UserProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1", title = "profile" })
+                            }
+                            else if (User.IsInRole("Employer"))
+                            {
+                                
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Details", "CompanyProfile", routeValues: null, htmlAttributes: new { @class = "h5 my-1", title = "profile" })
+                            }
+
+
+
                         </li>
                         <li><a class="h5 my-1" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                     </ul>
