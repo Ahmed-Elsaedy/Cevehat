@@ -9,7 +9,6 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -45,11 +44,13 @@ namespace Cevehat.Web.Controllers
             currentComp.CompanyPhone = newComp.CompanyPhone;
             currentComp.CompanyInfo = newComp.CompanyInfo;
             currentComp.CompanyEmail = newComp.CompanyEmail;
-            string ext = img.FileName.Substring(img.FileName.LastIndexOf("."));
-            currentComp.CompanyImage = newComp.CompanyID.ToString() + ext;
-            db.SaveChanges();
 
-            img.SaveAs(Server.MapPath("~/images/") + currentComp.CompanyImage);
+            if (img != null)
+            {
+                string ext = img.FileName.Substring(img.FileName.LastIndexOf("."));
+                currentComp.CompanyImage = newComp.CompanyID.ToString() + ext;
+                img.SaveAs(Server.MapPath("~/images/") + currentComp.CompanyImage);
+            }
 
             db.SaveChanges();
             return RedirectToAction("Details");

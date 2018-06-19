@@ -44,7 +44,7 @@
                             <div class="register-aksen"></div>
                         </div>
                         <div class="form-group">
-                            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ", new { @class = "form-control input-form" })
+                            @Html.DropDownList("UserRoles", ViewBag.Name as IEnumerable<SelectListItem>, " ", new { @class = "form-control input-form" })
                             @Html.ValidationMessageFor(m => m.UserRoles, "", new { @class = "text-danger" })
                             <div class="register-aksen"></div>
                             <input type="submit" class="btn btn-default btn-green" value="REGISTER" />
@@ -58,24 +58,6 @@
 
                 @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-default btn-green" })
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="style-list-2">
-                            <li>On the other hand, we denounce with </li>
-                            <li>Dislike men who are so beguiled and</li>
-                            <li>Charms of pleasure of the moment</li>
-                            <li>Duty through weakness of will, which is</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="style-list-2">
-                            <li>On the other hand, we denounce with </li>
-                            <li>Dislike men who are so beguiled and</li>
-                            <li>Charms of pleasure of the moment</li>
-                            <li>Duty through weakness of will, which is</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
