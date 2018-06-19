@@ -25,9 +25,7 @@ namespace Cevehat.Web.Controllers
         {
             string UserId = User.Identity.GetUserId();
 
-            // var user_Skill = db.User_Skills.Include(us).Include(u => u.User).ToList<User_Skills>();
-
-            //ApplicationUser _currentuser = db.Users.Where(a => a.Id == userid).FirstOrDefault();
+           
             List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
             List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
             List<Experince> experinces = db.Experinces.Where(e => e.UserID == UserId).ToList<Experince>();
@@ -35,13 +33,14 @@ namespace Cevehat.Web.Controllers
 
 
             ReportDocument mycv = new ReportDocument();
-            mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CV.rpt"));
+            mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CeV.rpt"));
             //mycv.SetDataSource(certifications);
             //mycv.SetDataSource(educations);
-            mycv.Database.Tables[1].SetDataSource(certifications);
-            mycv.Database.Tables[2].SetDataSource(educations);
-            mycv.Database.Tables[3].SetDataSource(experinces);
-            mycv.Database.Tables[4].SetDataSource(user_Skills);
+            mycv.Database.Tables[0].SetDataSource(certifications);
+            var x = educations.Select(i => new { DepartmentName=i.DepartmentName}).ToList();
+            mycv.Database.Tables[1].SetDataSource(x);
+            //mycv.Database.Tables[2].SetDataSource(experinces);
+            //mycv.Database.Tables[3].SetDataSource(user_Skills);
             Response.Buffer = false;
             Response.ClearContent();
             Response.ClearHeaders();
