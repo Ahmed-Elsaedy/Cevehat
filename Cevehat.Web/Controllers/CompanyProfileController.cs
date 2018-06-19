@@ -132,7 +132,9 @@ namespace Cevehat.Web.Controllers
             newjob.Date = DateTime.Now;
             newjob.CompanyID = currentComp.CompanyID;
             newjob.Company = currentComp;
-            ////this is shit    
+            newjob.Company = currentComp;
+            ////this is shit  
+
 
             SelectList jobTitles = new SelectList(db.JobTitle.ToList(), "JobId", "JobName");
             ViewBag.JobTitles = jobTitles;
