@@ -26,22 +26,23 @@ namespace Cevehat.Web.Controllers
             string UserId = User.Identity.GetUserId();
 
           List<ApplicationUser> user = db.Users.Where(u => u.Id == UserId).ToList<ApplicationUser>();
-            var usrdata = user.Select(u => new { fname = u.Fname, lname = u.Lname, address = u.Address }).ToList(); ;
+            var usrdata = user.Select(u => new { fname = u.Fname, lname = u.Lname, Address = u.Address , Email=u.Email, PhoneNumber=u.PhoneNumber }).ToList(); ;
             List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
             List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
             List<Experince> experinces = db.Experinces.Where(e => e.UserID == UserId).ToList<Experince>();
+            var experince = experinces.Select(ex => new { Place = ex.Place, Position = ex.Position, Responsbilty = ex.Responsbilty }).ToList();
             List<User_Skills> user_Skills = db.User_Skills.Where(u => u.UserId == UserId).ToList<User_Skills>();
 
 
             ReportDocument mycv = new ReportDocument();
-            mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CeV.rpt"));
+            mycv.Load(Path.Combine(Server.MapPath("~/Report"), "CV.rpt"));
             //mycv.SetDataSource(certifications);
             //mycv.SetDataSource(educations);
             mycv.Database.Tables[0].SetDataSource(certifications);
-            var x = educations.Select(i => new { DepartmentName=i.DepartmentName}).ToList();
+            var x = educations.Select(i => new { DepartmentName=i.DepartmentName, OrganizationName=i.OrganizationName, GPA=i.GPA, DegreeTitle=i.DegreeTitle}).ToList();
             mycv.Database.Tables[1].SetDataSource(x);
             mycv.Database.Tables[2].SetDataSource(usrdata);
-            //mycv.Database.Tables[2].SetDataSource(experinces);
+            mycv.Database.Tables[3].SetDataSource(experince);
             //mycv.Database.Tables[3].SetDataSource(user_Skills);
             Response.Buffer = false;
             Response.ClearContent();
