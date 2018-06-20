@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-    [Authorize(Roles = "Employer")]
+   
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -23,7 +23,7 @@ namespace Cevehat.Web.Controllers
                 return _CurrentUser;
             }
         }
-        [Authorize(Roles="Employee")]
+        [Authorize(Roles="Employee,Employer")]
         public ActionResult ShowDetails(int JobVacancieID)
         {
             JobVacancie currentJob = db.JobVacancie.Find(JobVacancieID);
