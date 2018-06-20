@@ -25,7 +25,8 @@ namespace Cevehat.Web.Controllers
         {
             string UserId = User.Identity.GetUserId();
 
-           
+          List<ApplicationUser> user = db.Users.Where(u => u.Id == UserId).ToList<ApplicationUser>();
+            var usrdata = user.Select(u => new { fname = u.Fname, lname = u.Lname, address = u.Address }).ToList(); ;
             List<Certification> certifications = db.Certification.Where(a => a.userid == UserId).ToList<Certification>();
             List<Education> educations = db.Education.Where(a => a.userId == UserId).ToList<Education>();
             List<Experince> experinces = db.Experinces.Where(e => e.UserID == UserId).ToList<Experince>();
@@ -39,6 +40,7 @@ namespace Cevehat.Web.Controllers
             mycv.Database.Tables[0].SetDataSource(certifications);
             var x = educations.Select(i => new { DepartmentName=i.DepartmentName}).ToList();
             mycv.Database.Tables[1].SetDataSource(x);
+            mycv.Database.Tables[2].SetDataSource(usrdata);
             //mycv.Database.Tables[2].SetDataSource(experinces);
             //mycv.Database.Tables[3].SetDataSource(user_Skills);
             Response.Buffer = false;
