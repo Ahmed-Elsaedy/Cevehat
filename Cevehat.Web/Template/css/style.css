@@ -397,7 +397,7 @@ nav{
 /*--------------------------------------------------------------------------------*/
 .job-finder{
 	width:100%;
-	min-height:485px;
+	/*min-height:485px;*/
 	background-color:#ecf0f1;
 	margin-top:2px;
 }

@@ -27,6 +27,16 @@ namespace Cevehat.Web.Controllers
         public ActionResult ShowDetails(int JobVacancieID)
         {
             JobVacancie currentJob = db.JobVacancie.Find(JobVacancieID);
+            bool IsApplyed = false;
+            string userid = User.Identity.GetUserId();
+            foreach (ApplayedUsers apuser in currentJob.ApplayedUsers)
+            {
+                if (apuser.UserId == userid)
+                {
+                    IsApplyed = true;
+                }
+            }
+            ViewBag.IsApplyed = IsApplyed;
             return View(currentJob);
         }
         [Authorize(Roles = "Employee")]
