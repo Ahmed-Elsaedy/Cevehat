@@ -83,7 +83,7 @@ namespace Cevehat.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                 
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -475,7 +475,11 @@ namespace Cevehat.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Default");
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Default");
+            }
+            return RedirectToAction("Index", "Skills");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
