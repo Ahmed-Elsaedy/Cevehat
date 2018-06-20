@@ -34,7 +34,7 @@
                             <h6><i class="fa fa-user"></i>@jv.JobVacancie.State.ToString()</h6>
                         </div>
                         <div class="col-md-5 job-list-button">
-                            <button class="btn-view-job">View Job</button>
+                            @Html.ActionLink("View Job", "ShowDetails", "CompanyProfile", new { JobVacancieID = jv.JobVacancie.JobVacancieID }, new { @class = "btn-view-job"})
                         </div>
                     </div>
                 </div>

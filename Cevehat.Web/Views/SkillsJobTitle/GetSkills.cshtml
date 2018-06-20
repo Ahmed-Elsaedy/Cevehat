@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center">Search by Job Title Result</h2>
+                <h4><b>Search by Job Title Result</b></h4>
                 <div id="tab-container" class="tab-container" data-easytabs="true">
                     <div class="panel-container">
                         <div id="all" class="active" style="display: block;">
@@ -21,14 +21,14 @@
 
                             @foreach (Cevehat.Web.Models.JobVacancie Vacancie in Model)
                             {
-                                <div class="recent-job-list-home">
+                                <div class="recent-job-list-home centering">
                                     <!-- Tabs content -->
                                     <div class="job-list-logo col-md-1 ">
                                         <img src="~/images/@Vacancie.Company.CompanyImage" @*class="img-responsive"*@ height="50" width="75" alt="dummy-joblist">
                                     </div>
                                     <div class="col-md-4 job-list-desc">
-                                        <h5><B>@Vacancie.JobTitle.JobName</B></h5>
-                                        <p>@Html.ActionLink(Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID })<br /></p>
+                                        <h5><b>@Vacancie.JobTitle.JobName</b></h5>
+                                        <p>@Html.ActionLink("Company: " + Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID }, new { style="color: blue;" })<br /></p>
                                     </div>
                                     <div class="col-md-4 full">
                                         <div class="row">
@@ -43,7 +43,7 @@
                                     <div class="col-md-3 full">
                                         <div class="row">
                                             <div class="job-list-type col-md-5 ">
-                                                <h6><i class="fa fa-angle-double-right">@Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
+                                                <h6><i class="fa fa-angle-double-right">@Html.ActionLink("  See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
                                             </div>
                                         </div>
                                     </div>
