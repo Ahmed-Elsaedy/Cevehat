@@ -74,11 +74,16 @@
                         </div>
 
                         <div class="col-md-2">
-                           @foreach (Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
-                           {
-                              @Html.ActionLink("View Profile of Candidate", "ViewProfile", "UserProfile", new { userId = appUser.UserId }, null)
-                           }
+                            @foreach (Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
+                            {
+                                <ul>
+                                    <li> @Html.ActionLink("View Candidate", "ViewProfile", "UserProfile", new { userId =       appUser.UserId }, null)
+                                    </li>
+                                </ul>
+
+                            }
                         </div>
+
                     </div>
                 </div><!-- Tabs content -->
             }
