@@ -67,7 +67,7 @@ namespace Cevehat.Web.Controllers
             {
                 string ext = profileImage.FileName.Substring(profileImage.FileName.LastIndexOf("."));
                 user.ImageUrl = user.Id.ToString() + ext;
-                profileImage.SaveAs(Server.MapPath("~/UImages/") + user.ImageUrl);
+                profileImage.SaveAs(Server.MapPath("~/images/") + user.ImageUrl);
             }
             db.SaveChanges();
             return RedirectToAction("Details");

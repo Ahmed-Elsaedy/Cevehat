@@ -11,18 +11,46 @@
   
 }
 
-<div class="personal-deatils section">
-   
-    <div class="personal-info">
-        <h3>Company Deatils</h3>
-        <ul class="address">
-            <li><h5>Company Name </h5> <span>:</span>@Model.Company.CompanyName</li>
-            <li><h5>Company Information </h5> <span>:</span>@Model.Company.CompanyInfo</li>
-            <li><h5>Company Website</h5> <span>:</span><a href="@Model.Company.CompanyWebSite">@Model.Company.CompanyWebSite</a></li>
-            <li><h5>Company Phone </h5> <span>:</span>@Model.Company.CompanyPhone</li>
-            <li><h5>Company Email </h5> <span>:</span>@Model.Company.CompanyEmail</li>       
-        </ul>
+<div class="resume-content">
+    <div class="personal-deatils section">
+        <div class="personal-info">
+            <h3>Company Deatils</h3>
+            <div class="container">
+                <table class="table address" style="max-width: 600px;">
+                    <tr>
+                        <td style="min-width: 300px;"><h6><b>Company Image</b></h6></td>
+                        <td>
+                            <div class="user-images">
+                                <img src="~/images/@Model.Company.CompanyImage" width="150" height="150" alt="Company                                  Images" class="img-responsive">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Name</b></h6></td>
+                        <td>@Model.Company.CompanyName</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Information </b></h6></td>
+                        <td>@Model.Company.CompanyInfo</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Website</b></h6></td>
+                        <td><a href="@Model.Company.CompanyWebSite">@Model.Company.CompanyWebSite</a></td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Phone </b></h6></td>
+                        <td>@Model.Company.CompanyPhone</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Email </b></h6></td>
+                        <td>@Model.Company.CompanyEmail</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
     </div>
-</div><!-- personal-deatils -->
+</div>
+
 
 

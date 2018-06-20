@@ -61,24 +61,29 @@
                     <!-- Tabs content -->
                     <div class="row">
                         <div class="col-md-3">
-                            <h5>@j.JobTitle.JobName</h5>
+                            <h6>@j.JobTitle.JobName</h6>
                         </div>
                         <div class="col-md-3">
-                            <h5>@j.Date</h5>
+                            <h6>@j.Date</h6>
                         </div>
                         <div class="col-md-2">
-                            <h5>@j.State</h5>
+                            <h6>@j.State</h6>
                         </div>
                         <div class="col-md-2">
-                            <h5>@j.JobType</h5>
+                            <h6>@j.JobType</h6>
                         </div>
 
                         <div class="col-md-2">
-                           @foreach (Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
-                           {
-                              @Html.ActionLink("View Profile of Candidate", "ViewProfile", "UserProfile", new { userId = appUser.UserId }, null)
-                           }
+                            @foreach (Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
+                            {
+                                <ul>
+                                    <li> @Html.ActionLink("View Candidate", "ViewProfile", "UserProfile", new { userId =       appUser.UserId }, null)
+                                    </li>
+                                </ul>
+
+                            }
                         </div>
+
                     </div>
                 </div><!-- Tabs content -->
             }
