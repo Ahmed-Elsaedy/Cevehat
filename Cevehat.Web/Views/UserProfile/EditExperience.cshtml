@@ -26,13 +26,13 @@
         <div class="row form-group">
             <label class="col-sm-3 label-title">StartDate</label>
             <div class="col-sm-9">
-                @Html.TextBox("StartDate", Model.StartDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "dd/mm/yy" ,Type = "date" })
+                @Html.TextBox("StartDate", Model.StartDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control", placeholder = "dd/mm/yy" })
             </div>
         </div>
         <div class="row form-group">
             <label class="col-sm-3 label-title">EndDate</label>
             <div class="col-sm-9">
-                @Html.TextBox("EndDate", Model.EndDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control pull-right", placeholder = "dd/mm/yy", Type = "date" })
+                @Html.TextBox("EndDate", Model.EndDate.GetValueOrDefault().ToShortDateString(), new { @class = "form-control pull-right", placeholder = "dd/mm/yy"})
             </div>
         </div>
         <div class="row form-group job-description">

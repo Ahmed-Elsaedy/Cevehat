@@ -17,8 +17,8 @@ namespace Cevehat.Web.Controllers
            ApplicationDbContext db = new ApplicationDbContext();
            string userId =  User.Identity.GetUserId();
            ApplicationUser newUser = db.Users.Where(a => a.Id == userId).FirstOrDefault();
-            
-            return PartialView(newUser);
+            return RedirectToAction("Index", "Default");
+            //return PartialView(newUser);
         }
 
         public ActionResult About()
