@@ -18,7 +18,7 @@ namespace Cevehat.Web.Controllers
             get
             {
                 if (_CurrentUser == null)
-                    _CurrentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                    _CurrentUser = db.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
                 return _CurrentUser;
             }
         }
@@ -209,7 +209,7 @@ namespace Cevehat.Web.Controllers
         public ActionResult DeleteEducation(int id)
         {
             Education edu = db.Education.Find(id);
-            if(edu != null)
+            if (edu != null)
             {
                 db.Education.Remove(edu);
                 db.SaveChanges();
