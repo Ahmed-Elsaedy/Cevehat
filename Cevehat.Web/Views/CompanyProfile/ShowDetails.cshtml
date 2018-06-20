@@ -47,18 +47,22 @@
             </ul>
         </td>
     </tr>
-    <tr>
-        <td><h4>If You Want Apply</h4></td>
-        <td>
-            @if (User != null && User.IsInRole("Employee"))
-           {
-           
+    @if (true)
+    {
+        <tr>
+            <td colspan="2">
                 @Html.ActionLink("Apply", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = Model.JobVacancieID }, null)
-            
-           }
-        </td>
-    </tr>
-
-
+            </td>
+        </tr>
+    }
+    else if (User != null && User.IsInRole("Employee") && !ViewBag.isapplyed)
+    {
+        <tr>
+            <td><h4>If You Want Apply</h4></td>
+            <td>
+                @Html.ActionLink("Apply", "ApplayToJob", "SkillsJobTitle", new { JobVacancieID = Model.JobVacancieID }, null)
+            </td>
+        </tr>
+    }
 </table>
 
