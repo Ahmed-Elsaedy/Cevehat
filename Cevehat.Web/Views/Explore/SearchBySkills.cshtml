@@ -9,53 +9,49 @@
 }
 
 @model List<TitlePer>
-<Ul class="fa-ul">
-    @*@Html.ActionLink("Download CV", "DownloadCV", "Explore", null,null)*@
     @foreach (TitlePer Title in Model)
     {
-        <li>
-            <h1><B>@Title.JobTitle.JobName :</B></h1>
+        <div class="section">
+                <h3>@Title.JobTitle.JobName : (@Title.per %) </h3>
+                <div class="w3-light-grey w3-round-xlarge">
+                    @if (Title.per <= 40)
+                    {
 
-            <div class="w3-light-grey w3-round-xlarge">
-                @if (Title.per <= 40)
-                {
-
-                    <div class="progress-bar progress-bar-danger progress-bar-striped active w3-round-large" role="progressbar"
-                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
-                        @Title.per%
-                    </div>
-                }
-                else if (Title.per <= 60)
-                {
-                    <div class="progress-bar progress-bar-warning progress-bar-striped active w3-round-large" role="progressbar"
-                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
-                        @Title.per%
-                    </div>
-                }
-                else if (Title.per <= 80)
-                {
-                    <div class="progress-bar progress-bar-info progress-bar-striped active w3-round-large" role="progressbar"
-                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
-                        @Title.per%
-                    </div>
-                }
-                else if (Title.per <= 100)
-                {
-                    <div class="progress-bar progress-bar-success progress-bar-striped active w3-round-large" role="progressbar"
-                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
-                        @Title.per%
-                    </div>
-                }
-            </div>
-            <br />
-            <h5>RemaingSkills</h5>
-            <ul class="fa-ul">
-                @foreach (Skill Skill in Title.RemaingSkills)
-                {
-                    <li><h4>@Skill.Title  </h4></li>
-                }
-            </ul>
-        </li>
+                        <div class="progress-bar progress-bar-danger progress-bar-striped active w3-round-large" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
+                            @Title.per%
+                        </div>
+                    }
+                    else if (Title.per <= 60)
+                    {
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active w3-round-large" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
+                            @Title.per%
+                        </div>
+                    }
+                    else if (Title.per <= 80)
+                    {
+                        <div class="progress-bar progress-bar-info progress-bar-striped active w3-round-large" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
+                            @Title.per%
+                        </div>
+                    }
+                    else if (Title.per <= 100)
+                    {
+                        <div class="progress-bar progress-bar-success progress-bar-striped active w3-round-large" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:@Title.per%">
+                            @Title.per%
+                        </div>
+                    }
+                </div>
+                <br />
+                <h5>RemaingSkills</h5>
+                <ul class="fa-ul">
+                    @foreach (Skill Skill in Title.RemaingSkills)
+                    {
+                        <li><h6>@Skill.Title  </h6></li>
+                    }
+                </ul>
+        </div>
     }
 
-</Ul>
