@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-center">Recent Jobs</h2>
+                <h2 class="text-center">Search by Skills Result</h2>
                 <div id="tab-container" class="tab-container" data-easytabs="true">
                     <div class="panel-container">
                         <div id="all" class="active" style="display: block;">
@@ -24,19 +24,26 @@
                                 <div class="recent-job-list-home">
                                     <!-- Tabs content -->
                                     <div class="job-list-logo col-md-1 ">
-                                        <img src="@Vacancie.Company.CompanyImage" class="img-responsive" alt="dummy-joblist">
+                                        <img src="~/images/@Vacancie.Company.CompanyImage" @*class="img-responsive"*@ height="50" width="75" alt="dummy-joblist">
                                     </div>
-                                    <div class="col-md-6 job-list-desc">
-                                        <h6>@Vacancie.JobTitle.JobName</h6>
-                                        <p>@Vacancie.Company.CompanyName</p>
+                                    <div class="col-md-4 job-list-desc">
+                                        <h5><B>@Vacancie.JobTitle.JobName</B></h5>
+                                        <p>@Html.ActionLink(Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID })<br /></p>
                                     </div>
-                                    <div class="col-md-5 full">
+                                    <div class="col-md-4 full">
                                         <div class="row">
-                                            <div class="job-list-location col-md-7 ">
+                                            <div class="job-list-location col-md-4 ">
                                                 <h6><i class="fa fa-map-marker"></i>Egypt</h6>
                                             </div>
-                                            <div class="job-list-type col-md-5 ">
+                                            <div class="job-list-location col-md-5 ">
                                                 <h6><i class="fa fa-user"></i>@Vacancie.JobType.ToString()</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 full">
+                                        <div class="row">
+                                            <div class="job-list-type col-md-5 ">
+                                                <h6><i class="fa fa-angle-double-right">@Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
                                             </div>
                                         </div>
                                     </div>

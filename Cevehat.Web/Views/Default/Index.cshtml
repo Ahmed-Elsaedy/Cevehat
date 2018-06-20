@@ -75,7 +75,60 @@
 
 @Html.Partial("~/Views/AutoCompletee/search.cshtml", null)
 
-<div class="panel-container">
+
+<div class="recent-job">
+    <!-- Start Recent Job -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Recent Jobs </h2>
+                <div id="container" class="container">
+                    <div class="panel-container">
+                        <div id="all" class="active" style="display: block;">
+                            <!-- Tabs section 1 -->
+
+                            @foreach (Cevehat.Web.Models.JobVacancie Vacancie in ViewBag.activeJobVacanciesList)
+                            {
+                            <div class="recent-job-list-home">
+                                <!-- Tabs content -->
+                                <div class="job-list-logo col-md-1 ">
+                                    <img src="~/images/@Vacancie.Company.CompanyImage" @*class="img-responsive"*@ height="50"width="75"  alt="dummy-joblist">
+                                </div>
+                                <div class="col-md-4 job-list-desc">
+                                    <h5><B>@Vacancie.JobTitle.JobName</B></h5>
+                                    <p>@Html.ActionLink(Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID })<br /></p>
+                                </div>
+                                <div class="col-md-4 full">
+                                    <div class="row">
+                                        <div class="job-list-location col-md-4 ">
+                                            <h6><i class="fa fa-map-marker"></i>Egypt</h6>
+                                        </div>
+                                        <div class="job-list-location col-md-5 ">
+                                            <h6><i class="fa fa-user"></i>@Vacancie.JobType.ToString()</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 full">
+                                    <div class="row">
+                                        <div class="job-list-type col-md-5 ">
+                                            <h6><i class="fa fa-angle-double-right">@Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div><!-- Tabs content -->
+                            }
+                        </div><!-- Tabs section 1 -->
+                    </div>
+                </div><!-- end Tabs -->
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+@*<div class="panel-container">
     <h1 class="step-to" style="text-align:center;">Recent Jobs</h1>
     <div id="all" class="active" style="display: block;">
         <!-- Tabs section 1 -->
@@ -105,7 +158,7 @@
             </div><!-- Tabs content -->
 
         }
-        @*<div class="clearfix"></div>*@
+      
     </div><!-- Tabs section 1 -->
     <div id="contract" style="display: none;">
         <!-- Tabs section 2 -->
@@ -116,7 +169,7 @@
     <div id="free" style="display: none;">
         <!-- Tabs section 4 -->
     </div><!-- Tabs section 4 -->
-</div>
+</div>*@
 
 
 
