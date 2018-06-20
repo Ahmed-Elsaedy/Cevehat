@@ -65,7 +65,7 @@
                 looking at its layout. The point of using
             </p>
             <p>
-                @Html.ActionLink("Post a Job", "AddJob", "CompanyProfile",null, new { @class = "btn btn-default btn-light" })
+                @Html.ActionLink("Post a Job", "AddJob", "CompanyProfile", null, new { @class = "btn btn-default btn-light" })
             </p>
         </div>
         <div class="clearfix"></div>
@@ -89,87 +89,87 @@
 
                             @foreach (Cevehat.Web.Models.JobVacancie Vacancie in ViewBag.activeJobVacanciesList)
                             {
-                            <div class="recent-job-list-home">
-                                <!-- Tabs content -->
-                                <div class="job-list-logo col-md-1 ">
-                                    <img src="~/images/@Vacancie.Company.CompanyImage" @*class="img-responsive"*@ height="50"width="75"  alt="dummy-joblist">
-                                </div>
-                                <div class="col-md-4 job-list-desc">
-                                    <h5><B>@Vacancie.JobTitle.JobName</B></h5>
-                                    <p>@Html.ActionLink(Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID })<br /></p>
-                                </div>
-                                <div class="col-md-4 full">
-                                    <div class="row">
-                                        <div class="job-list-location col-md-4 ">
-                                            <h6><i class="fa fa-map-marker"></i>Egypt</h6>
-                                        </div>
-                                        <div class="job-list-location col-md-5 ">
-                                            <h6><i class="fa fa-user"></i>@Vacancie.JobType.ToString()</h6>
+                                <div class="recent-job-list-home">
+                                    <!-- Tabs content -->
+                                    <div class="job-list-logo col-md-1 ">
+                                        <img src="~/images/@Vacancie.Company.CompanyImage" @*class="img-responsive"*@ height="50" width="75" alt="dummy-joblist">
+                                    </div>
+                                    <div class="col-md-4 job-list-desc">
+                                        <h5><B>@Vacancie.JobTitle.JobName</B></h5>
+                                        <p>@Html.ActionLink(Vacancie.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = Vacancie.CompanyID })<br /></p>
+                                    </div>
+                                    <div class="col-md-4 full">
+                                        <div class="row">
+                                            <div class="job-list-location col-md-4 ">
+                                                <h6><i class="fa fa-map-marker"></i>Egypt</h6>
+                                            </div>
+                                            <div class="job-list-location col-md-5 ">
+                                                <h6><i class="fa fa-user"></i>@Vacancie.JobType.ToString()</h6>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 full">
-                                    <div class="row">
-                                        <div class="job-list-type col-md-5 ">
-                                            <h6><i class="fa fa-angle-double-right">@Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
+                                    <div class="col-md-3 full">
+                                        <div class="row">
+                                            <div class="job-list-type col-md-5 ">
+                                                <h6><i class="fa fa-angle-double-right">@Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = Vacancie.JobVacancieID }, null)</i></h6>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div><!-- Tabs content -->
+                                    <div class="clearfix"></div>
+                                </div><!-- Tabs content -->
                             }
                         </div><!-- Tabs section 1 -->
                     </div>
                 </div><!-- end Tabs -->
-                
+
             </div>
-            
+
         </div>
     </div>
 </div>
 
 @*<div class="panel-container">
-    <h1 class="step-to" style="text-align:center;">Recent Jobs</h1>
-    <div id="all" class="active" style="display: block;">
-        <!-- Tabs section 1 -->
+        <h1 class="step-to" style="text-align:center;">Recent Jobs</h1>
+        <div id="all" class="active" style="display: block;">
+            <!-- Tabs section 1 -->
 
-        @foreach (Cevehat.Web.Models.JobVacancie j in ViewBag.activeJobVacanciesList)
-        {
-            <div class="recent-job-list">
-                <!-- Tabs content -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5>@j.JobTitle.JobName</h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>@j.Date</h5>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.ActionLink("View Profile of " + j.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = j.CompanyID })<br />
-                    </div>
-                    <div class="col-md-2">
-                        <h5>@j.JobType</h5>
-                    </div>
-                    <div class="col-md-2">
-                        @Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = j.JobVacancieID }, null)<br />
-                    </div>
+            @foreach (Cevehat.Web.Models.JobVacancie j in ViewBag.activeJobVacanciesList)
+            {
+                <div class="recent-job-list">
+                    <!-- Tabs content -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>@j.JobTitle.JobName</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>@j.Date</h5>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.ActionLink("View Profile of " + j.Company.CompanyName, "ViewProfile", "CompanyProfile", new { CompanyId = j.CompanyID })<br />
+                        </div>
+                        <div class="col-md-2">
+                            <h5>@j.JobType</h5>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.ActionLink("See Details", "ShowDetails", "CompanyProfile", new { JobVacancieID = j.JobVacancieID }, null)<br />
+                        </div>
 
-                </div>
-            </div><!-- Tabs content -->
+                    </div>
+                </div><!-- Tabs content -->
 
-        }
-      
-    </div><!-- Tabs section 1 -->
-    <div id="contract" style="display: none;">
-        <!-- Tabs section 2 -->
-    </div><!-- Tabs section 2 -->
-    <div id="full" style="display: none;">
-        <!-- Tabs section 3 -->
-    </div><!-- Tabs section 3 -->
-    <div id="free" style="display: none;">
-        <!-- Tabs section 4 -->
-    </div><!-- Tabs section 4 -->
-</div>*@
+            }
+
+        </div><!-- Tabs section 1 -->
+        <div id="contract" style="display: none;">
+            <!-- Tabs section 2 -->
+        </div><!-- Tabs section 2 -->
+        <div id="full" style="display: none;">
+            <!-- Tabs section 3 -->
+        </div><!-- Tabs section 3 -->
+        <div id="free" style="display: none;">
+            <!-- Tabs section 4 -->
+        </div><!-- Tabs section 4 -->
+    </div>*@
 
 
 
@@ -266,7 +266,35 @@
     </div>
 </div>
 
+
 <div id="company-post">
+        <div class="container">
+
+            <h1>All Companies That Register At Site </h1>
+            <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+            </p>
+
+            <div id="company-post-list" class="owl-carousel company-post owl-theme" style="display: block; opacity: 1;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 3900px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-780px, 0px, 0px);">
+                        @foreach (Cevehat.Web.Models.Company company in ViewBag.AllCompaniesLogo)
+                        {
+                                <div class="owl-item" style="width: 195px;">
+                                    <div class="company">
+                                        <img src="~/images/@company.CompanyImage" class="img-responsive" alt="company-post">
+                                    </div>
+                                </div>
+                        }
+                    </div>
+                </div>
+                <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div></div></div>
+            </div>
+        </div>
+    </div>
+
+
+@*<div id="company-post">
     <div class="container">
 
         <h1>All Companies That Register At Site </h1>
@@ -277,11 +305,19 @@
         <div id="company-post-list" class="owl-carousel company-post owl-theme" style="display: block; opacity: 1;">
             <div class="owl-wrapper-outer">
                 <div class="owl-wrapper" style="width: 4860px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);">
-                    @foreach (Cevehat.Web.Models.Company c in ViewBag.AllCompaniesLogo)
+                    @foreach (Cevehat.Web.Models.Company company in ViewBag.AllCompaniesLogo)
                     {
-                        <div class="owl-item" style="width: 243px;">
-                            <div class="company">
-                                <img src="~/images/@c.CompanyImage" class="img-responsive" alt="company-post">
+                        if (company.CompanyImage!=null)
+                            {
+                                <div class="owl-item" style="width: 243px;">
+                                    <div class="company">
+                                        <img src="~/images/@company.CompanyImage" class="img-responsive" alt="company-post">
+                                    </div>
+                                </div>
+                            }
+                        <div class="owl-item" style="width: 150px;">
+                            <div class="testimony-image">
+                                <img src="~/images/@company.CompanyImage" class="img-responsive" alt="testimony">
                             </div>
                         </div>
                     }
@@ -290,7 +326,7 @@
             <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
         </div>
     </div>
-</div>
+</div>*@
 
 
 @section Scripts{
