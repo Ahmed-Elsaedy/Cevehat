@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-    [Authorize(Roles = "Employee")]
+   
     public class UserProfileController : Controller
     {
         private ApplicationUser _CurrentUser;
@@ -24,7 +24,7 @@ namespace Cevehat.Web.Controllers
         }
 
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [Authorize(Roles = "Employee")]
         public ActionResult Details()
         {
             return View(CurrentUser);
@@ -41,12 +41,14 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditPersonal()
         {
             return View(CurrentUser);
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditPersonal(ApplicationUser model, HttpPostedFileBase profileImage)
         {
             var user = db.Users.Find(model.Id);
@@ -72,6 +74,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditEducation(int? id)
         {
             if (id.HasValue)
@@ -84,6 +87,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditEducation(Education model)
         {
             model.userId = CurrentUser.Id;
@@ -99,6 +103,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditExperience(int? id)
         {
             if (id.HasValue)
@@ -111,6 +116,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditExperience(Experince model)
         {
             model.UserID = CurrentUser.Id;
@@ -126,6 +132,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditCertification(int? id)
         {
             if (id.HasValue)
@@ -138,6 +145,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EditCertification(Certification model)
         {
             model.userid = CurrentUser.Id;
@@ -151,13 +159,13 @@ namespace Cevehat.Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Details");
         }
-
+        [Authorize(Roles = "Employee")]
         public ActionResult AppliedJobs()
         {
             ViewBag.Data = CurrentUser.ApplayedUsers.ToList();
             return View(CurrentUser);
         }
-
+        [Authorize(Roles = "Employee")]
         public ActionResult MySkills()
         {
             ViewBag.SkillId = new SelectList(db.Skill.ToList(), "Skill_Id", "Title");
@@ -168,6 +176,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult AddSkill(int SkillId, int WeightRange)
         {
             ApplicationUser exuser = db.Users.Find(User.Identity.GetUserId());
@@ -191,6 +200,7 @@ namespace Cevehat.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult RemoveSkill(int id)
         {
             ApplicationUser exuser = db.Users.Find(User.Identity.GetUserId());
@@ -207,6 +217,7 @@ namespace Cevehat.Web.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult DeleteEducation(int id)
         {
             Education edu = db.Education.Find(id);
@@ -218,6 +229,7 @@ namespace Cevehat.Web.Controllers
             return RedirectToAction("Details");
         }
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult DeleteExperience(int id)
         {
             Experince exp = db.Experinces.Find(id);
@@ -229,6 +241,7 @@ namespace Cevehat.Web.Controllers
             return RedirectToAction("Details");
         }
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult DeleteCertification(int id)
         {
             Certification cert = db.Certification.Find(id);
