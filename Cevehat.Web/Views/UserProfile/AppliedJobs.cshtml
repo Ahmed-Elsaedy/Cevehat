@@ -13,12 +13,12 @@
 
 <div id="tab-container" class="tab-container">
     <div class="panel-container">
-        @foreach (ApplayedUsers jv in Model.ApplayedUsers)
+        @foreach (ApplayedUsers jv in ViewBag.Data as IEnumerable<ApplayedUsers>)
         {
             <div class="recent-job-list">
                 <!-- Tabs content -->
                 <div class="col-md-1 job-list-logo">
-                    <img src="~/images/@jv.ApplicationUser.Company.CompanyImage" class="img-responsive" alt="company-logo">
+                    <img src="~/images/@jv.JobVacancie.Company.CompanyImage" class="img-responsive" alt="company-logo">
                 </div>
 
                 <div class="col-md-5 job-list-desc">

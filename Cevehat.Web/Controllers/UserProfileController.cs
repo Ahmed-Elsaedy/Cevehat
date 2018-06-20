@@ -154,6 +154,7 @@ namespace Cevehat.Web.Controllers
 
         public ActionResult AppliedJobs()
         {
+            ViewBag.Data = CurrentUser.ApplayedUsers.ToList();
             return View(CurrentUser);
         }
 

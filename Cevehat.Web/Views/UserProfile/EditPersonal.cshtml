@@ -62,7 +62,25 @@
         <div class="row form-group">
             <label class="col-sm-3 label-title">Profile Image</label>
             <div class="col-sm-9">
-               <input type="file" name="profileImage" value="Choose User Profile"/> 
+                <input type="file" name="profileImage" value="Choose User Profile" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Linkin Profile</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.LinkinUrl, new { @class = "form-control", placeholder = "Linked Profile" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Facebook Profile</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.FacebookUrl, new { @class = "form-control", type = "number", placeholder = "Facebook Profile" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3 label-title">Twitter Profile</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.TwitterUrl, new { @class = "form-control", type = "number", placeholder = "Twitter Profile" })
             </div>
         </div>
         <div class="buttons pull-right">
