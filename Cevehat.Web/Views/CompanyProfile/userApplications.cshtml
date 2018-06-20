@@ -11,7 +11,7 @@
     ViewBag.ArchivedJobCount = Model.JobVacancies.Where(x => x.State == State.Closed).Count();
 }
 
-<div class="panel-container">
+@*<div class="panel-container">
     <div id="all" class="active" style="display: block;">
         <!-- Tabs section 1 -->
     @foreach (Cevehat.Web.Models.JobVacancie j in Model.JobVacancies)
@@ -30,10 +30,60 @@
             </div>
                 @foreach(Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
                 { 
-                  @Html.ActionLink("View Profile of "+appUser.ApplicationUser.UserName,"ViewProfile", "UserProfile", new { userId = appUser.ApplicationUser.Id })<br />
+                  @Html.ActionLink("View Profile of Candidate","ViewProfile", "UserProfile", new { userId = appUser.UserId })
                 }
         </div><!-- Tabs content -->
     }
+    </div><!-- Tabs section 1 -->
+    <div id="contract" style="display: none;">
+        <!-- Tabs section 2 -->
+    </div><!-- Tabs section 2 -->
+    <div id="full" style="display: none;">
+        <!-- Tabs section 3 -->
+    </div><!-- Tabs section 3 -->
+    <div id="free" style="display: none;">
+        <!-- Tabs section 4 -->
+    </div><!-- Tabs section 4 -->
+</div>*@
+
+
+
+
+<div class="panel-container">
+    <div id="all" class="active" style="display: block;">
+        <!-- Tabs section 1 -->
+
+        @foreach (Cevehat.Web.Models.JobVacancie j in Model.JobVacancies)
+        {
+            if (j.State == State.Active)
+            {
+                <div class="recent-job-list">
+                    <!-- Tabs content -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>@j.JobTitle.JobName</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>@j.Date</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>@j.State</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5>@j.JobType</h5>
+                        </div>
+
+                        <div class="col-md-2">
+                           @foreach (Cevehat.Web.Models.ApplayedUsers appUser in j.ApplayedUsers)
+                           {
+                              @Html.ActionLink("View Profile of Candidate", "ViewProfile", "UserProfile", new { userId = appUser.UserId }, null)
+                           }
+                        </div>
+                    </div>
+                </div><!-- Tabs content -->
+            }
+        }
+        @*<div class="clearfix"></div>*@
     </div><!-- Tabs section 1 -->
     <div id="contract" style="display: none;">
         <!-- Tabs section 2 -->
