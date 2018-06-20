@@ -104,7 +104,7 @@ namespace Cevehat.Web.Controllers
             JobVacancie applayedVac = db.JobVacancie.Find(JobVacancieID);
             applayedVac.ApplayedUsers.Add(new ApplayedUsers() { UserId = User.Identity.GetUserId(), AppliedUserState = AppliedUserState.Applied, ApplicationUser = db.Users.Find(User.Identity.GetUserId()) });
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index","Default");
         }
     }
 }
