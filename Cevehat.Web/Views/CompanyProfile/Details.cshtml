@@ -11,7 +11,48 @@
   
 }
 
-<div class="personal-deatils section">
+<div class="resume-content">
+    <div class="personal-deatils section">
+        <div class="personal-info">
+            <h3>Company Deatils</h3>
+            <div class="container">
+                <table class="table address" style="max-width: 600px;">
+                    <tr>
+                        <td style="min-width: 300px;"><h6><b>Company Image</b></h6></td>
+                        <td>
+                            <div class="user-images">
+                                <img src="~/images/@Model.Company.CompanyImage" width="150" height="150" alt="Company                                  Images" class="img-responsive">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Name</b></h6></td>
+                        <td>@Model.Company.CompanyName</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Information </b></h6></td>
+                        <td>@Model.Company.CompanyInfo</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Website</b></h6></td>
+                        <td><a href="@Model.Company.CompanyWebSite">@Model.Company.CompanyWebSite</a></td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Phone </b></h6></td>
+                        <td>@Model.Company.CompanyPhone</td>
+                    </tr>
+                    <tr>
+                        <td><h6><b>Company Email </b></h6></td>
+                        <td>@Model.Company.CompanyEmail</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div><!-- personal-deatils -->
+</div>
+
+@*<div class="personal-deatils section">
    
     <div class="personal-info">
         <h3>Company Deatils</h3>
@@ -23,6 +64,6 @@
             <li><h5>Company Email </h5> <span>:</span>@Model.Company.CompanyEmail</li>       
         </ul>
     </div>
-</div><!-- personal-deatils -->
+</div*@><!-- personal-deatils -->
 
 
