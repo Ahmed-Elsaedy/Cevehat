@@ -43,8 +43,8 @@ namespace Cevehat.Web.Controllers
             JobTitle title = (from Titls in db.JobTitle
                            where Titls.JobName == searchTitle
                            select Titls).FirstOrDefault();
+            
             return RedirectToAction("GetSkills", "SkillsJobTitle",new { Id = title.JobId });
-            //return part
         }
 
         public ActionResult Search(string searchInput)
