@@ -62,6 +62,7 @@ namespace Cevehat.Web.Controllers
             user.PhoneNumber = model.PhoneNumber;
             user.Address = model.Address;
             user.Summary = model.Summary;
+            user.BirthDate = model.BirthDate;
 
             if (profileImage != null)
             {
