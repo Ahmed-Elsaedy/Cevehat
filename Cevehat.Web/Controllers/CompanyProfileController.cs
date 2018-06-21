@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Cevehat.Web.Controllers
 {
-   
+
     public class CompanyProfileController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -23,7 +23,7 @@ namespace Cevehat.Web.Controllers
                 return _CurrentUser;
             }
         }
-        [Authorize(Roles="Employee,Employer")]
+        [Authorize(Roles = "Employee,Employer")]
         public ActionResult ShowDetails(int JobVacancieID)
         {
             JobVacancie currentJob = db.JobVacancie.Find(JobVacancieID);
@@ -44,7 +44,7 @@ namespace Cevehat.Web.Controllers
         {
             ViewBag.lastLogin = CurrentUser.LastLogin;
             var company = db.Company.Find(CompanyId);
-            if(company==null)
+            if (company == null)
             {
                 return HttpNotFound("Company Not Found");
             }
@@ -157,8 +157,20 @@ namespace Cevehat.Web.Controllers
 
 
         [HttpPost, Authorize(Roles = "Employer")]
-        public ActionResult AddJob(JobVacancie newjob, List<int> Skills)
-        {
+        public ActionResult AddJob(JobVacancie newjob, List<int> Skills, string searchTitle)
+            {
+            JobTitle title = (from Titls in db.JobTitle
+                              where Titls.JobName == searchTitle
+                              select Titls).FirstOrDefault();
+            if (title == null)
+            {
+                title = new JobTitle() { JobName = searchTitle };
+                newjob.JobTitle = title;
+            }
+            else
+            {
+                newjob.JobTitle = title;
+            }
             ViewBag.lastLogin = CurrentUser.LastLogin;
             db.JobVacancie.Add(newjob);
             for (int i = 0; i < Skills.Count; i++)
