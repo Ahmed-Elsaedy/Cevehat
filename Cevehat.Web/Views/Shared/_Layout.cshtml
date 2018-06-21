@@ -24,9 +24,10 @@
                 @Html.Partial("_LoginPartial")
                 <div class="float-right">
                     <ul class="nav navbar-nav navbar-right">
-                        <li >@Html.ActionLink("Skills", "Index", "Skills")</li>
+                        <li>@Html.ActionLink("Skills", "Index", "Skills")</li>
                         <li>@Html.ActionLink("Job Titles", "Index", "JobTitles")</li>
-                        <li>@Html.ActionLink("Job Titles Skills", "Index", "JobTitles_Skills")</li>
+                        <li>@Html.ActionLink("Job Titles Skills [Order By Skill]", "Index", "JobTitles_Skills", new { orderCode = "skill", }, null)</li>
+                        <li>@Html.ActionLink("Job Titles Skills [Order By JobTitle]", "Index", "JobTitles_Skills", new { orderCode = "jobTitle", }, null)</li>
                     </ul>
                 </div>
             </div>

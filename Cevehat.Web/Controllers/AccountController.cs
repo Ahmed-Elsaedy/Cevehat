@@ -69,7 +69,7 @@ namespace Cevehat.Web.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        // [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -83,8 +83,10 @@ namespace Cevehat.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-
-                    return RedirectToLocal(returnUrl);
+                    if (model.Email.ToLower().Contains("admin"))
+                        return RedirectToAction("Index", "Skills");
+                    else
+                        return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

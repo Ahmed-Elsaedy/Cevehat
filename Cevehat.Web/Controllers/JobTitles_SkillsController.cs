@@ -15,9 +15,18 @@ namespace Cevehat.Web.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: JobTitles_Skills
-        public ActionResult Index()
+        public ActionResult Index(string orderCode)
         {
-            var jobTitles_Skills = db.JobTitles_Skills.Include(j => j.jobTitle).Include(j => j.skill);
+            List<JobTitles_Skills> jobTitles_Skills = null;
+            if (!string.IsNullOrEmpty(orderCode))
+            {
+                if (orderCode == "skill")
+                    jobTitles_Skills = db.JobTitles_Skills.Include(j => j.jobTitle).Include(j => j.skill).OrderBy(x => x.skill.Title).ToList();
+                else if (orderCode == "jobTitle")
+                    jobTitles_Skills = db.JobTitles_Skills.Include(j => j.jobTitle).Include(j => j.skill).OrderBy(x => x.jobTitle.JobName).ToList();
+            }
+            else
+                jobTitles_Skills = db.JobTitles_Skills.Include(j => j.jobTitle).Include(j => j.skill).ToList();
             return View(jobTitles_Skills.ToList());
         }
 
