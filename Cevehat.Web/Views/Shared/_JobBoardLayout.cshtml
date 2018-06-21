@@ -27,11 +27,10 @@
         <!-- start main wrapper -->
         <div id="header">
             <!-- start main header -->
-            
             <!-- top -->
             <div class="container">
-            <div class="top-line">&nbsp;</div>
-            @Html.Partial("_JB_LoginPartial")
+                <div class="top-line">&nbsp;</div>
+                @Html.Partial("_JB_LoginPartial")
                 <!-- container -->
                 <div class="row">
                     <div class="col-md-4">
@@ -117,8 +116,6 @@
                         </div>
                     </div>
                     <!-- Footer Menu Widget -->
-
-                
                     <!-- Recent Tweet Widget -->
 
                     <div class="col-md-3 footer-widget">
@@ -130,7 +127,7 @@
 
                         <form role="form">
                             @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-newstler" })
-                            
+
                         </form>
                         <a href="" target="blank">
                             <i class="media-footer footer-twitt"></i>
@@ -173,6 +170,8 @@
     <script src="~/Template/js/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/Template/js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     @RenderSection("Scripts", false)
     <script src="~/Template/js/job-board.js"></script>
 </body>

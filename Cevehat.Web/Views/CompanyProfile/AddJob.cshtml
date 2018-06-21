@@ -19,7 +19,7 @@
         <div class="form-group">
             <label>Job Title</label>
             @*@Html.DropDownListFor(m => m.JobTitleID, ViewBag.JobTitles as IEnumerable<SelectListItem>, new { @class = "form-control", placeholder = "JobTitles" })*@
-            <input type="text" required="required" class="input-job" id="searchTitle" placeholder="Enter Job Title..." name="searchTitle">
+            <input type="text" required="required" class="input-job" id="searchTitle" placeholder="Enter Job Title" name="searchTitle">
         </div>
         <div class="form-group">
             <label>Experience Years</label>
@@ -56,22 +56,26 @@
     </form>
     <div class="spacer-2">&nbsp;</div>
 </div>
-<script>
-$("#searchTitle").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '@Url.Action("GetAutoCompleteJobTitle", "AutoCompletee")',
-                dataType: "json",
-                data: { search: $("#searchTitle").val() },
-                success: function (data) {
-                response($.map(data, function (item) {
-                return { label: item.Name, value: item.Name };
-                }));
-                },
-                error: function (xhr, status, error) {
-                alert("Error");
-                }
-                });
-                }
-                });
-</script>
+
+@section Scripts
+{
+    <script>
+        $("#searchTitle").autocomplete({
+    source: function (request, response) {
+    $.ajax({
+    url: '@Url.Action("GetAutoCompleteJobTitle", "AutoCompletee")',
+    dataType: "json",
+    data: { search: $("#searchTitle").val() },
+    success: function (data) {
+    response($.map(data, function (item) {
+    return { label: item.Name, value: item.Name };
+    }));
+    },
+    error: function (xhr, status, error) {
+    alert("Error");
+    }
+    });
+    }
+    });
+    </script>
+}
