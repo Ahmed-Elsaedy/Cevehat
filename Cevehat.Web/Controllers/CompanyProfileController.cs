@@ -121,8 +121,6 @@ namespace Cevehat.Web.Controllers
                 return RedirectToAction("ArchivedJobs");
 
             }
-
-
         }
 
         [Authorize(Roles = "Employer")]
@@ -143,8 +141,6 @@ namespace Cevehat.Web.Controllers
             newjob.CompanyID = currentComp.CompanyID;
             newjob.Company = currentComp;
             newjob.Company = currentComp;
-            ////this is shit  
-
 
             SelectList jobTitles = new SelectList(db.JobTitle.ToList(), "JobId", "JobName");
             ViewBag.JobTitles = jobTitles;
@@ -154,7 +150,6 @@ namespace Cevehat.Web.Controllers
 
             return View(newjob);
         }
-
 
         [HttpPost, Authorize(Roles = "Employer")]
         public ActionResult AddJob(JobVacancie newjob, List<int> Skills, string searchTitle)
@@ -182,10 +177,5 @@ namespace Cevehat.Web.Controllers
             db.SaveChanges();
             return RedirectToAction("RecentJobs");
         }
-
-
-
-
-
     }
 }
