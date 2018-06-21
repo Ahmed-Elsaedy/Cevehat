@@ -38,12 +38,12 @@
         </div>
         <div class="form-group">
             <label>Skills</label>
-            @Html.ListBoxFor(m => m.Skills, ViewBag.JobSkills as MultiSelectList, new { @class = "form-control", data_placeholder = "Skills" })
+            @Html.ListBoxFor(m => m.Skills, ViewBag.JobSkills as MultiSelectList, new { @class = "form-control", data_placeholder = "Skills", style="height: 200px;" })
             @*@Html.DropDownListFor(m => m.Skills, ViewBag.JobSkills as IEnumerable<SelectListItem>, new { @class = "form-control", placeholder = "JobSkills" })*@
         </div>
         <div class="form-group">
             <label>Requirements</label>
-            @Html.TextAreaFor(m => m.Requirements, new { @class = "form-control", placeholder = "Requirements" })
+            @Html.TextAreaFor(m => m.Requirements, 4,20, new { @class = "form-control", placeholder = "Requirements" })
         </div>
 
 
